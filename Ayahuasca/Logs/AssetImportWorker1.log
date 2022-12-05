@@ -11,13 +11,13 @@ D:\UnityVersions\2021.3.13f1\Editor\Unity.exe
 -name
 AssetImportWorker1
 -projectPath
-D:/Universidade/Mestrado/UnityMestrado/Motores/Ayahuasca
+D:/Universidade/Mestrado/UnityMestrado/Projeto1/Ayahuasca/Ayahuasca
 -logFile
 Logs/AssetImportWorker1.log
 -srvPort
-49215
-Successfully changed project path to: D:/Universidade/Mestrado/UnityMestrado/Motores/Ayahuasca
-D:/Universidade/Mestrado/UnityMestrado/Motores/Ayahuasca
+62678
+Successfully changed project path to: D:/Universidade/Mestrado/UnityMestrado/Projeto1/Ayahuasca/Ayahuasca
+D:/Universidade/Mestrado/UnityMestrado/Projeto1/Ayahuasca/Ayahuasca
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
     "memorysetup-bucket-allocator-granularity=16"
     "memorysetup-bucket-allocator-bucket-count=8"
@@ -47,11 +47,11 @@ D:/Universidade/Mestrado/UnityMestrado/Motores/Ayahuasca
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Refreshing native plugins compatible for Editor in 75.14 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 75.20 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.3.13f1 (9e7d58001ecf)
 [Subsystems] Discovering subsystems at path D:/UnityVersions/2021.3.13f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path D:/Universidade/Mestrado/UnityMestrado/Motores/Ayahuasca/Assets
+[Subsystems] Discovering subsystems at path D:/Universidade/Mestrado/UnityMestrado/Projeto1/Ayahuasca/Ayahuasca/Assets
 GfxDevice: creating device client; threaded=0; jobified=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
@@ -63,89 +63,90 @@ Initialize mono
 Mono path[0] = 'D:/UnityVersions/2021.3.13f1/Editor/Data/Managed'
 Mono path[1] = 'D:/UnityVersions/2021.3.13f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'D:/UnityVersions/2021.3.13f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56012
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56328
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: D:/UnityVersions/2021.3.13f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.011177 seconds.
+Registered in 0.010465 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 85.99 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 77.66 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.715 seconds
+- Completed reload, in  0.649 seconds
 Domain Reload Profiling:
-	ReloadAssembly (715ms)
-		BeginReloadAssembly (101ms)
+	ReloadAssembly (650ms)
+		BeginReloadAssembly (93ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (496ms)
-			LoadAssemblies (97ms)
+		EndReloadAssembly (439ms)
+			LoadAssemblies (89ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (99ms)
+			SetupTypeCache (92ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (28ms)
-			SetupLoadedEditorAssemblies (310ms)
+			RebuildScriptCaches (26ms)
+			SetupLoadedEditorAssemblies (267ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (10ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (86ms)
+				RefreshPlugins (78ms)
 				BeforeProcessingInitializeOnLoad (2ms)
-				ProcessInitializeOnLoadAttributes (164ms)
-				ProcessInitializeOnLoadMethodAttributes (48ms)
+				ProcessInitializeOnLoadAttributes (136ms)
+				ProcessInitializeOnLoadMethodAttributes (42ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.010462 seconds.
+Registered in 0.010400 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image D:\Universidade\Mestrado\UnityMestrado\Motores\Ayahuasca\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Symbol file LoadedFromMemory doesn't match image D:\Universidade\Mestrado\UnityMestrado\Motores\Ayahuasca\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory doesn't match image D:\Universidade\Mestrado\UnityMestrado\Projeto1\Ayahuasca\Ayahuasca\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Universidade\Mestrado\UnityMestrado\Projeto1\Ayahuasca\Ayahuasca\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.64 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 0.73 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.048 seconds
+- Completed reload, in  1.105 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1049ms)
-		BeginReloadAssembly (140ms)
+	ReloadAssembly (1106ms)
+		BeginReloadAssembly (126ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (6ms)
+			DisableScriptedObjects (5ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (22ms)
-		EndReloadAssembly (790ms)
-			LoadAssemblies (120ms)
+		EndReloadAssembly (856ms)
+			LoadAssemblies (109ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (225ms)
+			SetupTypeCache (247ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (51ms)
-			SetupLoadedEditorAssemblies (381ms)
+			RebuildScriptCaches (54ms)
+			SetupLoadedEditorAssemblies (409ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (7ms)
 				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (103ms)
-				ProcessInitializeOnLoadAttributes (222ms)
-				ProcessInitializeOnLoadMethodAttributes (33ms)
+				BeforeProcessingInitializeOnLoad (110ms)
+				ProcessInitializeOnLoadAttributes (242ms)
+				ProcessInitializeOnLoadMethodAttributes (32ms)
 				AfterProcessingInitializeOnLoad (16ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (5ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.08 seconds
-Refreshing native plugins compatible for Editor in 0.97 ms, found 3 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
+Refreshing native plugins compatible for Editor in 1.37 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3349 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 27 unused Assets / (113.4 KB). Loaded Objects now: 3806.
-Memory consumption went from 115.3 MB to 115.2 MB.
-Total: 2.994000 ms (FindLiveObjects: 0.255600 ms CreateObjectMapping: 0.204400 ms MarkObjects: 2.432400 ms  DeleteObjects: 0.100900 ms)
+Unloading 3559 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 28 unused Assets / (113.5 KB). Loaded Objects now: 4015.
+Memory consumption went from 120.6 MB to 120.5 MB.
+Total: 3.184700 ms (FindLiveObjects: 0.275000 ms CreateObjectMapping: 0.226000 ms MarkObjects: 2.578000 ms  DeleteObjects: 0.104800 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -158,3 +159,147 @@ AssetImportParameters requested are different than current active one (requested
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 1813785.883739 seconds.
+  path: Assets/DevTex/Materials/Dev_metallic_blue.mat
+  artifactKey: Guid(34a344c7ede21d04eab5304f2292fb0f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/DevTex/Materials/Dev_metallic_blue.mat using Guid(34a344c7ede21d04eab5304f2292fb0f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd785a75ee90f0c560c16fa989de660d1') in 0.342391 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000065 seconds.
+  path: Assets/DevTex/Materials/Dev_trigger_small_listener.mat
+  artifactKey: Guid(ba849e1ad6993524aa9e0f679bad6926) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/DevTex/Materials/Dev_trigger_small_listener.mat using Guid(ba849e1ad6993524aa9e0f679bad6926) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f3edb05663f486e0b2a9d7ed6ddd6d29') in 0.203064 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/DevTex/Materials/Dev_metallic_yellow.mat
+  artifactKey: Guid(ec88c3b93ff6cf049a7cb7adcfe770c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/DevTex/Materials/Dev_metallic_yellow.mat using Guid(ec88c3b93ff6cf049a7cb7adcfe770c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'be41fd775f1c8450f937c124c83da9ac') in 0.012969 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/DevTex/Materials
+  artifactKey: Guid(6eb892cd89e778c4498ce24ce5311e83) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/DevTex/Materials using Guid(6eb892cd89e778c4498ce24ce5311e83) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0cc6e5d6f329ff9f5b8bae6d6e474a9a') in 0.006099 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/DevTex/Materials/Dev_matte_white.mat
+  artifactKey: Guid(bb742d83ed804da40afff0bb98de17b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/DevTex/Materials/Dev_matte_white.mat using Guid(bb742d83ed804da40afff0bb98de17b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fbea621a57c64a898456d598f938de48') in 0.223416 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/DevTex/Materials/Dev_trigger_player.mat
+  artifactKey: Guid(0100f9809fca72b4b9e2fa006bec3b50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/DevTex/Materials/Dev_trigger_player.mat using Guid(0100f9809fca72b4b9e2fa006bec3b50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1b97a06648bb6ff31af5d03be089091f') in 0.012152 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/DevTex/Materials/Dev_zone_norender.mat
+  artifactKey: Guid(a4e6755c062b9594ebdd9e12833cd8b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/DevTex/Materials/Dev_zone_norender.mat using Guid(a4e6755c062b9594ebdd9e12833cd8b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6b60236d43852345cc9eafdf878512b9') in 0.078662 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/DevTex/Materials/Dev_metallic_white.mat
+  artifactKey: Guid(ae2587bade3efb6418a0e106686ba031) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/DevTex/Materials/Dev_metallic_white.mat using Guid(ae2587bade3efb6418a0e106686ba031) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9077b4927471a7e6cc7f3fa1a6cabb72') in 0.012976 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/DevTex/Materials/Dev_trigger_small_look.mat
+  artifactKey: Guid(78175d0569dc27c47bfe8be7ffa16d9d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/DevTex/Materials/Dev_trigger_small_look.mat using Guid(78175d0569dc27c47bfe8be7ffa16d9d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5a68688fbb39e9fed7c7a971040513a9') in 0.012224 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/DevTex/Materials/Dev_matte_black.mat
+  artifactKey: Guid(9e053f3b319d5964ebc94e9a4c516165) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/DevTex/Materials/Dev_matte_black.mat using Guid(9e053f3b319d5964ebc94e9a4c516165) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '45b4991b106adb66e442d3b24ae3d022') in 0.011558 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/DevTex/Materials/Dev_trigger_small_target.mat
+  artifactKey: Guid(4d106162472b9e646809f2c3ad696542) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/DevTex/Materials/Dev_trigger_small_target.mat using Guid(4d106162472b9e646809f2c3ad696542) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0b6523c6f9ebee2d1102ee0b766897b5') in 0.011704 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/DevTex/Materials/Dev_reflective_90.mat
+  artifactKey: Guid(23765eb7d4cd4b641906938dfcfa3714) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/DevTex/Materials/Dev_reflective_90.mat using Guid(23765eb7d4cd4b641906938dfcfa3714) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '959f879a4d19db3ec43e9cefa4bba56f') in 0.011902 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/DevTex/Materials/Dev_trigger_handler.mat
+  artifactKey: Guid(9d8b07e0deeca5b46a5cd834c00a3dc0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/DevTex/Materials/Dev_trigger_handler.mat using Guid(9d8b07e0deeca5b46a5cd834c00a3dc0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2dfee3c38d589645376667faa954eb06') in 0.011838 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/DevTex/Materials/Dev_reflective_80.mat
+  artifactKey: Guid(41faaa13f10018e4fbb11b3c5f032487) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/DevTex/Materials/Dev_reflective_80.mat using Guid(41faaa13f10018e4fbb11b3c5f032487) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd581536993a7f43b170cd6a71a572715') in 0.011432 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/DevTex/Materials/Dev_matte_tan.mat
+  artifactKey: Guid(fb4297963cd7bcd48b0bd9ffa8397df7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/DevTex/Materials/Dev_matte_tan.mat using Guid(fb4297963cd7bcd48b0bd9ffa8397df7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0c3b33ced6b95d820253d0c7b2718c68') in 0.012330 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/DevTex
+  artifactKey: Guid(28d80112e7cfde34a9d590bddc89a452) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/DevTex using Guid(28d80112e7cfde34a9d590bddc89a452) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '965a983f688ab958dddb807d39c45c14') in 0.005738 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/DevTex/Materials/Dev_metallic_orange.mat
+  artifactKey: Guid(8f61ba43f62e6524cba5e48f0913e4e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/DevTex/Materials/Dev_metallic_orange.mat using Guid(8f61ba43f62e6524cba5e48f0913e4e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bc0c186bb543a599d3ac8303487b5f86') in 0.012559 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/DevTex/Materials/Dev_matte_red.mat
+  artifactKey: Guid(9dacba553faf37640b9b190387e0d6a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/DevTex/Materials/Dev_matte_red.mat using Guid(9dacba553faf37640b9b190387e0d6a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd806d048f9548d19b23cc11476ca54b1') in 0.010858 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/DevTex/Materials/Dev_trigger_script.mat
+  artifactKey: Guid(886766f7665d845489797c05e9762ce1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/DevTex/Materials/Dev_trigger_script.mat using Guid(886766f7665d845489797c05e9762ce1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a8c521723f0c94855c111975e3e5116f') in 0.010865 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/DevTex/Materials/Dev_matte_purple.mat
+  artifactKey: Guid(883e689dfa4847941bce434d7db80613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/DevTex/Materials/Dev_matte_purple.mat using Guid(883e689dfa4847941bce434d7db80613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f17f916d343cdf10ed23e60f7962c062') in 0.011670 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/DevTex/Materials/Dev_metallic_grey75.mat
+  artifactKey: Guid(da87d1f361784a4419e8f285a9f43652) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/DevTex/Materials/Dev_metallic_grey75.mat using Guid(da87d1f361784a4419e8f285a9f43652) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9bc0e66165e31e9b1e9a700f2abe89a9') in 0.017249 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/DevTex/Materials/Dev_matte_blue.mat
+  artifactKey: Guid(e4ffd19d4d133124ba599827254956f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/DevTex/Materials/Dev_matte_blue.mat using Guid(e4ffd19d4d133124ba599827254956f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6c71129d0c28e35a5ea0509e17326136') in 0.012884 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Plugins
+  artifactKey: Guid(67c2f18de79da0a4e9322c00b5eab033) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins using Guid(67c2f18de79da0a4e9322c00b5eab033) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '04a235405b1066eb451d8484fd3c614f') in 0.005413 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/DevTex/Materials/Dev_matte_orange.mat
+  artifactKey: Guid(9ec9ae56b49bc64479611146225f0e62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/DevTex/Materials/Dev_matte_orange.mat using Guid(9ec9ae56b49bc64479611146225f0e62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4ac9ae23459585d1f9c9c783f388b8c0') in 0.012332 seconds 
