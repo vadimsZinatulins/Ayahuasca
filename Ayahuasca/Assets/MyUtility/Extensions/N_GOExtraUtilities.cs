@@ -14,6 +14,9 @@ public class N_GOExtraUtilities : MonoBehaviour
             GO_DOL_Names.Add(transform.name);
             DontDestroyOnLoad(transform);
             Debug.Log($"Added this [{transform.name}] to the Dont Destroy On Load GO!");
+        }else if (GO_DOL_Names.Contains(transform.name))
+        {
+            Destroy(gameObject);
         }
     }
 }

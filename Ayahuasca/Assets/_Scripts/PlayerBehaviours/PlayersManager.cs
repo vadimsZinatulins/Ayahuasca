@@ -14,7 +14,10 @@ namespace PlayerBehaviours
         private void Awake()
         {
             _player1 = Instantiate(PlayerPrefab, transform);
+            _player1.transform.name = "Player1";
+            
             _player2 = Instantiate(PlayerPrefab, transform);
+            _player2.transform.name = "Player2";
         }
     }
 }
