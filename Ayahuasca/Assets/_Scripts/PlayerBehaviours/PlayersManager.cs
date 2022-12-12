@@ -23,8 +23,9 @@ namespace PlayerBehaviours
             {
                 Destroy(gameObject);
             }
-
             Instance = this;
+            
+            //Spawns the player's. This are not the characters, only the controller instances
             _player1 = Instantiate(PlayerPrefab, transform);
             _player1.transform.name = "Player1";
             
@@ -34,10 +35,12 @@ namespace PlayerBehaviours
 
         private void Start()
         {
+            //Gives the inputs to the controllers. This way we can implement more players easily, or just one
             _player1.BindInputs(player1Binds);
             _player2.BindInputs(player2Binds);
         }
 
+        // This part is not modular, but we dont have time to be picky >:[
         public Player ReturnPlayerOne()
         {
             return _player1;

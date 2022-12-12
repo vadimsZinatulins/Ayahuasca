@@ -18,17 +18,38 @@ namespace PlayerBehaviours
         public void BindInputs(PlayerBindKeys bind)
         {
             binds = bind;
+            SubscribeInputEvents();
         }
 
-        private void SetInputsToCharacter()
+        //░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+        //                             Subscribing events / Functions                     
+        //░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+        private void SubscribeInputEvents()
         {
-            _character.SetInputs(binds.MoveAction.action.ReadValue<Vector2>());
+            binds.JumpAction.action.performed+= OnJump;
+        }
+
+        private void OnJump(InputAction.CallbackContext obj)
+        {
+            _character.Jump();
+        }
+
+        public void SetCharacterInput()
+        {
+            _character.SetMovementInput(binds.MoveAction.action.ReadValue<Vector2>());
         }
 
         private void Update()
         {
-            SetInputsToCharacter();
+            SetCharacterInput();
         }
+
+        //░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+        //                             Subscribing events / Functions                     
+        //░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+        
+        
         //░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
         //                                Utility                                  
         //░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
@@ -61,6 +82,24 @@ namespace PlayerBehaviours
             //Load here the data from the PlayerInfo
         }
 
+        /// <summary>
+        /// Despawns the character from the world
+        /// </summary>
+        /// <returns></returns>
+        public bool DeSpawnCharacter()
+        {
+            //this could be a pool, but to be simple, lets destroy
+            if (_character)
+            {
+                Destroy(_character.gameObject);
+                _character = null;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         //░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
         //                                Utility                                  
         //░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░

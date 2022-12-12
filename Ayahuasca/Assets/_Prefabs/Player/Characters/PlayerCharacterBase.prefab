@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4788759426433958037}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -0.74, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -242,19 +242,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70bf6779c4ff4aaea2615d2ecdc9c47f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraOffset: {x: 0, y: 10, z: 2}
   characterController: {fileID: 357205976571004010}
-  CameraOffset: {x: 0, y: 20, z: 5}
-  MoveSpeed: 5
-  LerpInputTime: 5
-  turnSmoothTime: 0.1
-  gravity: 9
+  moveSpeed: 2
+  lerpMovement: 5
+  turnSmoothTime: 0.05
+  gravity: 9.64
   groundCheckPos: {fileID: 3755536364831524756}
-  groundCheckRadius: 1
+  groundCheckRadius: 0.4
   groundLayers:
     serializedVersion: 2
     m_Bits: 64
-  jumpHeight: 2
+  EnableJumpMechanic: 1
+  jumpHeight: 4
   jumpCoyoteTime: 0.2
+  jumpCooldownTime: 0.1
   canJump: 0
 --- !u!143 &357205976571004010
 CharacterController:

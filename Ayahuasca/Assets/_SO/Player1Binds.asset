@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveAction: {fileID: 2730857508857075444, guid: b6e9ece11f29c05448a8662638af0315, type: 3}
   InteractAction: {fileID: 5065419664733586748, guid: b6e9ece11f29c05448a8662638af0315, type: 3}
-  RowAction: {fileID: 2962627553130596159, guid: b6e9ece11f29c05448a8662638af0315, type: 3}
+  RowLAction: {fileID: 0}
+  RowRAction: {fileID: 0}
+  JumpAction: {fileID: 5661923784356444743, guid: b6e9ece11f29c05448a8662638af0315, type: 3}
