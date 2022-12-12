@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace PlayerBehaviours
 {
@@ -11,32 +13,58 @@ namespace PlayerBehaviours
         public PlayerCharacter CharacterPrefab;
         private PlayerCharacter _character;
         private PlayerInfo _playerInfo;
-        
+        private PlayerBindKeys binds;
+
+        public void BindInputs(PlayerBindKeys bind)
+        {
+            binds = bind;
+        }
+
+        private void SetInputsToCharacter()
+        {
+            _character.SetInputs(binds.MoveAction.action.ReadValue<Vector2>());
+        }
+
+        private void Update()
+        {
+            SetInputsToCharacter();
+        }
+        //░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+        //                                Utility                                  
+        //░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
         /// <summary>
-        /// ATENTION: If possible, use one of the other ones. Player Info is important
+        /// ATENTION: If possible, use the one with player info. Player Info is important
         /// </summary>
-        public void Spawn()
+        public PlayerCharacter Spawn()
         {
-            _character = Instantiate(CharacterPrefab, Vector3.zero, Quaternion.identity);
+            return Spawn(Vector3.zero);
         }
-        
-        public void Spawn( PlayerInfo info)
+        public PlayerCharacter Spawn(Vector3 spawnPos)
         {
-            _character = Instantiate(CharacterPrefab, Vector3.zero, Quaternion.identity);
-            //Load here the data from the PlayerInfo
+            return Spawn(spawnPos, Quaternion.identity);
         }
-        
-        public void Spawn( PlayerInfo info, Vector3 spawnPos)
-        {
-            _character = Instantiate(CharacterPrefab, spawnPos, Quaternion.identity);
-            //Load here the data from the PlayerInfo
-        }
-        
-        public void Spawn( PlayerInfo info, Vector3 spawnPos, Quaternion spawnRot)
+        public PlayerCharacter Spawn(Vector3 spawnPos,Quaternion spawnRot)
         {
             _character = Instantiate(CharacterPrefab, spawnPos, spawnRot);
+            _character.SetOwner(this);
+            _character.SetCamera();
+            return _character;
+        }
+        public PlayerCharacter Spawn(Vector3 spawnPos, Quaternion spawnRot,PlayerInfo info)
+        {
+            _character = Instantiate(CharacterPrefab, spawnPos, spawnRot);
+            _character.SetOwner(this);
+            _character.SetCamera();
+
+            return _character;
             //Load here the data from the PlayerInfo
         }
+
+        //░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+        //                                Utility                                  
+        //░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+        
     }
 
     /// <summary>

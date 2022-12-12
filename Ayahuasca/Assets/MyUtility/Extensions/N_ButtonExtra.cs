@@ -12,7 +12,7 @@ namespace Utility
     {
         public LeanTweenType TweenType;
         private Button _button;
-        public Vector3 targetAnimationScale;
+        public Vector3 targetAnimationScale = Vector3.one;
         public float easeInTime = 1;
         public float easeOutTime =1;
         private Vector3 initialAnimationScale;
