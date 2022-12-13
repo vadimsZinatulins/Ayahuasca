@@ -37,7 +37,10 @@ namespace PlayerBehaviours
 
         public void SetCharacterInput()
         {
-            _character.SetMovementInput(binds.MoveAction.action.ReadValue<Vector2>());
+            if (_character)
+            {
+                _character.SetMovementInput(binds.MoveAction.action.ReadValue<Vector2>());
+            }
         }
 
         private void Update()
