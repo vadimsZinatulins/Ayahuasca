@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6fd7f203da348ffb49b8268eaa086fb, type: 3}
+  m_Name: Player1Binds
+  m_EditorClassIdentifier: 
+  MoveAction: {fileID: 2730857508857075444, guid: b6e9ece11f29c05448a8662638af0315, type: 3}
+  InteractAction: {fileID: 5065419664733586748, guid: b6e9ece11f29c05448a8662638af0315, type: 3}
+  RowLAction: {fileID: 0}
+  RowRAction: {fileID: 0}
+  JumpAction: {fileID: 5661923784356444743, guid: b6e9ece11f29c05448a8662638af0315, type: 3}
