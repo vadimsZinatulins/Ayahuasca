@@ -206,8 +206,8 @@ namespace PlayerBehaviours
         private void Movement()
         {
             // Update camera
-            _playerCamera.transform.position = transform.position + cameraOffset;
-            _playerCamera.transform.LookAt(transform.position);
+            // _playerCamera.transform.position = transform.position + cameraOffset;
+            // _playerCamera.transform.LookAt(transform.position);
                 
             //Converts the movement input, from vector2 to vector3
             Vector3 movementInput = new Vector3(currentInput.x, 0, currentInput.y);
@@ -254,6 +254,7 @@ namespace PlayerBehaviours
         public void SetCamera()
         {
             _playerCamera = PlayersManager.Instance.CameraManager.GetSoloCamera();
+            Camera.main.GetComponent<SplitScreenManager>().SetupPlayerCamera(gameObject, _playerCamera);
         }
     }
 }
