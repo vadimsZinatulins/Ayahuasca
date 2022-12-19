@@ -706,7 +706,8 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   webGLPowerPreference: 2
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    Standalone: TEXTURE_GRAPH;POSEIDON;POSEIDON_URP;JUPITER;TG_SEARCHER;GRIFFIN;GRIFFIN_2021
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}

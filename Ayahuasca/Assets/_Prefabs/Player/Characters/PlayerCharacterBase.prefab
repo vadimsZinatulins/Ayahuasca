@@ -93,7 +93,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a7ae6b34c1352bd419c92ad25692fcb1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -194,7 +194,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e4ffd19d4d133124ba599827254956f6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraOffset: {x: 0, y: 10, z: 2}
   characterController: {fileID: 357205976571004010}
-  moveSpeed: 2
+  moveSpeed: 4
   lerpMovement: 5
   turnSmoothTime: 0.05
   gravity: 9.64
@@ -257,7 +257,6 @@ MonoBehaviour:
   jumpHeight: 4
   jumpCoyoteTime: 0.2
   jumpCooldownTime: 0.1
-  canJump: 0
 --- !u!143 &357205976571004010
 CharacterController:
   m_ObjectHideFlags: 0
