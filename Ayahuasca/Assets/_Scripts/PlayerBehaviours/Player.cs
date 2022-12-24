@@ -27,12 +27,24 @@ namespace PlayerBehaviours
 
         private void SubscribeInputEvents()
         {
-            binds.JumpAction.action.performed+= OnJump;
+            binds.JumpAction.action.performed += OnJump;
+            binds.InteractAction.action.performed += OnInteract;
         }
 
         private void OnJump(InputAction.CallbackContext obj)
         {
-            _character.Jump();
+            if (_character != null)
+            {
+                _character.OnJump();
+            }
+        }
+
+        private void OnInteract(InputAction.CallbackContext obj)
+        {
+            if (_character != null)
+            {
+                _character.OnInteract();
+            }
         }
 
         public void SetCharacterInput()
@@ -51,8 +63,8 @@ namespace PlayerBehaviours
         //░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
         //                             Subscribing events / Functions                     
         //░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-        
-        
+
+
         //░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
         //                                Utility                                  
         //░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
@@ -64,18 +76,21 @@ namespace PlayerBehaviours
         {
             return Spawn(Vector3.zero);
         }
+
         public PlayerCharacter Spawn(Vector3 spawnPos)
         {
             return Spawn(spawnPos, Quaternion.identity);
         }
-        public PlayerCharacter Spawn(Vector3 spawnPos,Quaternion spawnRot)
+
+        public PlayerCharacter Spawn(Vector3 spawnPos, Quaternion spawnRot)
         {
             _character = Instantiate(CharacterPrefab, spawnPos, spawnRot);
             _character.SetOwner(this);
             _character.SetCamera();
             return _character;
         }
-        public PlayerCharacter Spawn(Vector3 spawnPos, Quaternion spawnRot,PlayerInfo info)
+
+        public PlayerCharacter Spawn(Vector3 spawnPos, Quaternion spawnRot, PlayerInfo info)
         {
             _character = Instantiate(CharacterPrefab, spawnPos, spawnRot);
             _character.SetOwner(this);
@@ -106,7 +121,6 @@ namespace PlayerBehaviours
         //░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
         //                                Utility                                  
         //░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-        
     }
 
     /// <summary>
@@ -114,6 +128,5 @@ namespace PlayerBehaviours
     /// </summary>
     public struct PlayerInfo
     {
-        
     }
 }

@@ -1,4 +1,7 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using _Scripts.Behaviours.Interfaces;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
@@ -13,9 +16,7 @@ namespace PlayerBehaviours
         
         //-------------------------------------------BEGIN-VARIABLES-------------------------------------------
         //----------------------------------------------PLAYER-------------------------------------------------
-        /// <summary>
-        /// Player owner of this character
-        /// </summary>
+        /* Player owner of this character */
         private Player _playerOwner;
         //-------------------------------------------CAMERA-(TEMP)-------------------------------------------
         [Header("Solo Camera")]
@@ -24,128 +25,101 @@ namespace PlayerBehaviours
         private Camera _playerCamera;
         //-------------------------------------------MOVEMENT-------------------------------------------
         [Header("Movement")]
-        /// <summary>
-        /// Character controller for the movement
-        /// </summary>
+        /* Character controller for the movement */
         [Tooltip("Character controller for the movement")]
         [SerializeField] private CharacterController characterController;
         
-        /// <summary>
-        /// Move speed of the character
-        /// </summary>
+        /* Move speed of the character */
         [Tooltip("Move speed of the character")]
         public float moveSpeed = 2f;
         
-        /// <summary>
-        /// Smoothness of the movement input
-        /// </summary>
+        /* Smoothness of the movement input */
         [Tooltip("Smoothness of the movement input")]
         public float lerpMovement = 0.5f;
         
-        /// <summary>
-        /// Smoothness of the turning of the player
-        /// </summary>
+        /* Smoothness of the turning of the player */
         [Tooltip("Smoothness of the turning of the player")]
         public float turnSmoothTime = 0.1f;
         
-        /// <summary>
-        /// Player gravity force amount
-        /// </summary>
+        /* Player gravity force amount */
         [Tooltip("Player gravity force amount")]
         public float gravity;
         
-        /// <summary>
-        /// Current fall velocity amount
-        /// </summary>
+        /* Current fall velocity amount */
         [Tooltip("Current fall velocity amount")]
         private float _fallVelocity;
 
-        /// <summary>
-        /// Current movement input lerped
-        /// </summary>
+        /* Current movement input lerped */
         [Tooltip("Current movement input lerped")]
         private Vector3 currentInput;
         
-        /// <summary>
-        /// Current turn smooth velocity
-        /// </summary>
+        /* Current turn smooth velocity */
         [Tooltip("Current turn smooth velocity")]
         private float _turnSmoothVelocity;
         //-------------------------------------------GROUND-CHECK-------------------------------------------
         [Header("Ground Check")]
-        /// <summary>
-        /// Transform that stores the ground check location
-        /// </summary>
+        /* Transform that stores the ground check location */
         [Tooltip("Transform that stores the ground check location")]
         public Transform groundCheckPos;
         
-        /// <summary>
-        /// Radius for the ground check
-        /// </summary>
+        /* Radius for the ground check */
         [Tooltip("Radius for the ground check")]
         public float groundCheckRadius;
         
-        /// <summary>
-        /// Holds if the player is grounded
-        /// </summary>
+        /* Holds if the player is grounded */
         [Tooltip("Holds if the player is grounded")]
         private bool _isGrounded;
         
-        /// <summary>
-        /// Layers that trigger as ground
-        /// </summary>
+        /* Layers that trigger as ground */
         [Tooltip("Layers that trigger as ground")]
         public LayerMask groundLayers;
 
         //-------------------------------------------JUMP-MECHANIC-------------------------------------------
         [Header("Jump Mechanic")]
-        /// <summary>
-        /// Enables or disables if the character can jump
-        /// </summary>
+        /* Layers that trigger as ground */
         [Tooltip("Enables or disables if the character can jump")]
         public bool EnableJumpMechanic = true;
         
-        /// <summary>
-        /// How high the player jumps
-        /// </summary>
+        /* How high the player jumps */
         [Tooltip("How high the player jumps")]
         public float jumpHeight;
         
-        /// <summary>
-        /// The time offset for the ground check
-        /// </summary>
+        /* The time offset for the ground check */
         [Tooltip("The time offset for the ground check")]
         public float jumpCoyoteTime;
         
-        /// <summary>
-        /// Current coyote timer
-        /// </summary>
+        /* Current coyote timer */
         [Tooltip("Current coyote timer")]
         private float _currentJumpCoyoteTime;
         
-        /// <summary>
-        /// Jump cooldown max time
-        /// </summary>
+        /* Jump cooldown max time */
         [Tooltip("Jump cooldown max time")]
         public float jumpCooldownTime = 0.5f;
         
-        /// <summary>
-        /// Current jump cooldown timer
-        /// </summary>
+        /* Current jump cooldown timer */
         [Tooltip("Current jump cooldown timer")]
         private float _currentJumpCooldownTime;
         
-        /// <summary>
-        /// Holds if the player can currently jump
-        /// </summary>
+        /* Holds if the player can currently jump */
         [Tooltip("Holds if the player can currently jump")]
         private bool canJump;
 
-        /// <summary>
-        /// Stores if the player already jumped
-        /// </summary>
+        /* Stores if the player already jumped */
         [Tooltip("Stores if the player already jumped")]
         private bool didJump = false;
+        
+        //-------------------------------------------INTERACT-MECHANIC-------------------------------------------
+        [Header("Interact System")]
+        /* Radius of interaction */
+        [Tooltip("Radius of interaction")] 
+        public float interactRadius;
+
+        /* Interact layers */
+        [Tooltip("Interact layers")]
+        public LayerMask interactLayers;
+
+        /* Current close interactables */
+        private List<GameObject> currentInteractables;
         
         //-------------------------------------------END-VARIABLES-------------------------------------------
         private void OnDrawGizmos()
@@ -155,6 +129,11 @@ namespace PlayerBehaviours
                 Gizmos.color = Color.green;
                 Gizmos.DrawWireSphere(groundCheckPos.position,groundCheckRadius);
             }
+        }
+
+        private void Awake()
+        {
+            currentInteractables = new List<GameObject>();
         }
 
         public void SetOwner(Player player)
@@ -168,9 +147,36 @@ namespace PlayerBehaviours
         }
         private void Update()
         {
-            GroundCheck();
+            Checks();
             Movement();
             Gravity();
+        }
+
+        private void Checks()
+        {
+            GroundCheck();
+            InteractCheck();
+        }
+
+        private void InteractCheck()
+        {
+            Vector3 positionCheck = transform.position;
+            Collider[] InteractColliders = Physics.OverlapSphere(positionCheck, interactRadius, interactLayers);
+            var OrderedInteractions = InteractColliders.OrderBy(d => (d.transform.position - transform.position).sqrMagnitude);
+            currentInteractables = new List<GameObject>();
+            foreach (var interactableGO in OrderedInteractions)
+            {
+                if (interactableGO.TryGetComponent(out IInteractable interactable))
+                {
+                    currentInteractables.Add(interactableGO.gameObject);
+                }
+            }
+
+            if (currentInteractables.Count > 0)
+            {
+                string interactText = currentInteractables[0].GetComponent<IInteractable>().GetInteractText();
+                Debug.Log(interactText);
+            }
         }
 
         private void GroundCheck()
@@ -238,7 +244,7 @@ namespace PlayerBehaviours
             characterController.Move(Vector3.down * _fallVelocity * Time.deltaTime);
         }
 
-        public void Jump()
+        public void OnJump()
         {
             if (EnableJumpMechanic)
             {
@@ -248,6 +254,14 @@ namespace PlayerBehaviours
                     _currentJumpCooldownTime = jumpCooldownTime;
                     _fallVelocity = -jumpHeight;
                 }
+            }
+        }
+
+        public void OnInteract()
+        {
+            if (currentInteractables.Count > 0)
+            {
+                currentInteractables[0].GetComponent<IInteractable>().Interact(transform);
             }
         }
 
