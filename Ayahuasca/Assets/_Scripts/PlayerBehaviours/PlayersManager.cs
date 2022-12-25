@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace PlayerBehaviours
@@ -11,48 +12,57 @@ namespace PlayerBehaviours
     {
         public static PlayersManager Instance;
         public CameraManager CameraManager;
-        private Player _player1, _player2;
-        [SerializeField] private Player PlayerPrefab;
+        [SerializeField] private List<PlayerInstanceData> PlayerData;
+        private List<Player> _players = new List<Player>();
 
-        [Header("Player Binds")] 
-        public PlayerBindKeys player1Binds;
-        public PlayerBindKeys player2Binds;
         private void Awake()
         {
             if (Instance != null)
             {
                 Destroy(gameObject);
             }
+
             Instance = this;
-            
+
             //Spawns the player's. This are not the characters, only the controller instances
-            _player1 = Instantiate(PlayerPrefab, transform);
-            _player1.transform.name = "Player1";
-            
-            _player2 = Instantiate(PlayerPrefab, transform);
-            _player2.transform.name = "Player2";
+            foreach (var pData in PlayerData)
+            {
+                var _player = Instantiate(pData.Prefab, transform);
+                _player.transform.name = pData.PlayerName;
+                if (_player.TryGetComponent(out Player player))
+                {
+                    player.BindInputs(pData.Binds);
+                    _players.Add(player);
+                }
+            }
+        }
+        
+        public Player ReturnPlayer(int index)
+        {
+            return _players[index];
+        }
+        
+        public Player ReturnPlayer(string playerName)
+        {
+            return _players.Find(d => d.transform.name == playerName);
         }
 
-        private void Start()
+        public List<Player> ReturnPlayers()
         {
-            //Gives the inputs to the controllers. This way we can implement more players easily, or just one
-            _player1.BindInputs(player1Binds);
-            _player2.BindInputs(player2Binds);
+            return _players;
         }
 
-        // This part is not modular, but we dont have time to be picky >:[
-        public Player ReturnPlayerOne()
+        public int GetPlayerIndex(Player player)
         {
-            return _player1;
+            return _players.IndexOf(player);
         }
-        public Player ReturnPlayerTwo()
-        {
-            return _player2;
-        }
-        public void ReturnPlayers(out Player player1, out Player player2)
-        {
-            player1 = _player1;
-            player2 = _player2;
-        }
+    }
+
+    [Serializable]
+    public struct PlayerInstanceData
+    {
+        public string PlayerName;
+        public GameObject Prefab;
+        public PlayerBindKeys Binds;
     }
 }

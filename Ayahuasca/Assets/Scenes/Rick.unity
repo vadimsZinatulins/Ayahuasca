@@ -281,7 +281,7 @@ GameObject:
   - component: {fileID: 1016262517}
   - component: {fileID: 1016262516}
   - component: {fileID: 1016262515}
-  - component: {fileID: 1016262514}
+  - component: {fileID: 1016262519}
   m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
@@ -289,18 +289,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1016262514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1016262513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 964abe6cec94446aa91032849e95db90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1016262515
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -379,6 +367,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1016262519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016262513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53cb3e07bf9fa854e9e062c21480b4a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frontSeat:
+    positionTransform: {fileID: 0}
+    seatLocation: 1
+    currentObject: {fileID: 0}
+  backSeat:
+    positionTransform: {fileID: 0}
+    seatLocation: 2
+    currentObject: {fileID: 0}
 --- !u!1 &1248506347
 GameObject:
   m_ObjectHideFlags: 0

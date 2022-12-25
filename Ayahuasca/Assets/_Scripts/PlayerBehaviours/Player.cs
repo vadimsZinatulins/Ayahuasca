@@ -90,7 +90,7 @@ namespace PlayerBehaviours
             return _character;
         }
 
-        public PlayerCharacter Spawn(Vector3 spawnPos, Quaternion spawnRot, PlayerInfo info)
+        public PlayerCharacter Spawn(Vector3 spawnPos, Quaternion spawnRot, PlayerInfo info, PlayerRiding riding)
         {
             _character = Instantiate(CharacterPrefab, spawnPos, spawnRot);
             _character.SetOwner(this);
