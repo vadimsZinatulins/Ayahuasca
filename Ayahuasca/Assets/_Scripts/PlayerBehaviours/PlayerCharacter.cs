@@ -13,38 +13,41 @@ namespace PlayerBehaviours
     /// </summary>
     public class PlayerCharacter : MonoBehaviour
     {
-        
         //-------------------------------------------BEGIN-VARIABLES-------------------------------------------
         //----------------------------------------------PLAYER-------------------------------------------------
         /* Player owner of this character */
         private Player _playerOwner;
+
         //-------------------------------------------CAMERA-(TEMP)-------------------------------------------
         [Header("Solo Camera")]
         //Change this later to the correct system, if needed. See camera manager to see the temporary implementation
-        public Vector3 cameraOffset = new Vector3(0,10,2);
+        public Vector3 cameraOffset = new Vector3(0, 10, 2);
+
         private Camera _playerCamera;
+
         //-------------------------------------------MOVEMENT-------------------------------------------
         [Header("Movement")]
         /* Character controller for the movement */
         [Tooltip("Character controller for the movement")]
-        [SerializeField] private CharacterController characterController;
-        
+        [SerializeField]
+        private CharacterController characterController;
+
         /* Move speed of the character */
         [Tooltip("Move speed of the character")]
         public float moveSpeed = 2f;
-        
+
         /* Smoothness of the movement input */
         [Tooltip("Smoothness of the movement input")]
         public float lerpMovement = 0.5f;
-        
+
         /* Smoothness of the turning of the player */
         [Tooltip("Smoothness of the turning of the player")]
         public float turnSmoothTime = 0.1f;
-        
+
         /* Player gravity force amount */
         [Tooltip("Player gravity force amount")]
         public float gravity;
-        
+
         /* Current fall velocity amount */
         [Tooltip("Current fall velocity amount")]
         private float _fallVelocity;
@@ -52,24 +55,25 @@ namespace PlayerBehaviours
         /* Current movement input lerped */
         [Tooltip("Current movement input lerped")]
         private Vector3 currentInput;
-        
+
         /* Current turn smooth velocity */
         [Tooltip("Current turn smooth velocity")]
         private float _turnSmoothVelocity;
+
         //-------------------------------------------GROUND-CHECK-------------------------------------------
         [Header("Ground Check")]
         /* Transform that stores the ground check location */
         [Tooltip("Transform that stores the ground check location")]
         public Transform groundCheckPos;
-        
+
         /* Radius for the ground check */
         [Tooltip("Radius for the ground check")]
         public float groundCheckRadius;
-        
+
         /* Holds if the player is grounded */
         [Tooltip("Holds if the player is grounded")]
         private bool _isGrounded;
-        
+
         /* Layers that trigger as ground */
         [Tooltip("Layers that trigger as ground")]
         public LayerMask groundLayers;
@@ -79,27 +83,24 @@ namespace PlayerBehaviours
         /* Layers that trigger as ground */
         [Tooltip("Enables or disables if the character can jump")]
         public bool EnableJumpMechanic = true;
-        
+
         /* How high the player jumps */
-        [Tooltip("How high the player jumps")]
-        public float jumpHeight;
-        
+        [Tooltip("How high the player jumps")] public float jumpHeight;
+
         /* The time offset for the ground check */
         [Tooltip("The time offset for the ground check")]
         public float jumpCoyoteTime;
-        
+
         /* Current coyote timer */
-        [Tooltip("Current coyote timer")]
-        private float _currentJumpCoyoteTime;
-        
+        [Tooltip("Current coyote timer")] private float _currentJumpCoyoteTime;
+
         /* Jump cooldown max time */
-        [Tooltip("Jump cooldown max time")]
-        public float jumpCooldownTime = 0.5f;
-        
+        [Tooltip("Jump cooldown max time")] public float jumpCooldownTime = 0.5f;
+
         /* Current jump cooldown timer */
         [Tooltip("Current jump cooldown timer")]
         private float _currentJumpCooldownTime;
-        
+
         /* Holds if the player can currently jump */
         [Tooltip("Holds if the player can currently jump")]
         private bool canJump;
@@ -107,33 +108,37 @@ namespace PlayerBehaviours
         /* Stores if the player already jumped */
         [Tooltip("Stores if the player already jumped")]
         private bool didJump = false;
-        
+
         //-------------------------------------------INTERACT-MECHANIC-------------------------------------------
         [Header("Interact System")]
         /* Radius of interaction */
-        [Tooltip("Radius of interaction")] 
+        [Tooltip("Radius of interaction")]
         public float interactRadius;
 
         /* Interact layers */
-        [Tooltip("Interact layers")]
-        public LayerMask interactLayers;
+        [Tooltip("Interact layers")] public LayerMask interactLayers;
 
         /* Current close interactables */
-        private List<GameObject> currentInteractables;
+        private List<GameObject> currentInteractables = new List<GameObject>();
         
+        /* Current close riddables */
+        private List<GameObject> currentRidables = new List<GameObject>();
+
+        //-------------------------------------------RIDING-MECHANIC-------------------------------------------
+
+        /* Which player thing is the player riding */
+        private PlayerRiding _currentRidingType;
+
+        private GameObject currentRiddable;
+
         //-------------------------------------------END-VARIABLES-------------------------------------------
         private void OnDrawGizmos()
         {
             if (groundCheckPos)
             {
                 Gizmos.color = Color.green;
-                Gizmos.DrawWireSphere(groundCheckPos.position,groundCheckRadius);
+                Gizmos.DrawWireSphere(groundCheckPos.position, groundCheckRadius);
             }
-        }
-
-        private void Awake()
-        {
-            currentInteractables = new List<GameObject>();
         }
 
         public void SetOwner(Player player)
@@ -143,8 +148,9 @@ namespace PlayerBehaviours
 
         public void SetMovementInput(Vector3 input)
         {
-            currentInput = Vector3.Lerp(currentInput, input, lerpMovement*Time.deltaTime);
+            currentInput = Vector3.Lerp(currentInput, input, lerpMovement * Time.deltaTime);
         }
+
         private void Update()
         {
             Checks();
@@ -162,13 +168,20 @@ namespace PlayerBehaviours
         {
             Vector3 positionCheck = transform.position;
             Collider[] InteractColliders = Physics.OverlapSphere(positionCheck, interactRadius, interactLayers);
-            var OrderedInteractions = InteractColliders.OrderBy(d => (d.transform.position - transform.position).sqrMagnitude);
+            var OrderedInteractions =
+                InteractColliders.OrderBy(d => (d.transform.position - transform.position).sqrMagnitude);
             currentInteractables = new List<GameObject>();
+            currentRidables = new List<GameObject>();
             foreach (var interactableGO in OrderedInteractions)
             {
                 if (interactableGO.TryGetComponent(out IInteractable interactable))
                 {
                     currentInteractables.Add(interactableGO.gameObject);
+                }
+
+                if (interactableGO.TryGetComponent(out IRiddable riddable))
+                {
+                    currentRidables.Add(interactableGO.gameObject);
                 }
             }
 
@@ -177,19 +190,29 @@ namespace PlayerBehaviours
                 string interactText = currentInteractables[0].GetComponent<IInteractable>().GetInteractText();
                 Debug.Log(interactText);
             }
+
+            if (currentRidables.Count > 0)
+            {
+                if (currentRiddable == null)
+                {
+                    string rideText = currentRidables[0].GetComponent<IRiddable>().GetRideText();
+                    Debug.Log(rideText);
+                }
+            }
         }
 
         private void GroundCheck()
         {
-            _isGrounded = Physics.OverlapSphere(groundCheckPos.position, groundCheckRadius,groundLayers).Length>0;
+            _isGrounded = Physics.OverlapSphere(groundCheckPos.position, groundCheckRadius, groundLayers).Length > 0;
             if (EnableJumpMechanic)
             {
                 //Reduce jump cooldown timer only when on the floor
                 if (_currentJumpCooldownTime > 0 && _isGrounded)
                 {
-                    _currentJumpCooldownTime = Mathf.Clamp(_currentJumpCooldownTime - Time.deltaTime, 0, jumpCooldownTime);
+                    _currentJumpCooldownTime =
+                        Mathf.Clamp(_currentJumpCooldownTime - Time.deltaTime, 0, jumpCooldownTime);
                 }
-                
+
                 // Checks if the player can jump while in the ground
                 if (_isGrounded && _currentJumpCooldownTime <= 0)
                 {
@@ -214,17 +237,19 @@ namespace PlayerBehaviours
             // Update camera
             // _playerCamera.transform.position = transform.position + cameraOffset;
             // _playerCamera.transform.LookAt(transform.position);
-                
+
             //Converts the movement input, from vector2 to vector3
             Vector3 movementInput = new Vector3(currentInput.x, 0, currentInput.y);
-            
+
             //Gets the desired rotation angle, based on the input
-            float targetAngle = Mathf.Atan2(-currentInput.x, -currentInput.y) * Mathf.Rad2Deg + _playerCamera.transform.eulerAngles.y;
-            
+            float targetAngle = Mathf.Atan2(-currentInput.x, -currentInput.y) * Mathf.Rad2Deg +
+                                _playerCamera.transform.eulerAngles.y;
+
             //Calculates the new angle, based on the smootheness. The bigger the value, the slower it rotates
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0f,angle,0f);
-            
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity,
+                turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
             //Moves the character based on the input
             characterController.Move(movementInput * moveSpeed * Time.deltaTime);
         }
@@ -236,11 +261,11 @@ namespace PlayerBehaviours
             {
                 _fallVelocity += gravity * Time.deltaTime;
             }
-            else if(characterController.isGrounded && _isGrounded)
+            else if (characterController.isGrounded && _isGrounded)
             {
                 _fallVelocity = 0f;
             }
-            
+
             characterController.Move(Vector3.down * _fallVelocity * Time.deltaTime);
         }
 
@@ -248,7 +273,7 @@ namespace PlayerBehaviours
         {
             if (EnableJumpMechanic)
             {
-                if (canJump && _currentJumpCoyoteTime<jumpCoyoteTime) //Pressed Jump
+                if (canJump && _currentJumpCoyoteTime < jumpCoyoteTime) //Pressed Jump
                 {
                     didJump = true;
                     _currentJumpCooldownTime = jumpCooldownTime;
@@ -263,6 +288,19 @@ namespace PlayerBehaviours
             {
                 currentInteractables[0].GetComponent<IInteractable>().Interact(transform);
             }
+
+            if (_currentRidingType != PlayerRiding.NONE)
+            {
+                currentRiddable.GetComponent<IRiddable>().StopRiding(gameObject);
+            }
+            else
+            {
+                if (currentRidables.Count > 0)
+                {
+                    _currentRidingType = currentRidables[0].GetComponent<IRiddable>().StartRiding(gameObject);
+                    currentRiddable = currentRidables[0];
+                }
+            }
         }
 
         public void SetCamera()
@@ -271,4 +309,10 @@ namespace PlayerBehaviours
             Camera.main.GetComponent<SplitScreenManager>().SetupPlayerCamera(gameObject, _playerCamera);
         }
     }
+}
+
+public enum PlayerRiding
+{
+    NONE,
+    BOAT
 }

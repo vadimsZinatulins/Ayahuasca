@@ -95,9 +95,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CameraManager: {fileID: 6163183343972983914}
-  PlayerPrefab: {fileID: 2336417874773460707, guid: 1bb1f55c10680be4fa27c614d5b3db64, type: 3}
-  player1Binds: {fileID: 11400000, guid: b518f770d1e417f4fb5ff97ccd968826, type: 2}
-  player2Binds: {fileID: 11400000, guid: cb758884fcea9c143be5cb60acb7c4d1, type: 2}
+  PlayerData:
+  - PlayerName: Player1
+    Prefab: {fileID: 6693510696466411340, guid: 1bb1f55c10680be4fa27c614d5b3db64, type: 3}
+    Binds: {fileID: 11400000, guid: b518f770d1e417f4fb5ff97ccd968826, type: 2}
+  - PlayerName: Player2
+    Prefab: {fileID: 6693510696466411340, guid: 3c504b41c5f62cd448ee84c48922af20, type: 3}
+    Binds: {fileID: 11400000, guid: cb758884fcea9c143be5cb60acb7c4d1, type: 2}
 --- !u!114 &674877152848648872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,7 +183,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114689057623555238, guid: 9ed2a051c32b4fe47a5e4fb95c20b03f, type: 3}
       propertyPath: m_Size
-      value: 0.9694398
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114689057623555238, guid: 9ed2a051c32b4fe47a5e4fb95c20b03f, type: 3}
       propertyPath: m_Value
@@ -247,7 +251,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 224130951485110974, guid: 9ed2a051c32b4fe47a5e4fb95c20b03f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000030517578
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224166536479716514, guid: 9ed2a051c32b4fe47a5e4fb95c20b03f, type: 3}
       propertyPath: m_AnchorMax.y
