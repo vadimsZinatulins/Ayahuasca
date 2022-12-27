@@ -8,7 +8,38 @@ using UnityEngine;
 
 public class Boat : MonoBehaviour, IRiddable
 {
-    public Seat frontSeat, backSeat;
+    [SerializeField] private Rigidbody rigidbody;
+
+    [Header("Seats")]
+    public Seat frontSeat;
+    public Seat backSeat;
+    
+    [Header("Boat floating properties")]
+    public bool isSailing = false;
+    [SerializeField] private List<Transform> boatBoaters;
+    [SerializeField] float checkDistance = 5f;
+    [SerializeField] float pullForce = 0.2f;
+    [SerializeField] float stabilizeForce = 2f;
+    [SerializeField] private float rotationStabilizeForce = 1f;
+    [SerializeField] LayerMask GroundLayers;
+    private Vector3 targetVelocity = new Vector3(0f,1f,0f);
+    [SerializeField] float velocityLerp = 2f;
+
+    private void OnDrawGizmos()
+    {
+        foreach (var boater in boatBoaters)
+        {
+            if (boater != null)
+            {
+                Gizmos.DrawLine(boater.position,boater.position -boater.up * checkDistance);
+            }
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        SimulateBoat();
+    }
 
     public PlayerRiding StartRiding(GameObject go)
     {
@@ -28,9 +59,9 @@ public class Boat : MonoBehaviour, IRiddable
 
     private void SetSeated(Transform InTransform)
     {
-        if (InTransform.TryGetComponent(out Player player))
+        if (InTransform.TryGetComponent(out PlayerCharacter playerCharacter))
         {
-            int playerIndex = PlayersManager.Instance.GetPlayerIndex(player);
+            int playerIndex = PlayersManager.Instance.GetPlayerIndex(playerCharacter.GetOwner());
             // Isto vai ficar materlado, mas depois se lembrar de uma forma melhor de obrigar um jogador a ficar neste
             // muda-se
             switch (playerIndex)
@@ -38,33 +69,36 @@ public class Boat : MonoBehaviour, IRiddable
                 case 0:
                     if (backSeat.currentObject == null)
                     {
-                        backSeat.currentObject = player.gameObject;
-                        player.transform.parent = backSeat.positionTransform;
-                        player.transform.position = backSeat.positionTransform.position;
-                        player.transform.rotation = backSeat.positionTransform.rotation;
-                        player.GetComponent<CharacterController>().enabled = false;
+                        backSeat.currentObject = playerCharacter.gameObject;
+                        playerCharacter.transform.parent = backSeat.positionTransform;
+                        playerCharacter.transform.position = backSeat.positionTransform.position;
+                        playerCharacter.transform.rotation = backSeat.positionTransform.rotation;
+                        playerCharacter.GetComponent<CharacterController>().enabled = false;
                     }
                     else
                     {
                         Debug.LogError("Already occupied");
                         //RemoveFromBoat(backSeat);
                     }
+
                     break;
-                    
+
                 case 1:
                     if (frontSeat.currentObject == null)
                     {
-                        frontSeat.currentObject = player.gameObject;
-                        player.transform.parent = frontSeat.positionTransform;
-                        player.transform.position = frontSeat.positionTransform.position;
-                        player.transform.rotation = frontSeat.positionTransform.rotation;
-                        player.GetComponent<CharacterController>().enabled = false;
+                        frontSeat.currentObject = playerCharacter.gameObject;
+                        playerCharacter.transform.parent = frontSeat.positionTransform;
+                        playerCharacter.transform.position = frontSeat.positionTransform.position;
+                        playerCharacter.transform.rotation = frontSeat.positionTransform.rotation;
+                        playerCharacter.GetComponent<CharacterController>().enabled = false;
+                        playerCharacter.GetComponent<Collider>().enabled = false;
                     }
                     else
                     {
                         Debug.LogError("Already occupied");
-                        //RemoveFromBoat(backSeat);
+                        //RemoveFromBoat(frontSeat);
                     }
+
                     break;
             }
         }
@@ -72,20 +106,98 @@ public class Boat : MonoBehaviour, IRiddable
 
     public void RemoveFromBoat(Transform player)
     {
-        if (frontSeat.currentObject == player.transform)
+        if (frontSeat.currentObject == player.gameObject)
         {
-            RemoveFromBoat(frontSeat);
-        }else if (backSeat.currentObject == player.transform)
+            RemoveFromBoat(ref frontSeat);
+        }
+        else if (backSeat.currentObject == player.gameObject)
         {
-            RemoveFromBoat(backSeat);
+            RemoveFromBoat(ref backSeat);
         }
     }
-    public void RemoveFromBoat(Seat seat)
+
+    public void RemoveFromBoat(ref Seat seat)
     {
-        GameObject go = seat.currentObject;
-        // Change player animation state
-        go.transform.parent = null;
-        seat.currentObject = null;
+        if (seat.currentObject != null)
+        {
+            // Change player animation state
+            seat.currentObject.transform.parent = null;
+            seat.currentObject.transform.position = seat.exitLocation.position;
+            seat.currentObject.transform.rotation = seat.exitLocation.rotation;
+            if (seat.currentObject.GetComponent<PlayerCharacter>())
+            {
+                seat.currentObject.GetComponent<PlayerCharacter>().OnStopRiding();
+                seat.currentObject.GetComponent<CharacterController>().enabled = true;
+                seat.currentObject.GetComponent<Collider>().enabled = true;
+                
+            }
+            
+            seat.currentObject = null;
+        }
+    }
+
+    public void Row(GameObject playerGo, float rowSideForce, float rowFowardForce)
+    {
+        if (frontSeat.currentObject == playerGo)
+        {
+            AddForceToBoat(frontSeat, rowSideForce, rowFowardForce);
+        }
+        else if (backSeat.currentObject == playerGo)
+        {
+            AddForceToBoat(backSeat, rowSideForce, rowFowardForce);
+        }
+    }
+
+    void AddForceToBoat(Seat seat, float rotationForce, float fowardForce)
+    {
+        switch (seat.rowingSide)
+        {
+            case RowingSide.RIGHT:
+                if (rigidbody != null)
+                {
+                    rigidbody.angularVelocity += new Vector3(0, -rotationForce, 0);
+                }
+                break;
+            
+            case RowingSide.LEFT:
+                if (rigidbody != null)
+                {
+                    rigidbody.angularVelocity += new Vector3(0, rotationForce, 0);
+                }
+                break;
+        }
+        rigidbody.AddForce(transform.forward * fowardForce, ForceMode.VelocityChange);
+    }
+
+
+
+    void SimulateBoat()
+    {
+        if (isSailing && rigidbody != null)
+        {
+            // Set the floaters
+            foreach (var boater in boatBoaters)
+            {
+                RaycastHit hit;
+                float Heightdifference = 0;
+                if (Physics.Raycast(boater.position, -boater.up * checkDistance, out hit, checkDistance, GroundLayers))
+                {
+                    Heightdifference = 1 - ((boater.position - hit.point).magnitude / checkDistance);
+                }
+                else
+                {
+                    Heightdifference = 0;
+                }
+                rigidbody.AddForceAtPosition(boater.up * Heightdifference * pullForce * Time.deltaTime,boater.position,ForceMode.VelocityChange);
+            }
+            
+            // Stabilize the boat
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0,transform.eulerAngles.y,0), Time.deltaTime * stabilizeForce);
+            rigidbody.angularVelocity = Vector3.Lerp(rigidbody.angularVelocity, new Vector3(0, 0, 0),Time.deltaTime * rotationStabilizeForce);
+            
+            // Remove uncessary movement
+            rigidbody.velocity = Vector3.Lerp(rigidbody.velocity, targetVelocity, Time.deltaTime * velocityLerp);
+        }
     }
 }
 
@@ -93,7 +205,9 @@ public class Boat : MonoBehaviour, IRiddable
 public struct Seat
 {
     public Transform positionTransform;
-    public RowingSide seatLocation;
+    public RowingSide rowingSide;
+    public Transform rowingForceTransform;
+    public Transform exitLocation;
     [ReadOnly] public GameObject currentObject;
 }
 
