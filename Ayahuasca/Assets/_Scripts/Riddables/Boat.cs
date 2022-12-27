@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using _Scripts.Behaviours.Interfaces;
 using PlayerBehaviours;
 using Sirenix.OdinInspector;
@@ -10,7 +11,8 @@ public class Boat : MonoBehaviour, IRiddable
 {
     [SerializeField] private Rigidbody rigidbody;
 
-    [Header("Seats")]
+    [Header("Seats and Camera")] 
+    [SerializeField] private Camera boatCamera;
     public Seat frontSeat;
     public Seat backSeat;
     
@@ -22,7 +24,10 @@ public class Boat : MonoBehaviour, IRiddable
     [SerializeField] float stabilizeForce = 2f;
     [SerializeField] private float rotationStabilizeForce = 1f;
     [SerializeField] LayerMask GroundLayers;
+    
+    private Vector3 targetAngularVelocity = Vector3.zero;
     private Vector3 targetVelocity = new Vector3(0f,1f,0f);
+    [SerializeField] private float angularVelocityLerp = 2f;
     [SerializeField] float velocityLerp = 2f;
 
     private void OnDrawGizmos()
@@ -36,20 +41,26 @@ public class Boat : MonoBehaviour, IRiddable
         }
     }
 
+    private void Awake()
+    {
+        boatCamera.gameObject.SetActive(false);
+    }
+
     private void FixedUpdate()
     {
         SimulateBoat();
     }
 
-    public PlayerRiding StartRiding(GameObject go)
+    public void StartRiding(GameObject go, ref PlayerRiding ridingType)
     {
+        ridingType = PlayerRiding.BOAT;
         SetSeated(go.transform);
-        return PlayerRiding.BOAT;
     }
 
     public void StopRiding(GameObject go)
     {
         RemoveFromBoat(go.transform);
+        CheckSeats();
     }
 
     public string GetRideText()
@@ -100,6 +111,31 @@ public class Boat : MonoBehaviour, IRiddable
                     }
 
                     break;
+            }
+
+            CheckSeats();
+        }
+    }
+
+    private void CheckSeats()
+    {
+        List<Player> players = PlayersManager.Instance.ReturnPlayers();
+            
+        if (players.Count > 0 && players.Count(d => d.ReturnCharacter().GetRidingType() == PlayerRiding.NONE) == 0)
+        {
+            // They are all inside the boat
+            if (SplitScreenManager.Instance != null)
+            {
+                SplitScreenManager.Instance.EnableSystem(false);
+                boatCamera.gameObject.SetActive(true);
+            }
+        }
+        else
+        {
+            if (SplitScreenManager.Instance != null)
+            {
+                SplitScreenManager.Instance.EnableSystem(true);
+                boatCamera.gameObject.SetActive(false);
             }
         }
     }
@@ -155,22 +191,20 @@ public class Boat : MonoBehaviour, IRiddable
             case RowingSide.RIGHT:
                 if (rigidbody != null)
                 {
-                    rigidbody.angularVelocity += new Vector3(0, -rotationForce, 0);
+                    targetAngularVelocity += new Vector3(0, -rotationForce, 0);
                 }
                 break;
             
             case RowingSide.LEFT:
                 if (rigidbody != null)
                 {
-                    rigidbody.angularVelocity += new Vector3(0, rotationForce, 0);
+                    targetAngularVelocity += new Vector3(0, rotationForce, 0);
                 }
                 break;
         }
         rigidbody.AddForce(transform.forward * fowardForce, ForceMode.VelocityChange);
     }
-
-
-
+    
     void SimulateBoat()
     {
         if (isSailing && rigidbody != null)
@@ -191,9 +225,12 @@ public class Boat : MonoBehaviour, IRiddable
                 rigidbody.AddForceAtPosition(boater.up * Heightdifference * pullForce * Time.deltaTime,boater.position,ForceMode.VelocityChange);
             }
             
-            // Stabilize the boat
+            // Stabilize the boat on the other axis
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0,transform.eulerAngles.y,0), Time.deltaTime * stabilizeForce);
-            rigidbody.angularVelocity = Vector3.Lerp(rigidbody.angularVelocity, new Vector3(0, 0, 0),Time.deltaTime * rotationStabilizeForce);
+            // Decrements the target angular velocity
+            targetAngularVelocity = Vector3.Lerp(targetAngularVelocity, Vector3.zero, Time.deltaTime * angularVelocityLerp);
+            // Lerps the angular velocity of the rigidbody to the target velocity, to be extra smooth
+            rigidbody.angularVelocity = Vector3.Lerp(rigidbody.angularVelocity, targetAngularVelocity,Time.deltaTime * rotationStabilizeForce);
             
             // Remove uncessary movement
             rigidbody.velocity = Vector3.Lerp(rigidbody.velocity, targetVelocity, Time.deltaTime * velocityLerp);

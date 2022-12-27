@@ -10,7 +10,7 @@ namespace PlayerBehaviours
     /// </summary>
     public class Player : MonoBehaviour
     {
-        public PlayerCharacter CharacterPrefab;
+        [SerializeField] PlayerCharacter CharacterPrefab;
         private PlayerCharacter _character;
         private PlayerInfo _playerInfo;
         private PlayerBindKeys binds;
@@ -107,6 +107,11 @@ namespace PlayerBehaviours
 
             return _character;
             //Load here the data from the PlayerInfo
+        }
+
+        public PlayerCharacter ReturnCharacter()
+        {
+            return _character;
         }
 
         /// <summary>

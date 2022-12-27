@@ -1,10 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SplitScreenManager : MonoBehaviour
 {
-
+    public static SplitScreenManager Instance;
+    
     [SerializeField]
     private Vector3 cameraOffset;
 
@@ -13,17 +15,27 @@ public class SplitScreenManager : MonoBehaviour
 
     private GameObject playerOne;
     private GameObject playerTwo;
+    [SerializeField] private Camera mainCamera;
     private Camera cameraPlayerOne;
     private Camera cameraPlayerTwo;
     private GameObject mask;
     private bool isSplitScreenActive;
 
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+        }
+
+        Instance = this;
+    }
+
     void Initialize()
     {
-        var camera = GetComponent<Camera>();
-        camera.orthographic = true;
-        camera.orthographicSize = Screen.height / 2;
-        camera.cullingMask = (1 << LayerMask.NameToLayer("Split Screen")) | (1 << LayerMask.NameToLayer("UI"));
+        mainCamera.orthographic = true;
+        mainCamera.orthographicSize = Screen.height / 2;
+        mainCamera.cullingMask = (1 << LayerMask.NameToLayer("Split Screen")) | (1 << LayerMask.NameToLayer("UI"));
 
         CreateRenderTexture(Screen.width, Screen.height, cameraPlayerOne);
         CreateRenderTexture(Screen.width, Screen.height, cameraPlayerTwo);
@@ -179,5 +191,22 @@ public class SplitScreenManager : MonoBehaviour
             mask.SetActive(false);
             isSplitScreenActive = false;
         }
+    }
+
+    public void EnableSystem(bool isEnable)
+    {
+        if (mainCamera)
+        {
+            mainCamera.gameObject.SetActive(isEnable);
+        }
+        if (cameraPlayerOne)
+        {
+            cameraPlayerOne.gameObject.SetActive(isEnable);
+        }
+        if (cameraPlayerTwo)
+        {
+            cameraPlayerTwo.gameObject.SetActive(isEnable);
+        }
+        gameObject.SetActive(isEnable);
     }
 }

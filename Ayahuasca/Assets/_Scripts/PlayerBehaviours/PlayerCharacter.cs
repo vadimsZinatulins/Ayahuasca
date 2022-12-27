@@ -156,6 +156,11 @@ namespace PlayerBehaviours
             return _playerOwner;
         }
 
+        public PlayerRiding GetRidingType()
+        {
+            return _currentRidingType;
+        }
+
         public void SetMovementInput(Vector3 input)
         {
             currentInput = Vector3.Lerp(currentInput, input, lerpMovement * Time.deltaTime);
@@ -323,7 +328,7 @@ namespace PlayerBehaviours
                     {
                         if (currentRidables.Count > 0)
                         {
-                            _currentRidingType = currentRidables[0].GetComponent<IRiddable>().StartRiding(gameObject);
+                            currentRidables[0].GetComponent<IRiddable>().StartRiding(gameObject, ref _currentRidingType);
                             if (_currentRidingType != PlayerRiding.NONE)
                             {
                                 currentRiddable = currentRidables[0];
@@ -334,10 +339,11 @@ namespace PlayerBehaviours
                     }
                     break;
                 case PlayerRiding.BOAT:
-                    if (_currentRidingType != PlayerRiding.NONE && currentRiddable != null)
+                    if (_currentRidingType == PlayerRiding.BOAT && currentRiddable != null)
                     {
                         currentRiddable.GetComponent<IRiddable>().StopRiding(gameObject);
                         currentRiddable = null;
+                        _currentRidingType = PlayerRiding.NONE;
                     }
                     break;
             }
