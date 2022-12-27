@@ -707,7 +707,7 @@ PlayerSettings:
   webGLDecompressionFallback: 0
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Standalone: TEXTURE_GRAPH;POSEIDON;POSEIDON_URP;JUPITER;TG_SEARCHER;GRIFFIN;GRIFFIN_2021
+    Standalone: TEXTURE_GRAPH;POSEIDON;POSEIDON_URP;JUPITER;TG_SEARCHER;GRIFFIN;GRIFFIN_2021;ODIN_INSPECTOR;ODIN_INSPECTOR_3;ODIN_INSPECTOR_3_1
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}

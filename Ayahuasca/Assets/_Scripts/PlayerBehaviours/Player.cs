@@ -10,7 +10,7 @@ namespace PlayerBehaviours
     /// </summary>
     public class Player : MonoBehaviour
     {
-        public PlayerCharacter CharacterPrefab;
+        [SerializeField] PlayerCharacter CharacterPrefab;
         private PlayerCharacter _character;
         private PlayerInfo _playerInfo;
         private PlayerBindKeys binds;
@@ -28,6 +28,7 @@ namespace PlayerBehaviours
         private void SubscribeInputEvents()
         {
             binds.JumpAction.action.performed += OnJump;
+            binds.MainAction.action.performed += OnMainAction;
             binds.InteractAction.action.performed += OnInteract;
         }
 
@@ -44,6 +45,14 @@ namespace PlayerBehaviours
             if (_character != null)
             {
                 _character.OnInteract();
+            }
+        }
+
+        private void OnMainAction(InputAction.CallbackContext obj)
+        {
+            if (_character != null)
+            {
+                _character.OnAction();
             }
         }
 
@@ -90,7 +99,7 @@ namespace PlayerBehaviours
             return _character;
         }
 
-        public PlayerCharacter Spawn(Vector3 spawnPos, Quaternion spawnRot, PlayerInfo info)
+        public PlayerCharacter Spawn(Vector3 spawnPos, Quaternion spawnRot, PlayerInfo info, PlayerRiding riding)
         {
             _character = Instantiate(CharacterPrefab, spawnPos, spawnRot);
             _character.SetOwner(this);
@@ -98,6 +107,11 @@ namespace PlayerBehaviours
 
             return _character;
             //Load here the data from the PlayerInfo
+        }
+
+        public PlayerCharacter ReturnCharacter()
+        {
+            return _character;
         }
 
         /// <summary>

@@ -1,10 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SplitScreenManager : MonoBehaviour
 {
-
+    public static SplitScreenManager Instance;
+    
     [SerializeField]
     private Vector3 cameraOffset;
 
@@ -13,17 +15,27 @@ public class SplitScreenManager : MonoBehaviour
 
     private GameObject playerOne;
     private GameObject playerTwo;
+    [SerializeField] private Camera mainCamera;
     private Camera cameraPlayerOne;
     private Camera cameraPlayerTwo;
     private GameObject mask;
     private bool isSplitScreenActive;
 
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+        }
+
+        Instance = this;
+    }
+
     void Initialize()
     {
-        var camera = GetComponent<Camera>();
-        camera.orthographic = true;
-        camera.orthographicSize = Screen.height / 2;
-        camera.cullingMask = (1 << LayerMask.NameToLayer("Split Screen")) | (1 << LayerMask.NameToLayer("UI"));
+        mainCamera.orthographic = true;
+        mainCamera.orthographicSize = Screen.height / 2;
+        mainCamera.cullingMask = (1 << LayerMask.NameToLayer("Split Screen")) | (1 << LayerMask.NameToLayer("UI"));
 
         CreateRenderTexture(Screen.width, Screen.height, cameraPlayerOne);
         CreateRenderTexture(Screen.width, Screen.height, cameraPlayerTwo);
@@ -104,7 +116,7 @@ public class SplitScreenManager : MonoBehaviour
         renderQuad.name = name;
         renderQuad.layer = LayerMask.NameToLayer("Split Screen");
         renderQuad.transform.parent = transform;
-        renderQuad.transform.localPosition = Vector3.forward * GetComponent<Camera>().nearClipPlane * 2f;
+        renderQuad.transform.localPosition = Vector3.forward * mainCamera.nearClipPlane * 2f;
         renderQuad.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
         // renderQuad.transform.position = transform.position + transform.forward * GetComponent<Camera>().nearClipPlane * 2f;
         // renderQuad.transform.rotation = transform.rotation;
@@ -126,7 +138,7 @@ public class SplitScreenManager : MonoBehaviour
         mask = new GameObject("Mask");
         mask.layer = LayerMask.NameToLayer("Split Screen");
         mask.transform.parent = transform;
-        mask.transform.localPosition = Vector3.forward * GetComponent<Camera>().nearClipPlane * 2f;
+        mask.transform.localPosition = Vector3.forward * mainCamera.nearClipPlane * 2f;
         mask.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
         // mask.transform.position = transform.position + transform.forward * GetComponent<Camera>().nearClipPlane * 2f;
         // mask.transform.rotation = transform.rotation;
@@ -136,7 +148,7 @@ public class SplitScreenManager : MonoBehaviour
         maskChildQuad.name = "Stencil Quad";
         maskChildQuad.layer = LayerMask.NameToLayer("Split Screen");
         maskChildQuad.transform.parent = mask.transform;
-        maskChildQuad.transform.localPosition = Vector3.forward * GetComponent<Camera>().nearClipPlane * 2f;
+        maskChildQuad.transform.localPosition = Vector3.forward * mainCamera.nearClipPlane * 2f;
         maskChildQuad.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
         // maskChildQuad.transform.position = transform.position + transform.forward * GetComponent<Camera>().nearClipPlane * 2f;
         // maskChildQuad.transform.rotation = transform.rotation;
@@ -162,7 +174,7 @@ public class SplitScreenManager : MonoBehaviour
         mask.transform.localRotation = Quaternion.Euler(-Vector3.forward * angle);
 
         var shift = mask.transform.up * (float)Screen.height / 2f;
-        mask.transform.position = transform.position + shift + transform.forward * GetComponent<Camera>().nearClipPlane * 1.9f;
+        mask.transform.position = transform.position + shift + transform.forward * mainCamera.nearClipPlane * 1.9f;
     }
 
     private void CheckIfSplitScreenIsRequired(float distanceFromMidPoint)
@@ -179,5 +191,22 @@ public class SplitScreenManager : MonoBehaviour
             mask.SetActive(false);
             isSplitScreenActive = false;
         }
+    }
+
+    public void EnableSystem(bool isEnable)
+    {
+        if (mainCamera)
+        {
+            mainCamera.gameObject.SetActive(isEnable);
+        }
+        if (cameraPlayerOne)
+        {
+            cameraPlayerOne.gameObject.SetActive(isEnable);
+        }
+        if (cameraPlayerTwo)
+        {
+            cameraPlayerTwo.gameObject.SetActive(isEnable);
+        }
+        gameObject.SetActive(isEnable);
     }
 }
