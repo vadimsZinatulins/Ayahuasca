@@ -116,7 +116,7 @@ public class SplitScreenManager : MonoBehaviour
         renderQuad.name = name;
         renderQuad.layer = LayerMask.NameToLayer("Split Screen");
         renderQuad.transform.parent = transform;
-        renderQuad.transform.localPosition = Vector3.forward * GetComponent<Camera>().nearClipPlane * 2f;
+        renderQuad.transform.localPosition = Vector3.forward * mainCamera.nearClipPlane * 2f;
         renderQuad.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
         // renderQuad.transform.position = transform.position + transform.forward * GetComponent<Camera>().nearClipPlane * 2f;
         // renderQuad.transform.rotation = transform.rotation;
@@ -138,7 +138,7 @@ public class SplitScreenManager : MonoBehaviour
         mask = new GameObject("Mask");
         mask.layer = LayerMask.NameToLayer("Split Screen");
         mask.transform.parent = transform;
-        mask.transform.localPosition = Vector3.forward * GetComponent<Camera>().nearClipPlane * 2f;
+        mask.transform.localPosition = Vector3.forward * mainCamera.nearClipPlane * 2f;
         mask.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
         // mask.transform.position = transform.position + transform.forward * GetComponent<Camera>().nearClipPlane * 2f;
         // mask.transform.rotation = transform.rotation;
@@ -148,7 +148,7 @@ public class SplitScreenManager : MonoBehaviour
         maskChildQuad.name = "Stencil Quad";
         maskChildQuad.layer = LayerMask.NameToLayer("Split Screen");
         maskChildQuad.transform.parent = mask.transform;
-        maskChildQuad.transform.localPosition = Vector3.forward * GetComponent<Camera>().nearClipPlane * 2f;
+        maskChildQuad.transform.localPosition = Vector3.forward * mainCamera.nearClipPlane * 2f;
         maskChildQuad.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
         // maskChildQuad.transform.position = transform.position + transform.forward * GetComponent<Camera>().nearClipPlane * 2f;
         // maskChildQuad.transform.rotation = transform.rotation;
@@ -174,7 +174,7 @@ public class SplitScreenManager : MonoBehaviour
         mask.transform.localRotation = Quaternion.Euler(-Vector3.forward * angle);
 
         var shift = mask.transform.up * (float)Screen.height / 2f;
-        mask.transform.position = transform.position + shift + transform.forward * GetComponent<Camera>().nearClipPlane * 1.9f;
+        mask.transform.position = transform.position + shift + transform.forward * mainCamera.nearClipPlane * 1.9f;
     }
 
     private void CheckIfSplitScreenIsRequired(float distanceFromMidPoint)

@@ -311,7 +311,11 @@ namespace PlayerBehaviours
         public void SetCamera()
         {
             _playerCamera = PlayersManager.Instance.CameraManager.GetSoloCamera();
-            Camera.main.GetComponent<SplitScreenManager>().SetupPlayerCamera(gameObject, _playerCamera);
+            if (SplitScreenManager.Instance != null)
+            {
+                SplitScreenManager.Instance.SetupPlayerCamera(gameObject, _playerCamera);
+            }
+            
         }
         
         public void OnInteract()
