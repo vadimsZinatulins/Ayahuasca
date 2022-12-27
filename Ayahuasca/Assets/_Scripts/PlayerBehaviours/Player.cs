@@ -28,6 +28,7 @@ namespace PlayerBehaviours
         private void SubscribeInputEvents()
         {
             binds.JumpAction.action.performed += OnJump;
+            binds.MainAction.action.performed += OnMainAction;
             binds.InteractAction.action.performed += OnInteract;
         }
 
@@ -44,6 +45,14 @@ namespace PlayerBehaviours
             if (_character != null)
             {
                 _character.OnInteract();
+            }
+        }
+
+        private void OnMainAction(InputAction.CallbackContext obj)
+        {
+            if (_character != null)
+            {
+                _character.OnAction();
             }
         }
 

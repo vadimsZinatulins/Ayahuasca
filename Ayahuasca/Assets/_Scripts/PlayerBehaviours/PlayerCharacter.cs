@@ -120,7 +120,7 @@ namespace PlayerBehaviours
 
         /* Current close interactables */
         private List<GameObject> currentInteractables = new List<GameObject>();
-        
+
         /* Current close riddables */
         private List<GameObject> currentRidables = new List<GameObject>();
 
@@ -130,7 +130,12 @@ namespace PlayerBehaviours
         private PlayerRiding _currentRidingType;
 
         private GameObject currentRiddable;
+        [SerializeField] private List<Collider> collidersToDeativateOnRide;
 
+        //------------------------------------------ROWING-MECHANIC-------------------------------------------
+        [Header("Rowing")]
+        public float rowingSideForce = 0.2f;
+        public float rowingFowardForce = 3f;
         //-------------------------------------------END-VARIABLES-------------------------------------------
         private void OnDrawGizmos()
         {
@@ -146,6 +151,11 @@ namespace PlayerBehaviours
             _playerOwner = player;
         }
 
+        public Player GetOwner()
+        {
+            return _playerOwner;
+        }
+
         public void SetMovementInput(Vector3 input)
         {
             currentInput = Vector3.Lerp(currentInput, input, lerpMovement * Time.deltaTime);
@@ -153,12 +163,23 @@ namespace PlayerBehaviours
 
         private void Update()
         {
-            Checks();
-            Movement();
-            Gravity();
+            switch (_currentRidingType)
+            {
+                case PlayerRiding.NONE:
+                    NormalChecks();
+                    NormalMovement();
+                    NormalGravity();
+                    break;
+                case PlayerRiding.BOAT:
+                
+                    break;
+            }
         }
 
-        private void Checks()
+        // When the player is not controlling anything
+        #region Normal Functions
+
+                private void NormalChecks()
         {
             GroundCheck();
             InteractCheck();
@@ -232,7 +253,7 @@ namespace PlayerBehaviours
             }
         }
 
-        private void Movement()
+        private void NormalMovement()
         {
             // Update camera
             // _playerCamera.transform.position = transform.position + cameraOffset;
@@ -254,7 +275,7 @@ namespace PlayerBehaviours
             characterController.Move(movementInput * moveSpeed * Time.deltaTime);
         }
 
-        private void Gravity()
+        private void NormalGravity()
         {
             // Updates the fall velocity
             if (!characterController.isGrounded && !_isGrounded)
@@ -269,6 +290,69 @@ namespace PlayerBehaviours
             characterController.Move(Vector3.down * _fallVelocity * Time.deltaTime);
         }
 
+        #endregion
+
+        #region Boat Functions
+
+        #endregion
+
+        public void ActiveColliders(bool isEnable)
+        {
+            foreach (var collider in collidersToDeativateOnRide)
+            {
+                collider.enabled = isEnable;
+            }
+        }
+        public void SetCamera()
+        {
+            _playerCamera = PlayersManager.Instance.CameraManager.GetSoloCamera();
+            Camera.main.GetComponent<SplitScreenManager>().SetupPlayerCamera(gameObject, _playerCamera);
+        }
+        
+        public void OnInteract()
+        {
+            switch (_currentRidingType)
+            {
+                case PlayerRiding.NONE:
+                    if (currentInteractables.Count > 0)
+                    {
+                        currentInteractables[0].GetComponent<IInteractable>().Interact(transform);
+                    }
+
+                    if (_currentRidingType == PlayerRiding.NONE && currentRiddable == null)
+                    {
+                        if (currentRidables.Count > 0)
+                        {
+                            _currentRidingType = currentRidables[0].GetComponent<IRiddable>().StartRiding(gameObject);
+                            if (_currentRidingType != PlayerRiding.NONE)
+                            {
+                                currentRiddable = currentRidables[0];
+                                ActiveColliders(false);
+                            }
+
+                        }
+                    }
+                    break;
+                case PlayerRiding.BOAT:
+                    if (_currentRidingType != PlayerRiding.NONE && currentRiddable != null)
+                    {
+                        currentRiddable.GetComponent<IRiddable>().StopRiding(gameObject);
+                        currentRiddable = null;
+                    }
+                    break;
+            }
+        }
+        
+        public void OnStopRiding()
+        {
+            if (currentRiddable != null)
+            {
+                currentRiddable = null;
+                _currentRidingType = PlayerRiding.NONE;
+                ActiveColliders(true);
+            }
+        }
+        
         public void OnJump()
         {
             if (EnableJumpMechanic)
@@ -281,32 +365,21 @@ namespace PlayerBehaviours
                 }
             }
         }
-
-        public void OnInteract()
+        
+        public void OnAction()
         {
-            if (currentInteractables.Count > 0)
+            switch (_currentRidingType)
             {
-                currentInteractables[0].GetComponent<IInteractable>().Interact(transform);
+                case PlayerRiding.BOAT:
+                    if (currentRiddable != null)
+                    {
+                        if (currentRiddable.TryGetComponent(out Boat boat))
+                        {
+                            boat.Row(gameObject, rowingSideForce, rowingFowardForce);
+                        }
+                    }
+                    break;
             }
-
-            if (_currentRidingType != PlayerRiding.NONE)
-            {
-                currentRiddable.GetComponent<IRiddable>().StopRiding(gameObject);
-            }
-            else
-            {
-                if (currentRidables.Count > 0)
-                {
-                    _currentRidingType = currentRidables[0].GetComponent<IRiddable>().StartRiding(gameObject);
-                    currentRiddable = currentRidables[0];
-                }
-            }
-        }
-
-        public void SetCamera()
-        {
-            _playerCamera = PlayersManager.Instance.CameraManager.GetSoloCamera();
-            Camera.main.GetComponent<SplitScreenManager>().SetupPlayerCamera(gameObject, _playerCamera);
         }
     }
 }
