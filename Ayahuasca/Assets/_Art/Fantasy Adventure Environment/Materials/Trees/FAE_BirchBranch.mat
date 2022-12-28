@@ -221,9 +221,9 @@ Material:
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.2216981, g: 1, b: 0.24492115, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HueVariation: {r: 1, g: 0.80689657, b: 0, a: 0.366}
+    - _HueVariation: {r: 0.20392154, g: 0.3128426, b: 0.7372549, a: 0.366}
     - _SSSColor: {r: 0.9368154, g: 1, b: 0.3455882, a: 1}
     - _SpecColor: {r: 0, g: 0, b: 0, a: 0}
     - _TranslucencyColor: {r: 0.73, g: 0.85, b: 0.41, a: 1}
