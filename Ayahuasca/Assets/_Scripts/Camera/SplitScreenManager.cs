@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class SplitScreenManager : MonoBehaviour
 {
@@ -26,20 +28,6 @@ public class SplitScreenManager : MonoBehaviour
 
     public void EnableSystem(bool isEnable)
     {
-        /*
-        if (mainCamera)
-        {
-            mainCamera.gameObject.SetActive(isEnable);
-        }
-        if (cameraPlayerOne)
-        {
-            cameraPlayerOne.gameObject.SetActive(isEnable);
-        }
-        if (cameraPlayerTwo)
-        {
-            cameraPlayerTwo.gameObject.SetActive(isEnable);
-        }
-        gameObject.SetActive(isEnable);
-        */
+        mainCamera.GetComponent<SplitScreenRenderer>().EnableSystem(isEnable);
     }
 }

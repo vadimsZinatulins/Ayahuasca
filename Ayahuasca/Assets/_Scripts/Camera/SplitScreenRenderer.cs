@@ -15,7 +15,7 @@ public class SplitScreenRenderer : MonoBehaviour
     private Transform playerTwo;
     private Camera cameraPlayerTwo;
 
-    [SerializeField] private bool isSplitScreenActive;
+    [SerializeField] bool isSplitScreenActive;
 
     private int cachedScreenWidth;
     private int cachedScreenHeight;
@@ -113,5 +113,12 @@ public class SplitScreenRenderer : MonoBehaviour
             cameraPlayerTwo.gameObject.SetActive(false);
             isSplitScreenActive = false;
         }
+    }
+
+    public void EnableSystem(bool isEnable)
+    {
+        this.enabled = isEnable;
+        cameraPlayerOne.gameObject.SetActive(isEnable);
+        cameraPlayerTwo.gameObject.SetActive(isEnable);
     }
 }
