@@ -27,9 +27,14 @@ namespace PlayerBehaviours
 
         private void SubscribeInputEvents()
         {
-            binds.JumpAction.action.performed += OnJump;
-            binds.MainAction.action.performed += OnMainAction;
-            binds.InteractAction.action.performed += OnInteract;
+            if(binds.JumpAction)
+                binds.JumpAction.action.performed += OnJump;
+            if(binds.Action1)
+                binds.Action1.action.performed += OnAction1;
+            if(binds.Action2)
+                binds.Action2.action.performed += OnAction2;
+            if(binds.InteractAction)
+                binds.InteractAction.action.performed += OnInteract;
         }
 
         private void OnJump(InputAction.CallbackContext obj)
@@ -48,11 +53,18 @@ namespace PlayerBehaviours
             }
         }
 
-        private void OnMainAction(InputAction.CallbackContext obj)
+        private void OnAction1(InputAction.CallbackContext obj)
         {
             if (_character != null)
             {
-                _character.OnAction();
+                _character.OnAction1();
+            }
+        }
+        private void OnAction2(InputAction.CallbackContext obj)
+        {
+            if (_character != null)
+            {
+                _character.OnAction2();
             }
         }
 

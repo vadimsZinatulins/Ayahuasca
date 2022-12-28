@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3755536364831524756}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 2070778237843318999}
   - component: {fileID: 6530319438322665813}
   - component: {fileID: 7801624509146921319}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,9 +142,9 @@ GameObject:
   - component: {fileID: 2828539667795897392}
   - component: {fileID: 4073161184598063491}
   - component: {fileID: 357205976571004010}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerCharacterBase
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -250,9 +250,13 @@ MonoBehaviour:
   gravity: 9.64
   groundCheckPos: {fileID: 3755536364831524756}
   groundCheckRadius: 0.4
+  maxWaterGroundDistance: 1
   groundLayers:
     serializedVersion: 2
     m_Bits: 64
+  waterLayers:
+    serializedVersion: 2
+    m_Bits: 16
   EnableJumpMechanic: 1
   jumpHeight: 4
   jumpCoyoteTime: 0.2
@@ -265,6 +269,7 @@ MonoBehaviour:
   - {fileID: 2828539667795897392}
   - {fileID: 357205976571004010}
   - {fileID: 7801624509146921319}
+  boatPushForce: 2
   rowingSideForce: 0.4
   rowingFowardForce: 1
 --- !u!143 &357205976571004010

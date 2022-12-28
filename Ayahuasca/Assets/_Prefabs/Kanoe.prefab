@@ -1027,20 +1027,22 @@ MonoBehaviour:
     rowingForceTransform: {fileID: 1748820809405401708}
     exitLocation: {fileID: 1748820810562226444}
     currentObject: {fileID: 0}
-  isSailing: 1
   boatBoaters:
   - {fileID: 1748820809969770262}
   - {fileID: 1748820810389482715}
   - {fileID: 1748820809954062736}
   - {fileID: 1748820810234959672}
-  checkDistance: 1
+  checkDistance: 0.4
   pullForce: 4
-  stabilizeForce: 20
-  rotationStabilizeForce: 1
-  GroundLayers:
+  WaterLayer:
     serializedVersion: 2
-    m_Bits: 65
+    m_Bits: 0
+  stabilizeSpeed: 2
+  angularStabilizeSpeed: 1
+  minimumVelocity: {x: 0, y: 2, z: 0}
+  _angularVelocityLerp: 2
   velocityLerp: 2
+  minimumBoatersInWater: 2
 --- !u!64 &5718461278392415424
 MeshCollider:
   m_ObjectHideFlags: 0

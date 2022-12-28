@@ -73,10 +73,15 @@ namespace PlayerBehaviours
         /* Holds if the player is grounded */
         [Tooltip("Holds if the player is grounded")]
         private bool _isGrounded;
+        
+        private float waterGroundDifference = 0;
+        public float maxWaterGroundDistance = 0.5f;
 
         /* Layers that trigger as ground */
         [Tooltip("Layers that trigger as ground")]
         public LayerMask groundLayers;
+
+        public LayerMask waterLayers;
 
         //-------------------------------------------JUMP-MECHANIC-------------------------------------------
         [Header("Jump Mechanic")]
@@ -132,8 +137,9 @@ namespace PlayerBehaviours
         private GameObject currentRiddable;
         [SerializeField] private List<Collider> collidersToDeativateOnRide;
 
-        //------------------------------------------ROWING-MECHANIC-------------------------------------------
-        [Header("Rowing")]
+        //------------------------------------------BOAT-MECHANIC-------------------------------------------
+        [Header("BOAT")]
+        public float boatPushForce = 5f;
         public float rowingSideForce = 0.2f;
         public float rowingFowardForce = 3f;
         //-------------------------------------------END-VARIABLES-------------------------------------------
@@ -184,7 +190,7 @@ namespace PlayerBehaviours
         // When the player is not controlling anything
         #region Normal Functions
 
-                private void NormalChecks()
+        private void NormalChecks()
         {
             GroundCheck();
             InteractCheck();
@@ -227,6 +233,29 @@ namespace PlayerBehaviours
             }
         }
 
+        private bool CheckNextStep(Vector3 position)
+        {
+            RaycastHit groundHit;
+            if (Physics.Raycast(position, -transform.up * 2f, out groundHit, 2, groundLayers))
+            {
+                RaycastHit waterHit;
+                if (Physics.Raycast(position, -transform.up * 2f, out waterHit, 2, waterLayers))
+                {
+                    Debug.LogWarning("Checking difference");
+                    waterGroundDifference = (groundHit.point - waterHit.point).magnitude;
+                    if (waterGroundDifference <= maxWaterGroundDistance)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return false;
+        }
         private void GroundCheck()
         {
             _isGrounded = Physics.OverlapSphere(groundCheckPos.position, groundCheckRadius, groundLayers).Length > 0;
@@ -277,7 +306,10 @@ namespace PlayerBehaviours
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             //Moves the character based on the input
-            characterController.Move(movementInput * moveSpeed * Time.deltaTime);
+            if (CheckNextStep(transform.position + movementInput * moveSpeed * Time.deltaTime))
+            {
+                characterController.Move(movementInput * moveSpeed * Time.deltaTime);
+            }
         }
 
         private void NormalGravity()
@@ -296,10 +328,7 @@ namespace PlayerBehaviours
         }
 
         #endregion
-
-        #region Boat Functions
-
-        #endregion
+        
 
         public void ActiveColliders(bool isEnable)
         {
@@ -345,22 +374,31 @@ namespace PlayerBehaviours
                 case PlayerRiding.BOAT:
                     if (_currentRidingType == PlayerRiding.BOAT && currentRiddable != null)
                     {
-                        currentRiddable.GetComponent<IRiddable>().StopRiding(gameObject);
-                        currentRiddable = null;
-                        _currentRidingType = PlayerRiding.NONE;
+                        if (currentRiddable.GetComponent<IRiddable>().StopRiding(gameObject))
+                        {
+                            currentRiddable = null;
+                            _currentRidingType = PlayerRiding.NONE;
+                        }
                     }
                     break;
             }
         }
         
-        public void OnStopRiding()
+        public bool OnStopRiding()
         {
             if (currentRiddable != null)
             {
-                currentRiddable = null;
-                _currentRidingType = PlayerRiding.NONE;
-                ActiveColliders(true);
+                if (CheckNextStep(transform.position))
+                {
+                    currentRiddable = null;
+                    _currentRidingType = PlayerRiding.NONE;
+                    ActiveColliders(true);
+
+                    return true;
+                }
             }
+
+            return false;
         }
         
         public void OnJump()
@@ -376,7 +414,40 @@ namespace PlayerBehaviours
             }
         }
         
-        public void OnAction()
+        public void OnAction1()
+        {
+            switch (_currentRidingType)
+            {
+                case PlayerRiding.NONE:
+                    foreach (var riddable in currentRidables)
+                    {
+                        if (riddable.TryGetComponent(out Boat boat))
+                        {
+                            Vector3 dir = (boat.transform.position - transform.position).normalized;
+                            RaycastHit hit;
+                            if (Physics.Raycast(transform.position, dir, out hit, 1, interactLayers))
+                            {
+                                if (hit.collider.gameObject == boat.gameObject)
+                                {
+                                    boat.Push(dir*boatPushForce,hit.point-dir);
+                                }
+                            }
+                            
+                        }
+                    }
+                    break;
+                case PlayerRiding.BOAT:
+                    if (currentRiddable != null)
+                    {
+                        if (currentRiddable.TryGetComponent(out Boat boat))
+                        {
+                            boat.Row(gameObject, rowingSideForce, rowingFowardForce);
+                        }
+                    }
+                    break;
+            }
+        }
+        public void OnAction2()
         {
             switch (_currentRidingType)
             {
@@ -385,7 +456,7 @@ namespace PlayerBehaviours
                     {
                         if (currentRiddable.TryGetComponent(out Boat boat))
                         {
-                            boat.Row(gameObject, rowingSideForce, rowingFowardForce);
+                            // Switch side rowing
                         }
                     }
                     break;

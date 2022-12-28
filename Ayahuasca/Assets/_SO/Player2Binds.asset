@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Player2Binds
   m_EditorClassIdentifier: 
   MoveAction: {fileID: -5033306466988089397, guid: b6e9ece11f29c05448a8662638af0315, type: 3}
-  InteractAction: {fileID: 8605785604431828803, guid: b6e9ece11f29c05448a8662638af0315, type: 3}
-  MainAction: {fileID: 5620552785806613422, guid: b6e9ece11f29c05448a8662638af0315, type: 3}
+  InteractAction: {fileID: 7866441319853543063, guid: b6e9ece11f29c05448a8662638af0315, type: 3}
+  Action1: {fileID: 5620552785806613422, guid: b6e9ece11f29c05448a8662638af0315, type: 3}
+  Action2: {fileID: 8605785604431828803, guid: b6e9ece11f29c05448a8662638af0315, type: 3}
   JumpAction: {fileID: -3124178837043871281, guid: b6e9ece11f29c05448a8662638af0315, type: 3}

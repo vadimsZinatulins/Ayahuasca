@@ -11,24 +11,31 @@ public class Boat : MonoBehaviour, IRiddable
 {
     [SerializeField] private Rigidbody rigidbody;
 
-    [Header("Seats and Camera")] 
-    [SerializeField] private Camera boatCamera;
+    [Header("Seats and Camera")] [SerializeField]
+    private Camera boatCamera;
+
     public Seat frontSeat;
     public Seat backSeat;
-    
-    [Header("Boat floating properties")]
-    public bool isSailing = false;
-    [SerializeField] private List<Transform> boatBoaters;
+
+    [Header("Floating")] [SerializeField] private List<Transform> boatBoaters;
     [SerializeField] float checkDistance = 5f;
+    [SerializeField] private float radiusCheck = 0.1f;
     [SerializeField] float pullForce = 0.2f;
-    [SerializeField] float stabilizeForce = 2f;
-    [SerializeField] private float rotationStabilizeForce = 1f;
-    [SerializeField] LayerMask GroundLayers;
-    
-    private Vector3 targetAngularVelocity = Vector3.zero;
-    private Vector3 targetVelocity = new Vector3(0f,1f,0f);
-    [SerializeField] private float angularVelocityLerp = 2f;
+
+    [InfoBox("Don't forget to put the ground and water, and put water tag on the water object",
+        InfoMessageType.Warning)]
+    [SerializeField]
+    LayerMask detectLayers;
+
+    [Header("Movement")] [SerializeField] float stabilizeSpeed = 2f;
+    [SerializeField] private float angularStabilizeSpeed = 1f;
+    private Vector3 _targetAngularVelocity = Vector3.zero;
+    [SerializeField] Vector3 minimumVelocity = new Vector3(0f, 2f, 0f);
+    [SerializeField] private float _angularVelocityLerp = 2f;
     [SerializeField] float velocityLerp = 2f;
+    private int _boatersInTheWater;
+    public int minimumBoatersInWater;
+    public bool isFloating { get; private set; }
 
     private void OnDrawGizmos()
     {
@@ -36,7 +43,7 @@ public class Boat : MonoBehaviour, IRiddable
         {
             if (boater != null)
             {
-                Gizmos.DrawLine(boater.position,boater.position -boater.up * checkDistance);
+                Gizmos.DrawLine(boater.position, boater.position - boater.up * checkDistance);
             }
         }
     }
@@ -53,14 +60,22 @@ public class Boat : MonoBehaviour, IRiddable
 
     public void StartRiding(GameObject go, ref PlayerRiding ridingType)
     {
-        ridingType = PlayerRiding.BOAT;
-        SetSeated(go.transform);
+        if (isFloating)
+        {
+            ridingType = PlayerRiding.BOAT;
+            SetSeated(go.transform);
+        }
     }
 
-    public void StopRiding(GameObject go)
+    public bool StopRiding(GameObject go)
     {
-        RemoveFromBoat(go.transform);
-        CheckSeats();
+        if (RemoveFromBoat(go.transform))
+        {
+            CheckSeats();
+            return true;
+        }
+
+        return false;
     }
 
     public string GetRideText()
@@ -120,7 +135,7 @@ public class Boat : MonoBehaviour, IRiddable
     private void CheckSeats()
     {
         List<Player> players = PlayersManager.Instance.ReturnPlayers();
-            
+
         if (players.Count > 0 && players.Count(d => d.ReturnCharacter().GetRidingType() == PlayerRiding.NONE) == 0)
         {
             // They are all inside the boat
@@ -140,19 +155,21 @@ public class Boat : MonoBehaviour, IRiddable
         }
     }
 
-    public void RemoveFromBoat(Transform player)
+    public bool RemoveFromBoat(Transform player)
     {
         if (frontSeat.currentObject == player.gameObject)
         {
-            RemoveFromBoat(ref frontSeat);
+            return RemoveFromBoat(ref frontSeat);
         }
         else if (backSeat.currentObject == player.gameObject)
         {
-            RemoveFromBoat(ref backSeat);
+            return RemoveFromBoat(ref backSeat);
         }
+
+        return false;
     }
 
-    public void RemoveFromBoat(ref Seat seat)
+    public bool RemoveFromBoat(ref Seat seat)
     {
         if (seat.currentObject != null)
         {
@@ -162,25 +179,38 @@ public class Boat : MonoBehaviour, IRiddable
             seat.currentObject.transform.rotation = seat.exitLocation.rotation;
             if (seat.currentObject.GetComponent<PlayerCharacter>())
             {
-                seat.currentObject.GetComponent<PlayerCharacter>().OnStopRiding();
-                seat.currentObject.GetComponent<CharacterController>().enabled = true;
-                seat.currentObject.GetComponent<Collider>().enabled = true;
-                
+                if (seat.currentObject.GetComponent<PlayerCharacter>().OnStopRiding())
+                {
+                    seat.currentObject.GetComponent<CharacterController>().enabled = true;
+                    seat.currentObject.GetComponent<Collider>().enabled = true;
+                    seat.currentObject = null;
+                    return true;
+                }
+                else
+                {
+                    // Set the values again just in case the other fails, we restart the values
+                    seat.currentObject.transform.parent = seat.positionTransform;
+                    seat.currentObject.transform.position = seat.positionTransform.position;
+                    seat.currentObject.transform.rotation = seat.positionTransform.rotation;
+                }
             }
-            
-            seat.currentObject = null;
         }
+
+        return false;
     }
 
     public void Row(GameObject playerGo, float rowSideForce, float rowFowardForce)
     {
-        if (frontSeat.currentObject == playerGo)
+        if (isFloating)
         {
-            AddForceToBoat(frontSeat, rowSideForce, rowFowardForce);
-        }
-        else if (backSeat.currentObject == playerGo)
-        {
-            AddForceToBoat(backSeat, rowSideForce, rowFowardForce);
+            if (frontSeat.currentObject == playerGo)
+            {
+                AddForceToBoat(frontSeat, rowSideForce, rowFowardForce);
+            }
+            else if (backSeat.currentObject == playerGo)
+            {
+                AddForceToBoat(backSeat, rowSideForce, rowFowardForce);
+            }
         }
     }
 
@@ -191,50 +221,74 @@ public class Boat : MonoBehaviour, IRiddable
             case RowingSide.RIGHT:
                 if (rigidbody != null)
                 {
-                    targetAngularVelocity += new Vector3(0, -rotationForce, 0);
+                    _targetAngularVelocity += new Vector3(0, -rotationForce, 0);
                 }
+
                 break;
-            
+
             case RowingSide.LEFT:
                 if (rigidbody != null)
                 {
-                    targetAngularVelocity += new Vector3(0, rotationForce, 0);
+                    _targetAngularVelocity += new Vector3(0, rotationForce, 0);
                 }
+
                 break;
         }
+
         rigidbody.AddForce(transform.forward * fowardForce, ForceMode.VelocityChange);
     }
-    
+
     void SimulateBoat()
     {
-        if (isSailing && rigidbody != null)
+        if (rigidbody != null)
         {
+            _boatersInTheWater = 0;
             // Set the floaters
             foreach (var boater in boatBoaters)
             {
                 RaycastHit hit;
-                float Heightdifference = 0;
-                if (Physics.Raycast(boater.position, -boater.up * checkDistance, out hit, checkDistance, GroundLayers))
+                float heightDifference = 0;
+                //if (Physics.SphereCast(boater.position, radiusCheck, boater.position+ (-boater.up * checkDistance), out hit, checkDistance, detectLayers))
+                if (Physics.Raycast(boater.position, -boater.up * checkDistance, out hit, checkDistance, detectLayers))
                 {
-                    Heightdifference = 1 - ((boater.position - hit.point).magnitude / checkDistance);
+                    if (hit.transform.CompareTag("Water"))
+                    {
+                        heightDifference = 1 - ((boater.position - hit.point).magnitude / checkDistance);
+                        _boatersInTheWater++;
+                    }
                 }
                 else
                 {
-                    Heightdifference = 0;
+                    heightDifference = 0;
                 }
-                rigidbody.AddForceAtPosition(boater.up * Heightdifference * pullForce * Time.deltaTime,boater.position,ForceMode.VelocityChange);
+
+                rigidbody.AddForceAtPosition(boater.up * heightDifference * pullForce * Time.deltaTime, boater.position,
+                    ForceMode.VelocityChange);
             }
-            
-            // Stabilize the boat on the other axis
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0,transform.eulerAngles.y,0), Time.deltaTime * stabilizeForce);
-            // Decrements the target angular velocity
-            targetAngularVelocity = Vector3.Lerp(targetAngularVelocity, Vector3.zero, Time.deltaTime * angularVelocityLerp);
-            // Lerps the angular velocity of the rigidbody to the target velocity, to be extra smooth
-            rigidbody.angularVelocity = Vector3.Lerp(rigidbody.angularVelocity, targetAngularVelocity,Time.deltaTime * rotationStabilizeForce);
-            
-            // Remove uncessary movement
-            rigidbody.velocity = Vector3.Lerp(rigidbody.velocity, targetVelocity, Time.deltaTime * velocityLerp);
+
+            isFloating = _boatersInTheWater >= minimumBoatersInWater;
+            if (isFloating)
+            {
+                // Stabilize the boat on the other axis
+                transform.rotation = Quaternion.Lerp(transform.rotation,
+                    Quaternion.Euler(0, transform.eulerAngles.y, 0), Time.deltaTime * stabilizeSpeed);
+                // Decrements the target angular velocity
+                _targetAngularVelocity = Vector3.Lerp(_targetAngularVelocity, Vector3.zero,
+                    Time.deltaTime * _angularVelocityLerp);
+                // Lerps the angular velocity of the rigidbody to the target velocity, to be extra smooth
+                rigidbody.angularVelocity = Vector3.Lerp(rigidbody.angularVelocity, _targetAngularVelocity,
+                    Time.deltaTime * angularStabilizeSpeed);
+
+                // Remove uncessary movement
+                rigidbody.velocity = Vector3.Lerp(rigidbody.velocity, minimumVelocity, Time.deltaTime * velocityLerp);
+            }
         }
+    }
+
+    public void Push(Vector3 pushForce, Vector3 originPosition)
+    {
+        rigidbody.AddForceAtPosition(pushForce, originPosition, ForceMode.VelocityChange);
+        //rigidbody.AddRelativeForce(originPosition + pushForce,ForceMode.Impulse);
     }
 }
 
