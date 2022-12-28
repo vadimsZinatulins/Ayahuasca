@@ -342,7 +342,7 @@ namespace PlayerBehaviours
             _playerCamera = PlayersManager.Instance.CameraManager.GetSoloCamera();
             if (SplitScreenManager.Instance != null)
             {
-                SplitScreenManager.Instance.SetupPlayerCamera(gameObject, _playerCamera);
+                SplitScreenManager.Instance.BindPlayerCamera(transform, _playerCamera);
             }
             
         }
