@@ -8,7 +8,8 @@ namespace PlayerBehaviours
     {
         public InputActionReference MoveAction;
         public InputActionReference InteractAction;
-        public InputActionReference MainAction;
+        public InputActionReference Action1;
+        public InputActionReference Action2;
         public InputActionReference JumpAction;
     }
 }
