@@ -36,22 +36,25 @@ public class SplitScreenRenderFeature : ScriptableRendererFeature
         // You don't have to call ScriptableRenderContext.submit, the render pipeline will call it at specific points in the pipeline.
         public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
         {
-            if(!splitScreenRenderer.IsSplitScreenActive) 
+            if (splitScreenRenderer != null)
             {
-                return;
-            }
+                if(!splitScreenRenderer.IsSplitScreenActive) 
+                {
+                    return;
+                }
             
-            CommandBuffer cmd = CommandBufferPool.Get("profilingName");
+                CommandBuffer cmd = CommandBufferPool.Get("profilingName");
 
-            RenderTextureDescriptor cameraTextureDesc = renderingData.cameraData.cameraTargetDescriptor;
-            cameraTextureDesc.depthBufferBits = 0;
+                RenderTextureDescriptor cameraTextureDesc = renderingData.cameraData.cameraTargetDescriptor;
+                cameraTextureDesc.depthBufferBits = 0;
 
-            cmd.GetTemporaryRT(tempTextureHandle.id, cameraTextureDesc, FilterMode.Bilinear);
-            Blit(cmd, source, tempTextureHandle.Identifier(), splitScreenRenderer.Material, 0);
-            Blit(cmd, tempTextureHandle.Identifier(), source);
+                cmd.GetTemporaryRT(tempTextureHandle.id, cameraTextureDesc, FilterMode.Bilinear);
+                Blit(cmd, source, tempTextureHandle.Identifier(), splitScreenRenderer.Material, 0);
+                Blit(cmd, tempTextureHandle.Identifier(), source);
 
-            context.ExecuteCommandBuffer(cmd);
-            CommandBufferPool.Release(cmd);
+                context.ExecuteCommandBuffer(cmd);
+                CommandBufferPool.Release(cmd);
+            }
         }
 
         // Cleanup any allocated resources that were created during the execution of this render pass.

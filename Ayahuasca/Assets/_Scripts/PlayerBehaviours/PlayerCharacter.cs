@@ -236,21 +236,30 @@ namespace PlayerBehaviours
         private bool CheckNextStep(Vector3 position)
         {
             RaycastHit groundHit;
-            if (Physics.Raycast(position, -transform.up * 2f, out groundHit, 2, groundLayers))
+            if (Physics.Raycast(position, -transform.up * 9, out groundHit, 9, groundLayers))
             {
                 RaycastHit waterHit;
-                if (Physics.Raycast(position, -transform.up * 2f, out waterHit, 2, waterLayers))
+                if (Physics.Raycast(position, -transform.up * 9, out waterHit, 9, waterLayers))
                 {
-                    Debug.LogWarning("Checking difference");
-                    waterGroundDifference = (groundHit.point - waterHit.point).magnitude;
-                    if (waterGroundDifference <= maxWaterGroundDistance)
+                    if (waterHit.point.y > groundHit.point.y)
                     {
-                        return true;
+                        Debug.LogWarning("Checking difference");
+                        waterGroundDifference = (groundHit.point - waterHit.point).magnitude;
+                        if (waterGroundDifference <= maxWaterGroundDistance)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
                     }
-                    else
-                    {
-                        return false;
-                    }
+
+                    return true;
+                }
+                else
+                {
+                    return true;
                 }
             }
 
@@ -289,16 +298,12 @@ namespace PlayerBehaviours
 
         private void NormalMovement()
         {
-            // Update camera
-            // _playerCamera.transform.position = transform.position + cameraOffset;
-            // _playerCamera.transform.LookAt(transform.position);
-
             //Converts the movement input, from vector2 to vector3
             Vector3 movementInput = new Vector3(currentInput.x, 0, currentInput.y);
 
             //Gets the desired rotation angle, based on the input
-            float targetAngle = Mathf.Atan2(-currentInput.x, -currentInput.y) * Mathf.Rad2Deg +
-                                _playerCamera.transform.eulerAngles.y;
+            float targetAngle = Mathf.Atan2(-currentInput.x, -currentInput.y) * Mathf.Rad2Deg + 180;
+            //float targetAngle = Mathf.Atan2(-currentInput.x, -currentInput.y) * Mathf.Rad2Deg + camAngle - 90;
 
             //Calculates the new angle, based on the smootheness. The bigger the value, the slower it rotates
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity,
@@ -429,7 +434,8 @@ namespace PlayerBehaviours
                             {
                                 if (hit.collider.gameObject == boat.gameObject)
                                 {
-                                    boat.Push(dir*boatPushForce,hit.point-dir);
+                                    //boat.Push(dir*boatPushForce,hit.point-dir);
+                                    boat.Push(boatPushForce,transform.position);
                                 }
                             }
                             
@@ -447,6 +453,7 @@ namespace PlayerBehaviours
                     break;
             }
         }
+        
         public void OnAction2()
         {
             switch (_currentRidingType)

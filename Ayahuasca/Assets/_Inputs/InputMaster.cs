@@ -32,7 +32,7 @@ public partial class @InputMaster : IInputActionCollection2, IDisposable
                     ""type"": ""Value"",
                     ""id"": ""f00ace12-b492-4882-8130-b761ce066b09"",
                     ""expectedControlType"": ""Vector2"",
-                    ""processors"": ""InvertVector2"",
+                    ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 },
@@ -41,7 +41,7 @@ public partial class @InputMaster : IInputActionCollection2, IDisposable
                     ""type"": ""Value"",
                     ""id"": ""a983ce62-42ab-4bd3-a5b2-febe9223c3b9"",
                     ""expectedControlType"": ""Vector2"",
-                    ""processors"": ""InvertVector2"",
+                    ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 },

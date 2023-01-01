@@ -5,6 +5,7 @@ using System.Linq;
 using _Scripts.Behaviours.Interfaces;
 using PlayerBehaviours;
 using Sirenix.OdinInspector;
+using Sirenix.Utilities;
 using UnityEngine;
 
 public class Boat : MonoBehaviour, IRiddable
@@ -60,11 +61,8 @@ public class Boat : MonoBehaviour, IRiddable
 
     public void StartRiding(GameObject go, ref PlayerRiding ridingType)
     {
-        if (isFloating)
-        {
-            ridingType = PlayerRiding.BOAT;
-            SetSeated(go.transform);
-        }
+        ridingType = PlayerRiding.BOAT;
+        SetSeated(go.transform);
     }
 
     public bool StopRiding(GameObject go)
@@ -285,10 +283,11 @@ public class Boat : MonoBehaviour, IRiddable
         }
     }
 
-    public void Push(Vector3 pushForce, Vector3 originPosition)
+    public void Push(float pushForce, Vector3 originPosition)
     {
-        rigidbody.AddForceAtPosition(pushForce, originPosition, ForceMode.VelocityChange);
-        //rigidbody.AddRelativeForce(originPosition + pushForce,ForceMode.Impulse);
+        originPosition.y = transform.position.y;
+        rigidbody.AddForce((transform.position-originPosition).normalized * pushForce);
+        //rigidbody.AddExplosionForce(pushForce, originPosition,radius);
     }
 }
 
