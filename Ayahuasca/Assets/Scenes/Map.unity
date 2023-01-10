@@ -431,15 +431,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8675953842579180529, guid: 1924520c7277f2a4bbf030ad81e2048b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 113.37
+      value: 111.2
       objectReference: {fileID: 0}
     - target: {fileID: 8675953842579180529, guid: 1924520c7277f2a4bbf030ad81e2048b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.78
+      value: 1.07
       objectReference: {fileID: 0}
     - target: {fileID: 8675953842579180529, guid: 1924520c7277f2a4bbf030ad81e2048b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -811.08
+      value: -810.59
       objectReference: {fileID: 0}
     - target: {fileID: 8675953842579180529, guid: 1924520c7277f2a4bbf030ad81e2048b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2901,9 +2901,9 @@ GameObject:
   - component: {fileID: 1948835654}
   - component: {fileID: 1948835653}
   - component: {fileID: 1948835652}
-  m_Layer: 6
+  m_Layer: 4
   m_Name: Watter
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
