@@ -19,12 +19,14 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: StandaloneWindows64
-          buildName: Ayauasca
+          buildName: Ayahuasca
+          projectPath: Ayahuasca
       - name: Upload build
         uses: actions/upload-artifact@v2
         with:
           name: Build
-          path: ${{ github.workspace }} 
+          path: ${{ github.workspace }}
+
   release:
     name: Release the game
     runs-on: ubuntu-latest
@@ -56,5 +58,5 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./build.zip
-          asset_name: Ayauasca
+          asset_name: Ayahuasca
           asset_content_type: application/zip
