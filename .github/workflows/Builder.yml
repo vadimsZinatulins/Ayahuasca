@@ -20,6 +20,7 @@ jobs:
         with:
           targetPlatform: StandaloneWindows64
           buildName: Ayauasca
+          projectPath: Ayauasca
       - name: Upload build
         uses: actions/upload-artifact@v2
         with:
