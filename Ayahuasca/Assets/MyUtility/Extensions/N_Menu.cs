@@ -48,8 +48,15 @@ public class N_Menu : MonoBehaviour
             var playerInput = PlayerInput.GetPlayerByIndex(0);
             if (playerInput)
             {
-                playerInput.actions["Back"].performed += _=> TriggerPauseMenu();
-                playerInput.actions["Pause"].performed += _=> TriggerPauseMenu();
+                if (playerInput.actions.FindAction("Back") != null)
+                {
+                    playerInput.actions["Back"].performed += _=> TriggerPauseMenu();
+                }
+
+                if (playerInput.actions.FindAction("Pause") != null)
+                {
+                    playerInput.actions["Pause"].performed += _=> TriggerPauseMenu();
+                }
             }
             //#TODO: Get the travel back, from menu which triggers this first
             
@@ -139,11 +146,6 @@ public class N_Menu : MonoBehaviour
                 {
                     EventSystem.current.SetSelectedGameObject(null);
                 }
-                else
-                {
-                
-                }
-
             }
         }
     }
@@ -181,6 +183,10 @@ public class N_Menu : MonoBehaviour
             targetMenu.gameObject.SetActive(true);
             targetMenu.isActive = true;
             targetMenu.ChangeMenuSelection();
+            if (N_ControllerManager.Instance != null)
+            {
+                N_ControllerManager.Instance.ChangeActionMap(N_ControllerManager.Instance.UI_ActionMapName);
+            }
         }
         else
         {
@@ -188,6 +194,10 @@ public class N_Menu : MonoBehaviour
             {
                 CurrentActiveMenu.isActive = false;
                 CurrentActiveMenu.gameObject.SetActive(false);
+                if (N_ControllerManager.Instance != null)
+                {
+                    N_ControllerManager.Instance.ChangeActionMap(N_ControllerManager.Instance.Game_ActionMapName);
+                }
             }
         }
         OnChangeMenu?.Invoke(targetMenu);
