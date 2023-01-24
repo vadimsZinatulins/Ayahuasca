@@ -214,6 +214,6 @@ Material:
     - _Transmisioncolor: {r: 0.862069, g: 1, b: 0, a: 0.259}
     - _TreeInstanceColor: {r: 1, g: 1, b: 1, a: 1}
     - _TreeInstanceScale: {r: 1, g: 1, b: 1, a: 1}
-    - _Variationcolor: {r: 1, g: 0.80689657, b: 0, a: 0.134}
+    - _Variationcolor: {r: 0, g: 1, b: 0.015686275, a: 1}
     - _WindDirection: {r: 0.93536794, g: 0, b: 0.35367614, a: 0}
   m_BuildTextureStacks: []
