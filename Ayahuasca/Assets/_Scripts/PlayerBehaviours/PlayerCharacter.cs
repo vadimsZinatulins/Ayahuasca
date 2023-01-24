@@ -129,6 +129,7 @@ namespace PlayerBehaviours
         /* Current close riddables */
         private List<GameObject> currentRidables = new List<GameObject>();
 
+        private N_WorldPopup interactPopup;
         //-------------------------------------------RIDING-MECHANIC-------------------------------------------
 
         /* Which player thing is the player riding */
@@ -227,16 +228,46 @@ namespace PlayerBehaviours
 
             if (currentInteractables.Count > 0)
             {
+                if (interactPopup == null)
+                {
+                    if (N_Systems.Instance != null)
+                    {
+                        ObjectPool Pool = N_Systems.Instance.GetObjectPool("WorldPopup");
+                        interactPopup = Pool.GetObject().GetComponent<N_WorldPopup>();
+                    }
+                }
                 string interactText = currentInteractables[0].GetComponent<IInteractable>().GetInteractText();
-                Debug.Log(interactText);
+                Vector3 interactPopupLocation = currentInteractables[0].GetComponent<IInteractable>().GetInteractLocation();
+                Vector3 UIPosition = Camera.main.WorldToScreenPoint(interactPopupLocation);
+                interactPopup.SetText(UIPosition,interactText);
+                interactPopup.SetTarget(_playerCamera.transform);
             }
 
             if (currentRidables.Count > 0)
             {
-                if (currentRiddable == null)
+                if (interactPopup == null)
                 {
-                    string rideText = currentRidables[0].GetComponent<IRiddable>().GetRideText();
-                    Debug.Log(rideText);
+                    if (N_Systems.Instance != null)
+                    {
+                        ObjectPool Pool = N_Systems.Instance.GetObjectPool("WorldPopup");
+                        interactPopup = Pool.GetObject().GetComponent<N_WorldPopup>();
+                    }
+                }
+
+                string rideText = currentRidables[0].GetComponent<IRiddable>().GetRideText();
+                Vector3 ridePosition = currentRidables[0].GetComponent<IRiddable>().GetRideLocation();
+                Vector3 UIPosition = Camera.main.WorldToScreenPoint(ridePosition);
+                interactPopup.SetText(UIPosition,rideText);
+                interactPopup.SetTarget(_playerCamera.transform);
+            }
+
+            if (currentInteractables.Count == 0 &&
+                currentRidables.Count == 0)
+            {
+                if (interactPopup != null)
+                {
+                    interactPopup.gameObject.ReturnToPool();
+                    interactPopup = null;
                 }
             }
         }

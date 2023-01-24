@@ -8,5 +8,6 @@ namespace _Scripts.Behaviours.Interfaces
         public bool StopRiding(GameObject go);
 
         public string GetRideText();
+        public Vector3 GetRideLocation();
     }
 }

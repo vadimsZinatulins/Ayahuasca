@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3255933796022232509}
   - component: {fileID: 2218088529145899940}
+  - component: {fileID: 2905114337865899543}
+  - component: {fileID: 2492091013821375315}
   m_Layer: 0
   m_Name: Systems
   m_TagString: Untagged
@@ -48,6 +50,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 1
+--- !u!114 &2905114337865899543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 878097713557282400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25c658c4c0ec2ee48872cb02707c0344, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectPools:
+  - PoolName: WorldPopup
+    Pool: {fileID: 2492091013821375315}
+--- !u!114 &2492091013821375315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 878097713557282400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30c36d7fefaf4cd4c931c22a9166196d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 6671963168191703325, guid: 7c29c52ecdc987e478054e63b93444fc, type: 3}
 --- !u!1 &6274078705476118768
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,7 +399,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114689057623555238, guid: 9ed2a051c32b4fe47a5e4fb95c20b03f, type: 3}
       propertyPath: m_Size
-      value: 0.96943974
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114689057623555238, guid: 9ed2a051c32b4fe47a5e4fb95c20b03f, type: 3}
       propertyPath: m_Value
