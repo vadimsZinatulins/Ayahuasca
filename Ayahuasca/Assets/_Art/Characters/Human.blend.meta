@@ -1,9 +1,39 @@
 fileFormatVersion: 2
-guid: 227ff04aa7c093f43b5d282eedd9be62
+guid: b497a141b7baf8543bd5b001b0b5d315
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Head Asset Atlas
+    second: {fileID: 2100000, guid: b97b24e42d6f7a54bad63887cde694b7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Neckles Leather Altas
+    second: {fileID: 2100000, guid: 11f4eca8ea9775844ac58e257b58a8ec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Neckless Diamonds Atlas
+    second: {fileID: 2100000, guid: 46b61028ca8cc2f4b9456c21f1a2577a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin Atlas
+    second: {fileID: 2100000, guid: cf9156e7bb6f93644a026f5b1e9c0b3c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Towel Atlas
+    second: {fileID: 2100000, guid: a7b324cd106b77c44af04e279f0d42c7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Towel Darker Atlas
+    second: {fileID: 2100000, guid: 4ac347c307bab5c4a86e1de247e3086e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
