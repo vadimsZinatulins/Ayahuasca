@@ -100,10 +100,10 @@ MonoBehaviour:
   characterController: {fileID: 4423887396200627935}
   moveSpeed: 4
   lerpMovement: 5
-  turnSmoothTime: 0.5
+  turnSmoothTime: 0.01
   gravity: 9.64
   groundCheckPos: {fileID: 6688936379645535219}
-  groundCheckRadius: 0.4
+  groundCheckRadius: 0.05
   maxWaterGroundDistance: 1
   groundLayers:
     serializedVersion: 2
@@ -123,6 +123,7 @@ MonoBehaviour:
   boatPushForce: 2
   rowingSideForce: 0.4
   rowingFowardForce: 1
+  animator: {fileID: 8513760298077819427}
 --- !u!1001 &2831750741876551602
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -187,5 +188,10 @@ PrefabInstance:
 --- !u!4 &2361820480186173529 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f0a280374f5a5834d88fd469f66214be, type: 3}
+  m_PrefabInstance: {fileID: 2831750741876551602}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8513760298077819427 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: f0a280374f5a5834d88fd469f66214be, type: 3}
   m_PrefabInstance: {fileID: 2831750741876551602}
   m_PrefabAsset: {fileID: 0}
