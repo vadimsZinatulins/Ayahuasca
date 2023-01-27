@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b497a141b7baf8543bd5b001b0b5d315
+guid: f0a280374f5a5834d88fd469f66214be
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,33 +7,23 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Head Asset Atlas
-    second: {fileID: 2100000, guid: b97b24e42d6f7a54bad63887cde694b7, type: 2}
+      name: Hair
+    second: {fileID: 2100000, guid: 18d1fe7d1d855d34cb6129b9b715743e, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Neckles Leather Altas
-    second: {fileID: 2100000, guid: 11f4eca8ea9775844ac58e257b58a8ec, type: 2}
+      name: Robe
+    second: {fileID: 2100000, guid: 1eef17e8ab8ecdf41a65ab696e1acf37, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Neckless Diamonds Atlas
-    second: {fileID: 2100000, guid: 46b61028ca8cc2f4b9456c21f1a2577a, type: 2}
+      name: Sandals
+    second: {fileID: 2100000, guid: bfa9048fa9318e649b2b08777a17214c, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Skin Atlas
-    second: {fileID: 2100000, guid: cf9156e7bb6f93644a026f5b1e9c0b3c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Towel Atlas
-    second: {fileID: 2100000, guid: a7b324cd106b77c44af04e279f0d42c7, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Towel Darker Atlas
-    second: {fileID: 2100000, guid: 4ac347c307bab5c4a86e1de247e3086e, type: 2}
+      name: Skin
+    second: {fileID: 2100000, guid: 07681d425330c0f49b9ac304826e5bc4, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -54,7 +44,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -121,13 +111,13 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 2
+  animationType: 3
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0
