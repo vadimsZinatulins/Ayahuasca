@@ -142,7 +142,15 @@ namespace PlayerBehaviours
         public float boatPushForce = 5f;
         public float rowingSideForce = 0.2f;
         public float rowingFowardForce = 3f;
+
+        //-------------------------------------------Animations-------------------------------------------
+        [Header("Animations")]
+        /* Character controller for the movement */
+        [Tooltip("Character animation controller")]
+        [SerializeField]
+        private Animator animator;
         //-------------------------------------------END-VARIABLES-------------------------------------------
+
         private void OnDrawGizmos()
         {
             if (groundCheckPos)
@@ -314,7 +322,9 @@ namespace PlayerBehaviours
             if (CheckNextStep(transform.position + movementInput * moveSpeed * Time.deltaTime))
             {
                 characterController.Move(movementInput * moveSpeed * Time.deltaTime);
-            }
+            } 
+            
+            animator.SetFloat("Character Speed", characterController.velocity.magnitude / moveSpeed);
         }
 
         private void NormalGravity()
