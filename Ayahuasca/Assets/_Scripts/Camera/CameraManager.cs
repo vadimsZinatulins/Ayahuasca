@@ -11,6 +11,7 @@ public class CameraManager : MonoBehaviour
     {
        GameObject cameraGO = SoloCameraPool.GetObject();
        Camera camera = cameraGO.GetComponent<Camera>();
+       Destroy(camera.GetComponent<AudioListener>());
        CurrentPoolCameras.Add(camera);
        return camera;
     }
