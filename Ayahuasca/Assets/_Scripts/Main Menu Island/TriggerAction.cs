@@ -41,7 +41,7 @@ public class TriggerAction : MonoBehaviour
     private Slider progresUntilActionTrigger;
 
     [SerializeField]
-    private UnityEvent actionToExecute;
+    protected UnityEvent actionToExecute;
 
     [SerializeField]
     private bool requiresBothPlayers;
