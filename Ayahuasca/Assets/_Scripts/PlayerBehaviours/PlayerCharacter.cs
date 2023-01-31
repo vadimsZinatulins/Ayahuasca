@@ -376,13 +376,16 @@ namespace PlayerBehaviours
                     {
                         if (currentRidables.Count > 0)
                         {
-                            currentRidables[0].GetComponent<IRiddable>().StartRiding(gameObject, ref _currentRidingType);
+                            currentRidables[0].GetComponent<IRiddable>().StartRiding(gameObject, ref _currentRidingType, out RowingSide side);
+
                             if (_currentRidingType != PlayerRiding.NONE)
                             {
                                 currentRiddable = currentRidables[0];
                                 ActiveColliders(false);
                             }
 
+                            animator.SetBool("Mirrored", side == RowingSide.RIGHT);
+                            animator.SetBool("In Kanoe", true);
                         }
                     }
                     break;
@@ -393,6 +396,8 @@ namespace PlayerBehaviours
                         {
                             currentRiddable = null;
                             _currentRidingType = PlayerRiding.NONE;
+
+                            animator.SetBool("In Kanoe", false);
                         }
                     }
                     break;
@@ -458,6 +463,7 @@ namespace PlayerBehaviours
                         if (currentRiddable.TryGetComponent(out Boat boat))
                         {
                             boat.Row(gameObject, rowingSideForce, rowingFowardForce);
+                            animator.SetTrigger("Paddle");
                         }
                     }
                     break;

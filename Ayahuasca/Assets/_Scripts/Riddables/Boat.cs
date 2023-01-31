@@ -59,10 +59,10 @@ public class Boat : MonoBehaviour, IRiddable
         SimulateBoat();
     }
 
-    public void StartRiding(GameObject go, ref PlayerRiding ridingType)
+    public void StartRiding(GameObject go, ref PlayerRiding ridingType, out RowingSide rowingSide)
     {
         ridingType = PlayerRiding.BOAT;
-        SetSeated(go.transform);
+        SetSeated(go.transform, out rowingSide);
     }
 
     public bool StopRiding(GameObject go)
@@ -81,8 +81,10 @@ public class Boat : MonoBehaviour, IRiddable
         return "Ride boat";
     }
 
-    private void SetSeated(Transform InTransform)
+    private void SetSeated(Transform InTransform, out RowingSide rowingSide)
     {
+        rowingSide = RowingSide.NONE;
+
         if (InTransform.TryGetComponent(out PlayerCharacter playerCharacter))
         {
             int playerIndex = PlayersManager.Instance.GetPlayerIndex(playerCharacter.GetOwner());
@@ -93,6 +95,8 @@ public class Boat : MonoBehaviour, IRiddable
                 case 0:
                     if (backSeat.currentObject == null)
                     {
+                        rowingSide = backSeat.rowingSide;
+
                         backSeat.currentObject = playerCharacter.gameObject;
                         playerCharacter.transform.parent = backSeat.positionTransform;
                         playerCharacter.transform.position = backSeat.positionTransform.position;
@@ -110,6 +114,8 @@ public class Boat : MonoBehaviour, IRiddable
                 case 1:
                     if (frontSeat.currentObject == null)
                     {
+                        rowingSide = frontSeat.rowingSide;
+
                         frontSeat.currentObject = playerCharacter.gameObject;
                         playerCharacter.transform.parent = frontSeat.positionTransform;
                         playerCharacter.transform.position = frontSeat.positionTransform.position;
@@ -197,22 +203,24 @@ public class Boat : MonoBehaviour, IRiddable
         return false;
     }
 
-    public void Row(GameObject playerGo, float rowSideForce, float rowFowardForce)
+    public RowingSide Row(GameObject playerGo, float rowSideForce, float rowFowardForce)
     {
         if (isFloating)
         {
             if (frontSeat.currentObject == playerGo)
             {
-                AddForceToBoat(frontSeat, rowSideForce, rowFowardForce);
+                return AddForceToBoat(frontSeat, rowSideForce, rowFowardForce);
             }
             else if (backSeat.currentObject == playerGo)
             {
-                AddForceToBoat(backSeat, rowSideForce, rowFowardForce);
+                return AddForceToBoat(backSeat, rowSideForce, rowFowardForce);
             }
         }
+
+        return RowingSide.NONE;
     }
 
-    void AddForceToBoat(Seat seat, float rotationForce, float fowardForce)
+    RowingSide AddForceToBoat(Seat seat, float rotationForce, float fowardForce)
     {
         switch (seat.rowingSide)
         {
@@ -234,6 +242,8 @@ public class Boat : MonoBehaviour, IRiddable
         }
 
         rigidbody.AddForce(transform.forward * fowardForce, ForceMode.VelocityChange);
+
+        return seat.rowingSide;
     }
 
     void SimulateBoat()
