@@ -6,5 +6,6 @@ namespace _Scripts.Behaviours.Interfaces
     {
         void Interact(Transform InInteractorTransform);
         string GetInteractText();
+        Vector3 GetInteractLocation();
     }
 }

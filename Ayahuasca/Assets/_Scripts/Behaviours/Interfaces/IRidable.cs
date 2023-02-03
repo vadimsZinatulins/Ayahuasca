@@ -7,6 +7,7 @@ namespace _Scripts.Behaviours.Interfaces
         public void StartRiding(GameObject go, ref PlayerRiding ridingType, out RowingSide side);
         public bool StopRiding(GameObject go);
 
-        public string GetRideText();
+        public string GetRideText(GameObject InInteractor);
+        public Vector3 GetRideLocation(GameObject InInteractor);
     }
 }

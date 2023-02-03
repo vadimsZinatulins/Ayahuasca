@@ -10,7 +10,7 @@ using UnityEngine;
 
 public class Boat : MonoBehaviour, IRiddable
 {
-    [SerializeField] private Rigidbody rigidbody;
+    [SerializeField] private Rigidbody rb;
 
     [Header("Seats and Camera")] [SerializeField]
     private Camera boatCamera;
@@ -76,16 +76,47 @@ public class Boat : MonoBehaviour, IRiddable
         return false;
     }
 
-    public string GetRideText()
+    public string GetRideText(GameObject InInteractor)
     {
         return "Ride boat";
+    }
+
+    public Vector3 GetRideLocation(GameObject InInteractor)
+    {
+        Seat seat = GetSeatForPlayer(InInteractor);
+        return seat.positionTransform.position;
     }
 
     private void SetSeated(Transform InTransform, out RowingSide rowingSide)
     {
         rowingSide = RowingSide.NONE;
-
+        Seat seat = GetSeatForPlayer(InTransform.gameObject);
         if (InTransform.TryGetComponent(out PlayerCharacter playerCharacter))
+        {
+            if (seat.currentObject == null)
+            {
+                rowingSide = seat.rowingSide;
+
+                seat.currentObject = playerCharacter.gameObject;
+                playerCharacter.transform.parent = seat.positionTransform;
+                playerCharacter.transform.position = seat.positionTransform.position;
+                playerCharacter.transform.rotation = seat.positionTransform.rotation;
+                playerCharacter.GetComponent<CharacterController>().enabled = false;
+            }
+            else
+            {
+                Debug.LogError("Already occupied");
+                //RemoveFromBoat(backSeat);
+            }
+        }
+        
+         CheckSeats();
+    }
+
+    private Seat GetSeatForPlayer(GameObject InPlayer)
+    {
+        Seat seat = new Seat();
+        if (InPlayer.TryGetComponent(out PlayerCharacter playerCharacter))
         {
             int playerIndex = PlayersManager.Instance.GetPlayerIndex(playerCharacter.GetOwner());
             // Isto vai ficar materlado, mas depois se lembrar de uma forma melhor de obrigar um jogador a ficar neste
@@ -93,47 +124,15 @@ public class Boat : MonoBehaviour, IRiddable
             switch (playerIndex)
             {
                 case 0:
-                    if (backSeat.currentObject == null)
-                    {
-                        rowingSide = backSeat.rowingSide;
-
-                        backSeat.currentObject = playerCharacter.gameObject;
-                        playerCharacter.transform.parent = backSeat.positionTransform;
-                        playerCharacter.transform.position = backSeat.positionTransform.position;
-                        playerCharacter.transform.rotation = backSeat.positionTransform.rotation;
-                        playerCharacter.GetComponent<CharacterController>().enabled = false;
-                    }
-                    else
-                    {
-                        Debug.LogError("Already occupied");
-                        //RemoveFromBoat(backSeat);
-                    }
-
+                    seat = backSeat;
                     break;
-
                 case 1:
-                    if (frontSeat.currentObject == null)
-                    {
-                        rowingSide = frontSeat.rowingSide;
-
-                        frontSeat.currentObject = playerCharacter.gameObject;
-                        playerCharacter.transform.parent = frontSeat.positionTransform;
-                        playerCharacter.transform.position = frontSeat.positionTransform.position;
-                        playerCharacter.transform.rotation = frontSeat.positionTransform.rotation;
-                        playerCharacter.GetComponent<CharacterController>().enabled = false;
-                        playerCharacter.GetComponent<Collider>().enabled = false;
-                    }
-                    else
-                    {
-                        Debug.LogError("Already occupied");
-                        //RemoveFromBoat(frontSeat);
-                    }
-
+                    seat = frontSeat;
                     break;
             }
-
-            CheckSeats();
         }
+
+        return seat;
     }
 
     private void CheckSeats()
@@ -225,7 +224,7 @@ public class Boat : MonoBehaviour, IRiddable
         switch (seat.rowingSide)
         {
             case RowingSide.RIGHT:
-                if (rigidbody != null)
+                if (rb != null)
                 {
                     _targetAngularVelocity += new Vector3(0, -rotationForce, 0);
                 }
@@ -233,7 +232,7 @@ public class Boat : MonoBehaviour, IRiddable
                 break;
 
             case RowingSide.LEFT:
-                if (rigidbody != null)
+                if (rb != null)
                 {
                     _targetAngularVelocity += new Vector3(0, rotationForce, 0);
                 }
@@ -241,14 +240,14 @@ public class Boat : MonoBehaviour, IRiddable
                 break;
         }
 
-        rigidbody.AddForce(transform.forward * fowardForce, ForceMode.VelocityChange);
+        rb.AddForce(transform.forward * fowardForce, ForceMode.VelocityChange);
 
         return seat.rowingSide;
     }
 
     void SimulateBoat()
     {
-        if (rigidbody != null)
+        if (rb != null)
         {
             _boatersInTheWater = 0;
             // Set the floaters
@@ -270,7 +269,7 @@ public class Boat : MonoBehaviour, IRiddable
                     heightDifference = 0;
                 }
 
-                rigidbody.AddForceAtPosition(boater.up * heightDifference * pullForce * Time.deltaTime, boater.position,
+                rb.AddForceAtPosition(boater.up * heightDifference * pullForce * Time.deltaTime, boater.position,
                     ForceMode.VelocityChange);
             }
 
@@ -284,11 +283,11 @@ public class Boat : MonoBehaviour, IRiddable
                 _targetAngularVelocity = Vector3.Lerp(_targetAngularVelocity, Vector3.zero,
                     Time.deltaTime * _angularVelocityLerp);
                 // Lerps the angular velocity of the rigidbody to the target velocity, to be extra smooth
-                rigidbody.angularVelocity = Vector3.Lerp(rigidbody.angularVelocity, _targetAngularVelocity,
+                rb.angularVelocity = Vector3.Lerp(rb.angularVelocity, _targetAngularVelocity,
                     Time.deltaTime * angularStabilizeSpeed);
 
                 // Remove uncessary movement
-                rigidbody.velocity = Vector3.Lerp(rigidbody.velocity, minimumVelocity, Time.deltaTime * velocityLerp);
+                rb.velocity = Vector3.Lerp(rb.velocity, minimumVelocity, Time.deltaTime * velocityLerp);
             }
         }
     }
@@ -296,7 +295,7 @@ public class Boat : MonoBehaviour, IRiddable
     public void Push(float pushForce, Vector3 originPosition)
     {
         originPosition.y = transform.position.y;
-        rigidbody.AddForce((transform.position-originPosition).normalized * pushForce);
+        rb.AddForce((transform.position-originPosition).normalized * pushForce);
         //rigidbody.AddExplosionForce(pushForce, originPosition,radius);
     }
 }
