@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class N_WorldPopup : MonoBehaviour
 {
@@ -13,9 +14,13 @@ public class N_WorldPopup : MonoBehaviour
     {
         lookTarget = InLookTarget;
     }
-    public void SetText(Vector3 InPos,string InNewText)
+    public void SetText(Camera InCamera,Vector3 InPos,string InNewText)
     {
-        transform.position = InPos;
+        if (InCamera != null)
+        {
+            Vector3 screenPos = InCamera.WorldToScreenPoint(InPos);
+            interactText.rectTransform.position = screenPos;
+        }
         interactText.text = InNewText;
     }
 

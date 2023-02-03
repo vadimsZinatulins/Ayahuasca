@@ -22,7 +22,7 @@ public class ObjectPool : MonoBehaviour
         if (inactiveObjects.Count > 0)
         {
             var dequeuedObject = inactiveObjects.Dequeue();
-            dequeuedObject.transform.parent = null; // puts the object in the root of the hierarchy.
+            dequeuedObject.transform.SetParent(null); // puts the object in the root of the hierarchy.
             dequeuedObject.SetActive(true);
             var notifiers = dequeuedObject.GetComponents<IObjectPoolNotifier>();
 

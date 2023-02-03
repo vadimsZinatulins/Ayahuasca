@@ -122,6 +122,12 @@ namespace PlayerBehaviours
 
         /* Interact layers */
         [Tooltip("Interact layers")] public LayerMask interactLayers;
+        
+        /* Interact player indicator plane */
+        [SerializeField] private GameObject interactIndicatorPlane;
+        
+        /* Riddable player indicator plane  */
+        [SerializeField] private GameObject riddableIndicatorPlane;
 
         /* Current close interactables */
         private List<GameObject> currentInteractables = new List<GameObject>();
@@ -186,8 +192,8 @@ namespace PlayerBehaviours
             switch (_currentRidingType)
             {
                 case PlayerRiding.NONE:
-                    NormalChecks();
                     NormalMovement();
+                    NormalChecks();
                     NormalGravity();
                     break;
                 case PlayerRiding.BOAT:
@@ -238,9 +244,37 @@ namespace PlayerBehaviours
                 }
                 string interactText = currentInteractables[0].GetComponent<IInteractable>().GetInteractText();
                 Vector3 interactPopupLocation = currentInteractables[0].GetComponent<IInteractable>().GetInteractLocation();
-                Vector3 UIPosition = Camera.main.WorldToScreenPoint(interactPopupLocation);
-                interactPopup.SetText(UIPosition,interactText);
+                
+                Camera camera = null;
+                if (_playerCamera.isActiveAndEnabled)
+                {
+                    camera = _playerCamera;
+                }
+                else
+                {
+                    camera = Camera.main;
+                }
+
+                if (!interactIndicatorPlane.activeSelf)
+                {
+                    interactIndicatorPlane.SetActive(true);
+                }
+                Vector3 direction = (interactPopupLocation - transform.position).normalized;
+                float angle = Mathf.Atan2(direction.x, direction.z);
+
+                //interactIndicatorPlane.transform.rotation = Quaternion.Euler(90,angle,angle);
+                interactIndicatorPlane.transform.eulerAngles = new Vector3(90, angle * Mathf.Rad2Deg - 90, 0);
+
+
+                interactPopup.SetText(camera,interactPopupLocation,interactText);
                 interactPopup.SetTarget(_playerCamera.transform);
+            }
+            else
+            {
+                if (interactIndicatorPlane.activeSelf)
+                {
+                    interactIndicatorPlane.SetActive(false);
+                }
             }
 
             if (currentRidables.Count > 0)
@@ -254,11 +288,36 @@ namespace PlayerBehaviours
                     }
                 }
 
-                string rideText = currentRidables[0].GetComponent<IRiddable>().GetRideText();
-                Vector3 ridePosition = currentRidables[0].GetComponent<IRiddable>().GetRideLocation();
-                Vector3 UIPosition = Camera.main.WorldToScreenPoint(ridePosition);
-                interactPopup.SetText(UIPosition,rideText);
+                string rideText = currentRidables[0].GetComponent<IRiddable>().GetRideText(gameObject);
+                Vector3 ridePosition = currentRidables[0].GetComponent<IRiddable>().GetRideLocation(gameObject);
+                Camera camera = null;
+                if (_playerCamera.isActiveAndEnabled)
+                {
+                    camera = _playerCamera;
+                }
+                else
+                {
+                    camera = Camera.main;
+                }
+                if (!riddableIndicatorPlane.activeSelf)
+                {
+                    riddableIndicatorPlane.SetActive(true);
+                }
+                Vector3 direction = (ridePosition - transform.position).normalized;
+                float angle = Mathf.Atan2(direction.x, direction.z);
+
+                //riddableIndicatorPlane.transform.rotation = Quaternion.Euler(90,angle,angle);
+                riddableIndicatorPlane.transform.eulerAngles = new Vector3(90, angle * Mathf.Rad2Deg - 90, 0);
+                
+                interactPopup.SetText(camera,ridePosition,rideText);
                 interactPopup.SetTarget(_playerCamera.transform);
+            }
+            else
+            {
+                if (riddableIndicatorPlane.activeSelf)
+                {
+                    riddableIndicatorPlane.SetActive(false);
+                }
             }
 
             if (currentInteractables.Count == 0 &&
@@ -282,26 +341,29 @@ namespace PlayerBehaviours
                 {
                     if (waterHit.point.y > groundHit.point.y)
                     {
-                        Debug.LogWarning("Checking difference");
                         waterGroundDifference = (groundHit.point - waterHit.point).magnitude;
                         if (waterGroundDifference <= maxWaterGroundDistance)
                         {
+                            Debug.LogWarning("1");
                             return true;
                         }
                         else
                         {
+                            Debug.LogWarning("2");
                             return false;
                         }
                     }
-
+                    Debug.LogWarning("3");
                     return true;
                 }
                 else
                 {
+                    Debug.LogWarning("4");
                     return true;
                 }
             }
 
+            Debug.LogWarning("5");
             return false;
         }
         private void GroundCheck()
