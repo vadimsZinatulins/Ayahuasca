@@ -3,33 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Dialog2 : MonoBehaviour
+public class DialogMultiMessages : MonoBehaviour
 {
     public TextMeshProUGUI textDisplay;
     public string[] sentences;
     private int index;
     public float typingSpeed;
+    public float NewSentenceSpeed;
+    private bool showMessage = false;
 
- 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-        
-    }
 
     private void Update()
     {
-
+        if (textDisplay.text == sentences[index])
+        {
+            
+        }
     }
+
 
     private void OnTriggerEnter(Collider other)
     {
+        index = 0;
+        showMessage = true;
         StartCoroutine(Type());
     }
 
     private void OnTriggerExit(Collider other)
     {
+        showMessage = false;
+        StopCoroutine(Type());
         textDisplay.text = "";
     }
 
@@ -38,10 +41,22 @@ public class Dialog2 : MonoBehaviour
 
         foreach(char letter in sentences[index].ToCharArray())
         {
-            textDisplay.text += letter;
-            yield return new WaitForSeconds(typingSpeed);
+            if (showMessage == true)
+            {
+                textDisplay.text += letter;
+                yield return new WaitForSeconds(typingSpeed);
+            }
+            else
+            {
+                break;
+            }
+            
         }
-
+        if (showMessage == true)
+        {
+            yield return new WaitForSeconds(NewSentenceSpeed);
+            NextSentence();
+        }
     }
 
     public void NextSentence()
@@ -52,11 +67,8 @@ public class Dialog2 : MonoBehaviour
             index++;
             textDisplay.text = "";
             StartCoroutine(Type());
-        } else
-        {
-            textDisplay.text = "";
-
-        }
+        } 
+        
     }
 
 }
