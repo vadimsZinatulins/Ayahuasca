@@ -121,4 +121,9 @@ public class SplitScreenRenderer : MonoBehaviour
         cameraPlayerOne.gameObject.SetActive(isEnable);
         cameraPlayerTwo.gameObject.SetActive(isEnable);
     }
+
+    public bool GetIsSystemEnable()
+    {
+        return this.enabled && cameraPlayerOne.gameObject.activeSelf && cameraPlayerTwo.gameObject.activeSelf;
+    }
 }
