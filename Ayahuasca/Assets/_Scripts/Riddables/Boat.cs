@@ -15,8 +15,8 @@ public class Boat : MonoBehaviour, IRiddable
     [Header("Seats and Camera")] [SerializeField]
     private Camera boatCamera;
 
-    public Seat frontSeat;
-    public Seat backSeat;
+    public Seat frontSeat = new Seat();
+    public Seat backSeat = new Seat();
 
     [Header("Floating")] [SerializeField] private List<Transform> boatBoaters;
     [SerializeField] float checkDistance = 5f;
@@ -83,39 +83,44 @@ public class Boat : MonoBehaviour, IRiddable
 
     public Vector3 GetRideLocation(GameObject InInteractor)
     {
-        Seat seat = GetSeatForPlayer(InInteractor);
-        return seat.positionTransform.position;
+        Seat seat = new Seat();
+        if (GetSeatForPlayer(InInteractor, ref seat))
+        {
+            return seat.positionTransform.position;
+        }
+        return Vector3.one;
     }
 
     private void SetSeated(Transform InTransform, out RowingSide rowingSide)
     {
         rowingSide = RowingSide.NONE;
-        Seat seat = GetSeatForPlayer(InTransform.gameObject);
-        if (InTransform.TryGetComponent(out PlayerCharacter playerCharacter))
+        Seat seat = new Seat();
+        if (GetSeatForPlayer(InTransform.gameObject, ref seat))
         {
-            if (seat.currentObject == null)
+            if (InTransform.TryGetComponent(out PlayerCharacter playerCharacter))
             {
-                rowingSide = seat.rowingSide;
+                if (seat.currentObject == null)
+                {
+                    rowingSide = seat.rowingSide;
 
-                seat.currentObject = playerCharacter.gameObject;
-                playerCharacter.transform.parent = seat.positionTransform;
-                playerCharacter.transform.position = seat.positionTransform.position;
-                playerCharacter.transform.rotation = seat.positionTransform.rotation;
-                playerCharacter.GetComponent<CharacterController>().enabled = false;
+                    seat.currentObject = playerCharacter.gameObject;
+                    playerCharacter.transform.parent = seat.positionTransform;
+                    playerCharacter.transform.position = seat.positionTransform.position;
+                    playerCharacter.transform.rotation = seat.positionTransform.rotation;
+                    playerCharacter.GetComponent<CharacterController>().enabled = false;
+                }
+                else
+                {
+                    Debug.LogError("Already occupied");
+                    //RemoveFromBoat(backSeat);
+                }
             }
-            else
-            {
-                Debug.LogError("Already occupied");
-                //RemoveFromBoat(backSeat);
-            }
+            CheckSeats();
         }
-        
-         CheckSeats();
     }
 
-    private Seat GetSeatForPlayer(GameObject InPlayer)
+    private bool GetSeatForPlayer(GameObject InPlayer, ref Seat InSeat)
     {
-        Seat seat = new Seat();
         if (InPlayer.TryGetComponent(out PlayerCharacter playerCharacter))
         {
             int playerIndex = PlayersManager.Instance.GetPlayerIndex(playerCharacter.GetOwner());
@@ -124,15 +129,18 @@ public class Boat : MonoBehaviour, IRiddable
             switch (playerIndex)
             {
                 case 0:
-                    seat = backSeat;
+                    InSeat = backSeat;
+                    return true;
                     break;
                 case 1:
-                    seat = frontSeat;
+                    InSeat = frontSeat;
+                    return true;
                     break;
             }
         }
 
-        return seat;
+        InSeat = new Seat();
+        return false;
     }
 
     private void CheckSeats()
@@ -152,8 +160,11 @@ public class Boat : MonoBehaviour, IRiddable
         {
             if (SplitScreenManager.Instance != null)
             {
-                SplitScreenManager.Instance.EnableSystem(true);
-                boatCamera.gameObject.SetActive(false);
+                if (SplitScreenManager.Instance.GetIsSystemEnable())
+                {
+                    SplitScreenManager.Instance.EnableSystem(true);
+                    boatCamera.gameObject.SetActive(false);
+                }
             }
         }
     }
@@ -208,18 +219,18 @@ public class Boat : MonoBehaviour, IRiddable
         {
             if (frontSeat.currentObject == playerGo)
             {
-                return AddForceToBoat(frontSeat, rowSideForce, rowFowardForce);
+                return AddForceToBoat(ref frontSeat, rowSideForce, rowFowardForce);
             }
             else if (backSeat.currentObject == playerGo)
             {
-                return AddForceToBoat(backSeat, rowSideForce, rowFowardForce);
+                return AddForceToBoat(ref backSeat, rowSideForce, rowFowardForce);
             }
         }
 
         return RowingSide.NONE;
     }
 
-    RowingSide AddForceToBoat(Seat seat, float rotationForce, float fowardForce)
+    RowingSide AddForceToBoat(ref Seat seat, float rotationForce, float fowardForce)
     {
         switch (seat.rowingSide)
         {
@@ -301,7 +312,7 @@ public class Boat : MonoBehaviour, IRiddable
 }
 
 [Serializable]
-public struct Seat
+public class Seat
 {
     public Transform positionTransform;
     public RowingSide rowingSide;

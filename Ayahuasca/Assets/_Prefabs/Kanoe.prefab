@@ -1013,7 +1013,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53cb3e07bf9fa854e9e062c21480b4a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody: {fileID: 8675953842578956421}
+  rb: {fileID: 8675953842578956421}
   boatCamera: {fileID: 1921495200920083000}
   frontSeat:
     positionTransform: {fileID: 1748820808606559813}

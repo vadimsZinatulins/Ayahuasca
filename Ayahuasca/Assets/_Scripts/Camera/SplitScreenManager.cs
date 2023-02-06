@@ -30,4 +30,9 @@ public class SplitScreenManager : MonoBehaviour
     {
         mainCamera.GetComponent<SplitScreenRenderer>().EnableSystem(isEnable);
     }
+
+    public bool GetIsSystemEnable()
+    {
+        return mainCamera.GetComponent<SplitScreenRenderer>().GetIsSystemEnable();
+    }
 }

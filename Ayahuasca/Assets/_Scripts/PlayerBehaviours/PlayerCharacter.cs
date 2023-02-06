@@ -334,10 +334,10 @@ namespace PlayerBehaviours
         private bool CheckNextStep(Vector3 position)
         {
             RaycastHit groundHit;
-            if (Physics.Raycast(position, -transform.up * 9, out groundHit, 9, groundLayers))
+            if (Physics.Raycast(position + transform.up * 5, -transform.up * 9, out groundHit, 9, groundLayers))
             {
                 RaycastHit waterHit;
-                if (Physics.Raycast(position, -transform.up * 9, out waterHit, 9, waterLayers))
+                if (Physics.Raycast(position + transform.up * 5, -transform.up * 9, out waterHit, 9, waterLayers))
                 {
                     if (waterHit.point.y > groundHit.point.y)
                     {
