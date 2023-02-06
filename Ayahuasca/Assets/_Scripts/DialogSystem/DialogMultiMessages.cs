@@ -62,7 +62,7 @@ public class DialogMultiMessages : MonoBehaviour
     public void NextSentence()
     {
 
-        if (index < sentences.Length - 1)
+        if (index < sentences.Length - 1 && sentences.Length > 1 )
         {
             index++;
             textDisplay.text = "";
