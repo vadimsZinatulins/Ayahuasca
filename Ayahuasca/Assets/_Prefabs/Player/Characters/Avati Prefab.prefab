@@ -195,7 +195,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 543051524781437486}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8065121328679254135
 GameObject:
@@ -227,8 +227,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6688936379645535219}
   - {fileID: 2361820480186173529}
+  - {fileID: 6688936379645535219}
   - {fileID: 436838263356079315}
   - {fileID: 2578302434000749268}
   m_Father: {fileID: 0}
@@ -286,7 +286,7 @@ MonoBehaviour:
   interactRadius: 2
   interactLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 640
   interactIndicatorPlane: {fileID: 3370166995843958086}
   riddableIndicatorPlane: {fileID: 531523904773396635}
   collidersToDeativateOnRide: []
@@ -303,7 +303,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: f0a280374f5a5834d88fd469f66214be, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f0a280374f5a5834d88fd469f66214be, type: 3}
       propertyPath: m_LocalPosition.x
@@ -360,6 +360,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f0a280374f5a5834d88fd469f66214be, type: 3}
   m_PrefabInstance: {fileID: 2831750741876551602}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3138181669480895203 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f0a280374f5a5834d88fd469f66214be, type: 3}
+  m_PrefabInstance: {fileID: 2831750741876551602}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &146432946912597570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3138181669480895203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a8c1fae60198364e8bea3226ff0efd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCharacter: {fileID: 4613639607704787128}
 --- !u!95 &8513760298077819427 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: f0a280374f5a5834d88fd469f66214be, type: 3}
