@@ -2284,6 +2284,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: InfoPoint_MultiMessages
       objectReference: {fileID: 0}
+    - target: {fileID: 6461290254870229158, guid: a0d00e576274d6d49970a20138abb6c9, type: 3}
+      propertyPath: typingSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6461290254870229158, guid: a0d00e576274d6d49970a20138abb6c9, type: 3}
+      propertyPath: sentences.Array.data[0]
+      value: 'This is a '
+      objectReference: {fileID: 0}
+    - target: {fileID: 6461290254870229161, guid: a0d00e576274d6d49970a20138abb6c9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -978.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 6461290254870229161, guid: a0d00e576274d6d49970a20138abb6c9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -21.39
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0d00e576274d6d49970a20138abb6c9, type: 3}
 --- !u!1001 &8149345822775475173
