@@ -158,6 +158,8 @@ namespace PlayerBehaviours
         private Animator animator;
         //-------------------------------------------END-VARIABLES-------------------------------------------
 
+        public bool WalkingEnabled { get; set; } = true;
+
         private void OnDrawGizmos()
         {
             if (groundCheckPos)
@@ -184,7 +186,7 @@ namespace PlayerBehaviours
 
         public void SetMovementInput(Vector3 input)
         {
-            currentInput = Vector3.Lerp(currentInput, input, lerpMovement * Time.deltaTime);
+            currentInput = Vector3.Lerp(currentInput, WalkingEnabled ? input : Vector3.zero, lerpMovement * Time.deltaTime);
         }
 
         private void Update()
@@ -462,7 +464,7 @@ namespace PlayerBehaviours
                 case PlayerRiding.NONE:
                     if (currentInteractables.Count > 0)
                     {
-                        currentInteractables[0].GetComponent<IInteractable>().Interact(transform);
+                        currentInteractables[0].GetComponent<IInteractable>().Interact(this.transform);
                     }
 
                     if (_currentRidingType == PlayerRiding.NONE && currentRiddable == null)
@@ -480,7 +482,7 @@ namespace PlayerBehaviours
                             animator.SetBool("Mirrored", side == RowingSide.RIGHT);
                             animator.SetBool("In Kanoe", true);
                         }
-                    }
+                    } 
                     break;
                 case PlayerRiding.BOAT:
                     if (_currentRidingType == PlayerRiding.BOAT && currentRiddable != null)

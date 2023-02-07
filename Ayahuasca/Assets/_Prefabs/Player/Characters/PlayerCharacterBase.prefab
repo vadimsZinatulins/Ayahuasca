@@ -264,7 +264,9 @@ MonoBehaviour:
   interactRadius: 4
   interactLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 640
+  interactIndicatorPlane: {fileID: 0}
+  riddableIndicatorPlane: {fileID: 0}
   collidersToDeativateOnRide:
   - {fileID: 2828539667795897392}
   - {fileID: 357205976571004010}
@@ -272,6 +274,7 @@ MonoBehaviour:
   boatPushForce: 2
   rowingSideForce: 0.4
   rowingFowardForce: 1
+  animator: {fileID: 0}
 --- !u!143 &357205976571004010
 CharacterController:
   m_ObjectHideFlags: 0
