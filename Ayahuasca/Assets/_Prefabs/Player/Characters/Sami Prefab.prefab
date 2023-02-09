@@ -208,6 +208,7 @@ GameObject:
   - component: {fileID: 543051524781437486}
   - component: {fileID: 4423887396200627935}
   - component: {fileID: 4613639607704787128}
+  - component: {fileID: 7404292672995823121}
   m_Layer: 8
   m_Name: Sami Prefab
   m_TagString: Untagged
@@ -294,6 +295,18 @@ MonoBehaviour:
   rowingSideForce: 0.4
   rowingFowardForce: 1
   animator: {fileID: 7108174578506390710}
+--- !u!114 &7404292672995823121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8065121328679254135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 838d09f24d751e34aa15195d0f84f79d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3733443098489217319
 PrefabInstance:
   m_ObjectHideFlags: 0
