@@ -1,32 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class PlayerInventory : MonoBehaviour {
-
-    [Serializable]
-    private class CollectableAmount {
+    [System.Serializable]
+    public class CollectedItem {
         public _Scripts.Behaviours.CollectableData collectableData;
-        public int amount;
+        public int grams;
     }
 
-    private List<CollectableAmount> collectables;
+    private List<CollectedItem> collectables;
+
+    public List<CollectedItem> CollectedItems => collectables;
 
     void Awake() {
-        collectables = new List<CollectableAmount>();
+        collectables = new List<CollectedItem>();
     }
 
     public void Add(_Scripts.Behaviours.CollectableData collectableData) {
-        CollectableAmount ca = collectables.Find(collectable => collectable.collectableData == collectableData);
+        CollectedItem ca = collectables.Find(collectable => collectable.collectableData == collectableData);
+
+        int gramsCollected = Random.Range(collectableData.minContainingGrams, collectableData.maxContainingGrams);
 
         if(ca == null) {
-            collectables.Add(new CollectableAmount { 
+            collectables.Add(new CollectedItem { 
                 collectableData = collectableData,
-                amount = 1
+                grams = gramsCollected
             });
         } else {
-            ca.amount++;
+            ca.grams += gramsCollected;
         }
     }
 }
