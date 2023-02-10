@@ -9,10 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7882559ad3a24c15a1ab10d33a20d538, type: 3}
+  m_Script: {fileID: 11500000, guid: 9358927a1c63e8446ac5d7cdc879e4e8, type: 3}
   m_Name: Chamomile
   m_EditorClassIdentifier: 
-  herbName: Chamomile
-  Icon: {fileID: 0}
-  minContainingGrams: 5
-  maxContainingGrams: 10
+  listOfIngredients:
+  - collectableData: {fileID: 11400000, guid: 10bd71e604f0dc142a589d672c1e39d7, type: 2}
+    necessaryGrams: 20
+  cureEffectInSeconds: 300
+  timeToBrewInSeconds: 60
+  isPermanent: 0

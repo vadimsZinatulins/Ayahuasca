@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9358927a1c63e8446ac5d7cdc879e4e8, type: 3}
+  m_Name: Ayahuasca
+  m_EditorClassIdentifier: 
+  listOfIngredients:
+  - collectableData: {fileID: 11400000, guid: 5f9bee2a98d93eb45874db811bea9300, type: 2}
+    necessaryGrams: 10
+  - collectableData: {fileID: 11400000, guid: a01ba6bbda33c554bb1ca1b802f0dba2, type: 2}
+    necessaryGrams: 10
+  cureEffectInSeconds: 0
+  timeToBrewInSeconds: 180
+  isPermanent: 1

@@ -7,6 +7,8 @@ namespace _Scripts.Behaviours
         [SerializeField] private CollectableData collectableData;
         [SerializeField] private Transform interactionLocation;
 
+        public CollectableData CollectableData => collectableData;
+
         public Vector3 GetInteractLocation()
         {
             return interactionLocation.position;
@@ -21,6 +23,9 @@ namespace _Scripts.Behaviours
         {
             // Trigger "Lifting" if any of childs has Animator Component
             InInteractorTransform.gameObject.GetComponentInChildren<Animator>()?.SetTrigger("Lifting");
+
+            // Add this collectable to the inventory
+            InInteractorTransform.GetComponent<PlayerInventory>()?.Add(collectableData);
 
             Destroy(this.gameObject);
         }

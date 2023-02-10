@@ -7,5 +7,8 @@ namespace _Scripts.Behaviours
     {
         public string herbName;
         public Sprite Icon;
+
+        public int minContainingGrams = 1;
+        public int maxContainingGrams = 5;
     }
 }
