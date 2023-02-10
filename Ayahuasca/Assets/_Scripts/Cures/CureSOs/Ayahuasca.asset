@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9358927a1c63e8446ac5d7cdc879e4e8, type: 3}
   m_Name: Ayahuasca
   m_EditorClassIdentifier: 
-  listOfIngredients: []
-  cureEffectInSeconds: 5
-  timeToBrewInSeconds: 2
-  isPermanent: 0
+  listOfIngredients:
+  - collectableData: {fileID: 11400000, guid: 5f9bee2a98d93eb45874db811bea9300, type: 2}
+    necessaryGrams: 10
+  - collectableData: {fileID: 11400000, guid: a01ba6bbda33c554bb1ca1b802f0dba2, type: 2}
+    necessaryGrams: 10
+  cureEffectInSeconds: 0
+  timeToBrewInSeconds: 180
+  isPermanent: 1

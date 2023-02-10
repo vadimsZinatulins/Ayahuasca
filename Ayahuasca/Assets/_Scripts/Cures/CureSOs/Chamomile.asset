@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9358927a1c63e8446ac5d7cdc879e4e8, type: 3}
   m_Name: Chamomile
   m_EditorClassIdentifier: 
-  listOfIngredients: []
-  cureEffectInSeconds: 5
-  timeToBrewInSeconds: 2
+  listOfIngredients:
+  - collectableData: {fileID: 11400000, guid: 10bd71e604f0dc142a589d672c1e39d7, type: 2}
+    necessaryGrams: 20
+  cureEffectInSeconds: 300
+  timeToBrewInSeconds: 60
   isPermanent: 0

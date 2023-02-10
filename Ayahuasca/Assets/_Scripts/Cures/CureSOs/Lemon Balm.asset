@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9358927a1c63e8446ac5d7cdc879e4e8, type: 3}
   m_Name: Lemon Balm
   m_EditorClassIdentifier: 
+  listOfIngredients:
+  - collectableData: {fileID: 11400000, guid: bbf4a7ec7b8bac647a0efd68ead76325, type: 2}
+    necessaryGrams: 20
+  cureEffectInSeconds: 600
+  timeToBrewInSeconds: 120
   isPermanent: 0

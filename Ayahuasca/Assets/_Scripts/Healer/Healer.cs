@@ -30,8 +30,12 @@ public class Healer : MonoBehaviour, _Scripts.Behaviours.Interfaces.IInteractabl
     private IEnumerator Brew(CureRecipeSO recipe, int amount) {
         yield return new WaitForSeconds(recipe.timeToBrewInSeconds);
 
-        Debug.Log("Brewed " + amount + " " + recipe.name + " cures");
-
+        if(recipe.isPermanent) {
+            DiseaseSystem.Instance?.CureVillagers(amount);
+        } else {
+            DiseaseSystem.Instance?.RetardSickess(amount, recipe.cureEffectInSeconds);
+        }
+        
         yield return null;
     }
 }

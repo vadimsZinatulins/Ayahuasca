@@ -306,3 +306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionLocation: {fileID: 6508351439342618755}
+  listOfCures:
+  - {fileID: 11400000, guid: 9398f31259581434ab404744f94e8bfa, type: 2}
+  - {fileID: 11400000, guid: 579b9d6cebb5d24459b306c203f6f24c, type: 2}
+  - {fileID: 11400000, guid: 645ddf87d87334247b9df2e362be5e82, type: 2}
