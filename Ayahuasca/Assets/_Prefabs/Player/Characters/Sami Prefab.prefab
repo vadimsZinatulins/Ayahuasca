@@ -273,7 +273,7 @@ MonoBehaviour:
   gravity: 9.64
   groundCheckPos: {fileID: 6688936379645535219}
   groundCheckRadius: 0.15
-  maxWaterGroundDistance: 1
+  maxWaterGroundDistance: 1.25
   groundLayers:
     serializedVersion: 2
     m_Bits: 64
