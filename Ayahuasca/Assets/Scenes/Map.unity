@@ -178,6 +178,32 @@ PrefabInstance:
       propertyPath: m_Name
       value: InfoPoints
       objectReference: {fileID: 0}
+    - target: {fileID: 1485491912881762973, guid: 93c03c3eeb2e91f4a950437cc60a89b7, type: 3}
+      propertyPath: typingSpeed
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 8147909541821810294, guid: 93c03c3eeb2e91f4a950437cc60a89b7, type: 3}
+      propertyPath: typingSpeed
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 8147909541821810294, guid: 93c03c3eeb2e91f4a950437cc60a89b7, type: 3}
+      propertyPath: sentences.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8147909541821810294, guid: 93c03c3eeb2e91f4a950437cc60a89b7, type: 3}
+      propertyPath: sentences.Array.data[0]
+      value: We are facing a terrible flu, to save as many people as possible, I
+        need Ayahuasca tea.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8147909541821810294, guid: 93c03c3eeb2e91f4a950437cc60a89b7, type: 3}
+      propertyPath: sentences.Array.data[1]
+      value: 'But around here I only have Lemon Balm and Chamomile, great for postponing
+        symptoms, but the right ingredients are Jagube and Chacrona. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 8147909541821810294, guid: 93c03c3eeb2e91f4a950437cc60a89b7, type: 3}
+      propertyPath: sentences.Array.data[2]
+      value: Ask the fisherman, near the river, where they can be found.
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93c03c3eeb2e91f4a950437cc60a89b7, type: 3}
 --- !u!1001 &109220319
@@ -237,63 +263,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1924520c7277f2a4bbf030ad81e2048b, type: 3}
---- !u!1001 &272928209
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1485491912127839792, guid: 93c03c3eeb2e91f4a950437cc60a89b7, type: 3}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1485491912127839792, guid: 93c03c3eeb2e91f4a950437cc60a89b7, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.21981978
-      objectReference: {fileID: 0}
-    - target: {fileID: 1485491912127839792, guid: 93c03c3eeb2e91f4a950437cc60a89b7, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -11.639123
-      objectReference: {fileID: 0}
-    - target: {fileID: 1485491912127839792, guid: 93c03c3eeb2e91f4a950437cc60a89b7, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 5.8023787
-      objectReference: {fileID: 0}
-    - target: {fileID: 1485491912127839792, guid: 93c03c3eeb2e91f4a950437cc60a89b7, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1485491912127839792, guid: 93c03c3eeb2e91f4a950437cc60a89b7, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1485491912127839792, guid: 93c03c3eeb2e91f4a950437cc60a89b7, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1485491912127839792, guid: 93c03c3eeb2e91f4a950437cc60a89b7, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1485491912127839792, guid: 93c03c3eeb2e91f4a950437cc60a89b7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1485491912127839792, guid: 93c03c3eeb2e91f4a950437cc60a89b7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1485491912127839792, guid: 93c03c3eeb2e91f4a950437cc60a89b7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1485491912127839793, guid: 93c03c3eeb2e91f4a950437cc60a89b7, type: 3}
-      propertyPath: m_Name
-      value: InfoPoints
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 93c03c3eeb2e91f4a950437cc60a89b7, type: 3}
 --- !u!1 &296166598
 GameObject:
   m_ObjectHideFlags: 0
