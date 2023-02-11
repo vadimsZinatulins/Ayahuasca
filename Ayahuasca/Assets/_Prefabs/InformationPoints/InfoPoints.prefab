@@ -364,11 +364,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textDisplay: {fileID: 5563804017946113731}
   sentences:
-  - I haven't seen you since you were expelled from the village for selfish behaviour.
-    The village is facing a terrible disease. If you are interested in helping, you
-    can find the healer following this path
+  - 'I haven''t seen you since you were expelled from the village for selfish behaviour.
+    The village is facing a terrible disease. '
+  - If you are interested in helping, you can find the healer following this path.
   Arrow: {fileID: 1755540564595642127}
-  typingSpeed: 0.1
+  typingSpeed: 0.05
   NewSentenceSpeed: 1
 --- !u!1001 &1485491912525650557
 PrefabInstance:
@@ -444,13 +444,40 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7317988244308663307, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
 --- !u!4 &2791719853535377647 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
   m_PrefabInstance: {fileID: 1485491912525650557}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8520060872883984355 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7106910281078066590, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
+  m_PrefabInstance: {fileID: 1485491912525650557}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9128204052958444535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8520060872883984355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9573a6cf4e51f94b9dc1dfb2fea51b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textDisplay: {fileID: 5563804017946113731}
+  sentences:
+  - 'We are facing a terrible flu, to save as many people as possible, I need Ayahuasca
+    tea. '
+  - But around here I only have Lemon Balm and Chamomile, great for postponing symptoms,
+    but the right ingredients are Jagube and Chacrona.
+  - Ask the fisherman, near the river, where they can be found.
+  typingSpeed: 0.05
+  NewSentenceSpeed: 1
 --- !u!1001 &1485491912687864543
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -522,13 +549,36 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7317988244308663307, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
 --- !u!4 &2791719853576611917 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
   m_PrefabInstance: {fileID: 1485491912687864543}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8520060873107244865 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7106910281078066590, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
+  m_PrefabInstance: {fileID: 1485491912687864543}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3524911491488150160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8520060873107244865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9573a6cf4e51f94b9dc1dfb2fea51b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textDisplay: {fileID: 5563804017946113731}
+  sentences:
+  - Welcome to Charovel. Here you can find Chacrona in large quantities.
+  typingSpeed: 0.05
+  NewSentenceSpeed: 1
 --- !u!1001 &1485491913392711181
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -721,13 +771,36 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7317988244308663307, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
 --- !u!4 &2791719852380984161 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
   m_PrefabInstance: {fileID: 1485491913640129011}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8520060874059611245 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7106910281078066590, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
+  m_PrefabInstance: {fileID: 1485491913640129011}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &729165852817011931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8520060874059611245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9573a6cf4e51f94b9dc1dfb2fea51b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textDisplay: {fileID: 5563804017946113731}
+  sentences:
+  - Welcome to Jagubonha. Here you can find Jagube in large quantities.
+  typingSpeed: 0.05
+  NewSentenceSpeed: 1
 --- !u!1001 &1485491913964148267
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -799,13 +872,36 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7317988244308663307, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
 --- !u!4 &2791719852826653881 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
   m_PrefabInstance: {fileID: 1485491913964148267}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8520060874389887925 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7106910281078066590, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
+  m_PrefabInstance: {fileID: 1485491913964148267}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2749735263794549590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8520060874389887925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9573a6cf4e51f94b9dc1dfb2fea51b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textDisplay: {fileID: 5563804017946113731}
+  sentences:
+  - Welcome to Charovel. Here you can find Chacrona in large quantities.
+  typingSpeed: 0.05
+  NewSentenceSpeed: 1
 --- !u!1001 &1485491913981047390
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -966,13 +1062,38 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7317988244308663307, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
 --- !u!4 &2791719852890728149 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
   m_PrefabInstance: {fileID: 1485491914011182151}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8520060874367486425 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7106910281078066590, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
+  m_PrefabInstance: {fileID: 1485491914011182151}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2357948395890195012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8520060874367486425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9573a6cf4e51f94b9dc1dfb2fea51b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textDisplay: {fileID: 5563804017946113731}
+  sentences:
+  - Friends, Jagube exists on Jagubonha Island and Chacrona on Charovel Island.
+  - I no longer have the health and strength to go and we need two to sale it, but
+    you can take my canoe
+  typingSpeed: 0.05
+  NewSentenceSpeed: 1
 --- !u!1001 &1485491914080100989
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1044,10 +1165,33 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7317988244308663307, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
 --- !u!4 &2791719852821872879 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
   m_PrefabInstance: {fileID: 1485491914080100989}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8520060874433458147 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7106910281078066590, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
+  m_PrefabInstance: {fileID: 1485491914080100989}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &882080250100447714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8520060874433458147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9573a6cf4e51f94b9dc1dfb2fea51b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textDisplay: {fileID: 5563804017946113731}
+  sentences:
+  - Welcome to Charovel. Here you can find Chacrona in large quantities.
+  typingSpeed: 0.05
+  NewSentenceSpeed: 1
