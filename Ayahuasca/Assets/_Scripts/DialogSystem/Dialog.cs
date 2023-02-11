@@ -14,7 +14,17 @@ public class Dialog : MonoBehaviour
 
     public bool IsTalking { get; set; }
 
-    protected IEnumerator Type()
+    public void Talk() {
+        Debug.Log("Talk");
+        
+        this.index = 0;
+        this.showMessage = true;
+        
+        InventoryUI.Instance?.gameObject.SetActive(false);
+        StartCoroutine(Type());
+    }
+
+    private IEnumerator Type()
     {
         IsTalking = true;
 

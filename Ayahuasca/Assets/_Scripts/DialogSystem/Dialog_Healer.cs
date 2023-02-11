@@ -8,12 +8,4 @@ public class Dialog_Healer : Dialog {
 
         Talk();
     }
-
-    public void Talk() {
-        this.index = 0;
-        this.showMessage = true;
-        
-        InventoryUI.Instance?.gameObject.SetActive(false);
-        StartCoroutine(Type());
-    }
 }

@@ -66,7 +66,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4610489573646255697}
+  - {fileID: 2536755808030500227}
   m_Father: {fileID: 1485491912127839792}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -98,7 +98,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2791719852890728149}
+  - {fileID: 8657253775433666766}
   m_Father: {fileID: 1485491912127839792}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -130,7 +130,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2791719852380984161}
+  - {fileID: 8677885228685514550}
   m_Father: {fileID: 1485491912127839792}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -162,7 +162,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2791719852821872879}
+  - {fileID: 7741680013801194919}
   m_Father: {fileID: 1485491912127839792}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -194,7 +194,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2791719853576611917}
+  - {fileID: 7214823248602058937}
   m_Father: {fileID: 1485491912127839792}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -226,216 +226,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2791719852826653881}
+  - {fileID: 5336610668352070088}
   m_Father: {fileID: 1485491912127839792}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &997572308694262979
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1485491912248893093}
-    m_Modifications:
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -16.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -8.53
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7106910281078066590, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_Name
-      value: InfoPoint_Capsule
-      objectReference: {fileID: 0}
-    - target: {fileID: 7317988244308663307, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: textDisplay
-      value: 
-      objectReference: {fileID: 5563804017946113731}
-    - target: {fileID: 7317988244308663307, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: sentences.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7317988244308663307, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: sentences.Array.data[0]
-      value: I haven't seen you since you were expelled from the village for selfish
-        behaviour. The village is facing a terrible disease. If you are interested
-        in helping, you can find the healer following this path.
-      objectReference: {fileID: 0}
-    - target: {fileID: 8575663618832049883, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7317988244308663307, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-  m_SourcePrefab: {fileID: 100100000, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
---- !u!4 &4610489573646255697 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-  m_PrefabInstance: {fileID: 997572308694262979}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8032389312064923997 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7106910281078066590, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-  m_PrefabInstance: {fileID: 997572308694262979}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1834613138388606386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8032389312064923997}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9573a6cf4e51f94b9dc1dfb2fea51b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textDisplay: {fileID: 5563804017946113731}
-  sentences:
-  - I haven't seen you since you were expelled from the village for selfish behaviour.
-    The village is facing a terrible disease.
-  - If you are interested in helping, go speak with the healer.
-  typingSpeed: 0.05
-  NewSentenceSpeed: 1
---- !u!1001 &1485491912687864543
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1485491913399550544}
-    m_Modifications:
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 842
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -10.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1309.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7106910281078066590, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_Name
-      value: InfoPoint_Capsule
-      objectReference: {fileID: 0}
-    - target: {fileID: 7317988244308663307, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: textDisplay
-      value: 
-      objectReference: {fileID: 5563804017946113731}
-    - target: {fileID: 7317988244308663307, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: sentences.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7317988244308663307, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: sentences.Array.data[0]
-      value: Welcome to Charovel. Here you can find Chacrona in large quantities.
-      objectReference: {fileID: 0}
-    - target: {fileID: 8575663618832049883, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7317988244308663307, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-  m_SourcePrefab: {fileID: 100100000, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
---- !u!4 &2791719853576611917 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-  m_PrefabInstance: {fileID: 1485491912687864543}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8520060873107244865 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7106910281078066590, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-  m_PrefabInstance: {fileID: 1485491912687864543}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3524911491488150160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8520060873107244865}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9573a6cf4e51f94b9dc1dfb2fea51b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textDisplay: {fileID: 5563804017946113731}
-  sentences:
-  - Welcome to Charovel. Here you can find Chacrona in large quantities.
-  typingSpeed: 0.05
-  NewSentenceSpeed: 1
 --- !u!1001 &1485491913392711181
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -557,411 +351,458 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &1485491913640129011
+--- !u!1001 &2837479482076026135
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1485491912722833443}
+    m_TransformParent: {fileID: 1485491912248893093}
     m_Modifications:
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1065.69
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -12.24
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 727.51
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7106910281078066590, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_Name
-      value: InfoPoint_Capsule
-      objectReference: {fileID: 0}
-    - target: {fileID: 7317988244308663307, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
+    - target: {fileID: -5598175983429613891, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
       propertyPath: textDisplay
       value: 
       objectReference: {fileID: 5563804017946113731}
-    - target: {fileID: 7317988244308663307, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
+    - target: {fileID: -5598175983429613891, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
       propertyPath: sentences.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 7317988244308663307, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
+    - target: {fileID: -5598175983429613891, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
       propertyPath: sentences.Array.data[0]
-      value: Welcome to Jagubonha. Here you can find Jagube in large quantities.
+      value: I haven't seen you since you were expelled from the village for selfish
+        behaviour. The village is facing a terrible disease.
       objectReference: {fileID: 0}
-    - target: {fileID: 8575663618832049883, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
+    - target: {fileID: -5598175983429613891, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: sentences.Array.data[1]
+      value: If you are interested in helping, go speak with the healer.
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7317988244308663307, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-  m_SourcePrefab: {fileID: 100100000, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
---- !u!4 &2791719852380984161 stripped
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -9.505001
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.13052611
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.9914449
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -165
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6023286123565931417, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_Name
+      value: Villager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+--- !u!4 &2536755808030500227 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-  m_PrefabInstance: {fileID: 1485491913640129011}
+  m_CorrespondingSourceObject: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+  m_PrefabInstance: {fileID: 2837479482076026135}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &8520060874059611245 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7106910281078066590, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-  m_PrefabInstance: {fileID: 1485491913640129011}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &729165852817011931
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8520060874059611245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9573a6cf4e51f94b9dc1dfb2fea51b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textDisplay: {fileID: 5563804017946113731}
-  sentences:
-  - Welcome to Jagubonha. Here you can find Jagube in large quantities.
-  typingSpeed: 0.05
-  NewSentenceSpeed: 1
---- !u!1001 &1485491913964148267
+--- !u!1001 &5646368625715024220
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 1485491913994230736}
     m_Modifications:
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 650.66
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -8.747
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 616.96
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7106910281078066590, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_Name
-      value: InfoPoint_Capsule
-      objectReference: {fileID: 0}
-    - target: {fileID: 7317988244308663307, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
+    - target: {fileID: -5598175983429613891, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
       propertyPath: textDisplay
       value: 
       objectReference: {fileID: 5563804017946113731}
-    - target: {fileID: 7317988244308663307, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
+    - target: {fileID: -5598175983429613891, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
       propertyPath: sentences.Array.size
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7317988244308663307, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
+    - target: {fileID: -5598175983429613891, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
       propertyPath: sentences.Array.data[0]
       value: Welcome to Charovel. Here you can find Chacrona in large quantities.
       objectReference: {fileID: 0}
-    - target: {fileID: 8575663618832049883, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7317988244308663307, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-  m_SourcePrefab: {fileID: 100100000, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
---- !u!4 &2791719852826653881 stripped
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 650.6266
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -9.549999
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 616.97363
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9292602
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.36942592
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 43.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6023286123565931417, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_Name
+      value: Villager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+--- !u!4 &5336610668352070088 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-  m_PrefabInstance: {fileID: 1485491913964148267}
+  m_CorrespondingSourceObject: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+  m_PrefabInstance: {fileID: 5646368625715024220}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &8520060874389887925 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7106910281078066590, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-  m_PrefabInstance: {fileID: 1485491913964148267}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2749735263794549590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8520060874389887925}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9573a6cf4e51f94b9dc1dfb2fea51b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textDisplay: {fileID: 5563804017946113731}
-  sentences:
-  - Welcome to Charovel. Here you can find Chacrona in large quantities.
-  typingSpeed: 0.05
-  NewSentenceSpeed: 1
---- !u!1001 &1485491914011182151
+--- !u!1001 &6950372528387727405
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1485491912619924743}
+    m_TransformParent: {fileID: 1485491913399550544}
     m_Modifications:
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 5.84
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -12.97
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 97.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7106910281078066590, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_Name
-      value: InfoPoint_Capsule
-      objectReference: {fileID: 0}
-    - target: {fileID: 7317988244308663307, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
+    - target: {fileID: -5598175983429613891, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
       propertyPath: textDisplay
       value: 
       objectReference: {fileID: 5563804017946113731}
-    - target: {fileID: 7317988244308663307, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
+    - target: {fileID: -5598175983429613891, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
       propertyPath: sentences.Array.size
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7317988244308663307, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
+    - target: {fileID: -5598175983429613891, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
       propertyPath: sentences.Array.data[0]
-      value: Friends, Jagube exists on Jagubonha Island and Chacrona on Charovel
-        Island. I no longer have the health and strength to go and we need two to
-        sale it, but you can take my canoe
+      value: Welcome to Charovel. Here you can find Chacrona in large quantities.
       objectReference: {fileID: 0}
-    - target: {fileID: 8575663618832049883, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7317988244308663307, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-  m_SourcePrefab: {fileID: 100100000, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
---- !u!4 &2791719852890728149 stripped
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 841.98944
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -11.775
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1309.3962
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.10984627
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.99394864
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 167.387
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6023286123565931417, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_Name
+      value: Villager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+--- !u!4 &7214823248602058937 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-  m_PrefabInstance: {fileID: 1485491914011182151}
+  m_CorrespondingSourceObject: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+  m_PrefabInstance: {fileID: 6950372528387727405}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &8520060874367486425 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7106910281078066590, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-  m_PrefabInstance: {fileID: 1485491914011182151}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2357948395890195012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8520060874367486425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9573a6cf4e51f94b9dc1dfb2fea51b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textDisplay: {fileID: 5563804017946113731}
-  sentences:
-  - Friends, Jagube exists on Jagubonha Island and Chacrona on Charovel Island.
-  - I no longer have the health and strength to go and we need two to sale it, but
-    you can take my canoe
-  typingSpeed: 0.05
-  NewSentenceSpeed: 1
---- !u!1001 &1485491914080100989
+--- !u!1001 &8015111618810901811
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 1485491913210670886}
     m_Modifications:
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 248.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -10.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1488.67
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7106910281078066590, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_Name
-      value: InfoPoint_Capsule
-      objectReference: {fileID: 0}
-    - target: {fileID: 7317988244308663307, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
+    - target: {fileID: -5598175983429613891, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
       propertyPath: textDisplay
       value: 
       objectReference: {fileID: 5563804017946113731}
-    - target: {fileID: 7317988244308663307, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
+    - target: {fileID: -5598175983429613891, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
       propertyPath: sentences.Array.size
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7317988244308663307, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
+    - target: {fileID: -5598175983429613891, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
       propertyPath: sentences.Array.data[0]
       value: Welcome to Charovel. Here you can find Chacrona in large quantities.
       objectReference: {fileID: 0}
-    - target: {fileID: 8575663618832049883, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_IsTrigger
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 248.07999
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -11.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1488.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7317988244308663307, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-  m_SourcePrefab: {fileID: 100100000, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
---- !u!4 &2791719852821872879 stripped
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6023286123565931417, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_Name
+      value: Villager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+--- !u!4 &7741680013801194919 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-  m_PrefabInstance: {fileID: 1485491914080100989}
+  m_CorrespondingSourceObject: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+  m_PrefabInstance: {fileID: 8015111618810901811}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &8520060874433458147 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7106910281078066590, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-  m_PrefabInstance: {fileID: 1485491914080100989}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &882080250100447714
-MonoBehaviour:
+--- !u!1001 &8951634175675344802
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1485491912722833443}
+    m_Modifications:
+    - target: {fileID: -5598175983429613891, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: textDisplay
+      value: 
+      objectReference: {fileID: 5563804017946113731}
+    - target: {fileID: -5598175983429613891, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5598175983429613891, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: sentences.Array.data[0]
+      value: Welcome to Jagubonha. Here you can find Jagube in large quantities.
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1065.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -13.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 727.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6023286123565931417, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_Name
+      value: Villager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+--- !u!4 &8677885228685514550 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+  m_PrefabInstance: {fileID: 8951634175675344802}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8520060874433458147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9573a6cf4e51f94b9dc1dfb2fea51b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textDisplay: {fileID: 5563804017946113731}
-  sentences:
-  - Welcome to Charovel. Here you can find Chacrona in large quantities.
-  typingSpeed: 0.05
-  NewSentenceSpeed: 1
+--- !u!1001 &8966705381638856794
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1485491912619924743}
+    m_Modifications:
+    - target: {fileID: -5598175983429613891, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: textDisplay
+      value: 
+      objectReference: {fileID: 5563804017946113731}
+    - target: {fileID: -5598175983429613891, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: sentences.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -5598175983429613891, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: sentences.Array.data[0]
+      value: Friends, Jagube exists on Jagubonha Island and Chacrona on Charovel
+        Island.
+      objectReference: {fileID: 0}
+    - target: {fileID: -5598175983429613891, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: sentences.Array.data[1]
+      value: I no longer have the health and strength to go and we need two to sale
+        it, but you can take my canoe
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.8873215
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -12.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 97.4613
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.60876125
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7933535
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -105
+      objectReference: {fileID: 0}
+    - target: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6023286123565931417, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+      propertyPath: m_Name
+      value: Villager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+--- !u!4 &8657253775433666766 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 312047420316381332, guid: 03cf181dcd570aa46879ab1f00a662a9, type: 3}
+  m_PrefabInstance: {fileID: 8966705381638856794}
+  m_PrefabAsset: {fileID: 0}
