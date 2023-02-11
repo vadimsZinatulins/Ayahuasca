@@ -551,7 +551,13 @@ namespace PlayerBehaviours
                         if (currentRiddable.TryGetComponent(out Boat boat))
                         {
                             boat.Row(gameObject, rowingSideForce, rowingFowardForce);
+
                             animator.SetTrigger("Paddle");
+                            
+                            var audiosource = (RightHand.childCount > 0 ? RightHand.GetChild(0) : LeftHand.GetChild(0)).GetComponent<AudioSource>();
+                            if(!audiosource.isPlaying) {
+                                audiosource.PlayDelayed(0.5f);
+                            }
                         }
                     }
                     break;
