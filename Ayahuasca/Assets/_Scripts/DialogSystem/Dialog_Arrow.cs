@@ -34,6 +34,8 @@ public class Dialog_Arrow : MonoBehaviour
             index = 0;
             showMessage = true;
             StartCoroutine(Type());
+
+            InventoryUI.Instance?.gameObject.SetActive(false);
         }
         
     }
@@ -44,11 +46,12 @@ public class Dialog_Arrow : MonoBehaviour
         StopCoroutine(Type());
         textDisplay.text = "";
         Arrow.SetActive(false);
+        
+        InventoryUI.Instance?.gameObject.SetActive(true);
     }
 
     IEnumerator Type()
     {
-
         foreach(char letter in sentences[index].ToCharArray())
         {
             if (showMessage == true)
@@ -71,7 +74,6 @@ public class Dialog_Arrow : MonoBehaviour
 
     public void NextSentence()
     {
-
         if (index < sentences.Length - 1)
         {
             index++;
