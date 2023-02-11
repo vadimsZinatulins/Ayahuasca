@@ -9,7 +9,7 @@ public class PlayerInventory : MonoBehaviour {
         public int grams;
     }
 
-    private List<CollectedItem> collectables;
+    private static List<CollectedItem> collectables;
 
     public List<CollectedItem> CollectedItems => collectables;
 
@@ -30,5 +30,11 @@ public class PlayerInventory : MonoBehaviour {
         } else {
             ca.grams += gramsCollected;
         }
+
+        UpdateUI();
+    }
+
+    public void UpdateUI() {
+        collectables.ForEach(collectable => InventoryUI.Instance?.SetValue(collectable.collectableData.herbName, collectable.grams));
     }
 }

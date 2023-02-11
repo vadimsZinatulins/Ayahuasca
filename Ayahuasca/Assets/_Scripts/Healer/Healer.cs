@@ -16,6 +16,8 @@ public class Healer : MonoBehaviour, _Scripts.Behaviours.Interfaces.IInteractabl
                     StartCoroutine(Brew(cure, numberOfCures));
                 }
             });
+
+            inventory.UpdateUI();
         }
     }
 
