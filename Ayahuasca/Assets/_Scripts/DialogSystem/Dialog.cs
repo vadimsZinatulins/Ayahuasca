@@ -7,40 +7,16 @@ public class Dialog : MonoBehaviour
 {
     public TextMeshProUGUI textDisplay;
     public string[] sentences;
-    private int index;
+    protected int index;
     public float typingSpeed;
     public float NewSentenceSpeed;
-    private bool showMessage = false;
+    protected bool showMessage = false;
 
+    public bool IsTalking { get; set; }
 
-    private void Update()
+    protected IEnumerator Type()
     {
-        if (textDisplay.text == sentences[index])
-        {
-            
-        }
-    }
-
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (textDisplay.text == "")
-        {
-            index = 0;
-            showMessage = true;
-            StartCoroutine(Type());
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        showMessage = false;
-        StopCoroutine(Type());
-        textDisplay.text = "";
-    }
-
-    IEnumerator Type()
-    {
+        IsTalking = true;
 
         foreach(char letter in sentences[index].ToCharArray())
         {
@@ -55,6 +31,7 @@ public class Dialog : MonoBehaviour
             }
             
         }
+
         if (showMessage == true)
         {
             yield return new WaitForSeconds(NewSentenceSpeed);
@@ -64,14 +41,18 @@ public class Dialog : MonoBehaviour
 
     public void NextSentence()
     {
-
         if (index < sentences.Length - 1)
         {
             index++;
             textDisplay.text = "";
             StartCoroutine(Type());
-        } 
-        
+        } else {
+            IsTalking = false;
+            textDisplay.text = "";
+            showMessage = false;
+
+            InventoryUI.Instance?.gameObject.SetActive(true);
+        }
     }
 
 }

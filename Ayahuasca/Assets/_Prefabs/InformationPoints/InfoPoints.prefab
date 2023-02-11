@@ -30,7 +30,6 @@ Transform:
   m_Children:
   - {fileID: 5563804017370816105}
   - {fileID: 1485491912248893093}
-  - {fileID: 1485491913435903483}
   - {fileID: 1485491912619924743}
   - {fileID: 1485491913994230736}
   - {fileID: 1485491913399550544}
@@ -102,7 +101,7 @@ Transform:
   m_Children:
   - {fileID: 2791719852890728149}
   m_Father: {fileID: 1485491912127839792}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1485491912722833468
 GameObject:
@@ -134,7 +133,7 @@ Transform:
   m_Children:
   - {fileID: 2791719852380984161}
   m_Father: {fileID: 1485491912127839792}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1485491913210670887
 GameObject:
@@ -166,7 +165,7 @@ Transform:
   m_Children:
   - {fileID: 2791719852821872879}
   m_Father: {fileID: 1485491912127839792}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1485491913399550545
 GameObject:
@@ -198,39 +197,7 @@ Transform:
   m_Children:
   - {fileID: 2791719853576611917}
   m_Father: {fileID: 1485491912127839792}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1485491913435903476
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1485491913435903483}
-  m_Layer: 0
-  m_Name: 2_Healer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1485491913435903483
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1485491913435903476}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 106.98809, y: 27.202023, z: -923.7013}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2791719853535377647}
-  m_Father: {fileID: 1485491912127839792}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1485491913994230737
 GameObject:
@@ -262,7 +229,7 @@ Transform:
   m_Children:
   - {fileID: 2791719852826653881}
   m_Father: {fileID: 1485491912127839792}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &997572308694262979
 PrefabInstance:
@@ -368,114 +335,6 @@ MonoBehaviour:
     The village is facing a terrible disease. '
   - If you are interested in helping, you can find the healer following this path.
   Arrow: {fileID: 1755540564595642127}
-  typingSpeed: 0.05
-  NewSentenceSpeed: 1
---- !u!1001 &1485491912525650557
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1485491913435903483}
-    m_Modifications:
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -33.807
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -8.53
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 15.224
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7106910281078066590, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_Name
-      value: InfoPoint_Capsule
-      objectReference: {fileID: 0}
-    - target: {fileID: 7317988244308663307, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: textDisplay
-      value: 
-      objectReference: {fileID: 5563804017946113731}
-    - target: {fileID: 7317988244308663307, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: sentences.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7317988244308663307, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: sentences.Array.data[0]
-      value: We are facing a terrible flu, to save as many people as possible, I
-        need Ayahuasca tea. But around here I only have Lemon Balm and Chamomile,
-        great for postponing symptoms, but the right ingredients are Jagube and Chacrona.
-        Ask the fisherman, near the river, where they can be found.
-      objectReference: {fileID: 0}
-    - target: {fileID: 8575663618832049883, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7317988244308663307, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-  m_SourcePrefab: {fileID: 100100000, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
---- !u!4 &2791719853535377647 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3612917608555160210, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-  m_PrefabInstance: {fileID: 1485491912525650557}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8520060872883984355 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7106910281078066590, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
-  m_PrefabInstance: {fileID: 1485491912525650557}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &9128204052958444535
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8520060872883984355}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9573a6cf4e51f94b9dc1dfb2fea51b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textDisplay: {fileID: 5563804017946113731}
-  sentences:
-  - 'We are facing a terrible flu, to save as many people as possible, I need Ayahuasca
-    tea. '
-  - But around here I only have Lemon Balm and Chamomile, great for postponing symptoms,
-    but the right ingredients are Jagube and Chacrona.
-  - Ask the fisherman, near the river, where they can be found.
   typingSpeed: 0.05
   NewSentenceSpeed: 1
 --- !u!1001 &1485491912687864543

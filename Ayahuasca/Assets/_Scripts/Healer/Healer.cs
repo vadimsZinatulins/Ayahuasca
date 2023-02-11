@@ -7,15 +7,38 @@ public class Healer : MonoBehaviour, _Scripts.Behaviours.Interfaces.IInteractabl
     [SerializeField] private Transform interactionLocation;
     [SerializeField] private List<CureRecipeSO> listOfCures;
 
-    public void Interact(Transform InInteractorTransform) {
-        if(InInteractorTransform.TryGetComponent<PlayerInventory>(out PlayerInventory inventory)) {
+    private bool firstTimeInteraction = true;
 
-            listOfCures.ForEach(cure => {
-                if(cure.ContainsIngredients(inventory.CollectedItems)) {
-                    int numberOfCures = cure.GetBriewAmount(inventory.CollectedItems);
-                    StartCoroutine(Brew(cure, numberOfCures));
+    public void Interact(Transform InInteractorTransform) {
+        if(GetComponent<Dialog_Healer>()?.IsTalking ?? false) {
+            return;
+        }
+
+        if(!firstTimeInteraction) {
+            if(InInteractorTransform.TryGetComponent<PlayerInventory>(out PlayerInventory inventory)) {
+                var messages = new List<string>();
+
+                listOfCures.ForEach(cure => {
+                    if(cure.ContainsIngredients(inventory.CollectedItems)) {
+                        messages.Add("It will take me " + (Mathf.Round(cure.timeToBrewInSeconds / 60f)) + " minutes to brew " + cure.name + " cure");
+                        int numberOfCures = cure.GetBriewAmount(inventory.CollectedItems);
+                        StartCoroutine(Brew(cure, numberOfCures));
+                    }
+                });
+
+                if(messages.Count > 0) {
+                    messages.Insert(0, "I will start brewing the cures");
+                    inventory.UpdateUI();
+                } else {
+                    messages.Add("You don't have enough ingredients to brew a cure");
                 }
-            });
+
+                GetComponent<Dialog_Healer>()?.Talk(messages.ToArray());
+            }
+        } else {
+            firstTimeInteraction = false;
+
+            GetComponent<Dialog_Healer>()?.Talk();
         }
     }
 

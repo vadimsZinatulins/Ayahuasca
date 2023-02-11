@@ -106,12 +106,16 @@ public class SplitScreenRenderer : MonoBehaviour
             cameraPlayerOne.gameObject.SetActive(true);
             cameraPlayerTwo.gameObject.SetActive(true);
             isSplitScreenActive = true;
+
+            InventoryUI.Instance?.SetSplitScreen(isSplitScreenActive);
         } 
         else if(distance < splitDistance && isSplitScreenActive)
         {
             cameraPlayerOne.gameObject.SetActive(false);
             cameraPlayerTwo.gameObject.SetActive(false);
             isSplitScreenActive = false;
+            
+            InventoryUI.Instance?.SetSplitScreen(isSplitScreenActive);
         }
     }
 
