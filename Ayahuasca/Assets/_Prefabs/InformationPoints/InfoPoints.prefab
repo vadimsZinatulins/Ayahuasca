@@ -67,7 +67,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4610489573646255697}
-  - {fileID: 1375636909307680181}
   m_Father: {fileID: 1485491912127839792}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -317,7 +316,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7106910281078066590, guid: 1c4fedb936895cc4b8fd2dadbc4bd265, type: 3}
   m_PrefabInstance: {fileID: 997572308694262979}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1485491912881762973
+--- !u!114 &1834613138388606386
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -326,15 +325,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8032389312064923997}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74f1217cc27c85044aa42848f4474a0a, type: 3}
+  m_Script: {fileID: 11500000, guid: d9573a6cf4e51f94b9dc1dfb2fea51b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   textDisplay: {fileID: 5563804017946113731}
   sentences:
-  - 'I haven''t seen you since you were expelled from the village for selfish behaviour.
-    The village is facing a terrible disease. '
-  - If you are interested in helping, you can find the healer following this path.
-  Arrow: {fileID: 1755540564595642127}
+  - I haven't seen you since you were expelled from the village for selfish behaviour.
+    The village is facing a terrible disease.
+  - If you are interested in helping, go speak with the healer.
   typingSpeed: 0.05
   NewSentenceSpeed: 1
 --- !u!1001 &1485491912687864543
@@ -761,93 +759,6 @@ MonoBehaviour:
   - Welcome to Charovel. Here you can find Chacrona in large quantities.
   typingSpeed: 0.05
   NewSentenceSpeed: 1
---- !u!1001 &1485491913981047390
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1485491912248893093}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 5afad9c6f1cf4964083cb428ed571654, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5afad9c6f1cf4964083cb428ed571654, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5afad9c6f1cf4964083cb428ed571654, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.35
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5afad9c6f1cf4964083cb428ed571654, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.35
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5afad9c6f1cf4964083cb428ed571654, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -21.61827
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5afad9c6f1cf4964083cb428ed571654, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -9.663
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5afad9c6f1cf4964083cb428ed571654, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1.8310547
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5afad9c6f1cf4964083cb428ed571654, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.8970315
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5afad9c6f1cf4964083cb428ed571654, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.0034564286
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5afad9c6f1cf4964083cb428ed571654, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.44194993
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5afad9c6f1cf4964083cb428ed571654, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.0017029147
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5afad9c6f1cf4964083cb428ed571654, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -0.442
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5afad9c6f1cf4964083cb428ed571654, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 52.457
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5afad9c6f1cf4964083cb428ed571654, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: 5afad9c6f1cf4964083cb428ed571654, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: f9b989122ddd0b6479864b893e849c02, type: 2}
-    - target: {fileID: 919132149155446097, guid: 5afad9c6f1cf4964083cb428ed571654, type: 3}
-      propertyPath: m_Name
-      value: Arrow
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 5afad9c6f1cf4964083cb428ed571654, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5afad9c6f1cf4964083cb428ed571654, type: 3}
---- !u!4 &1375636909307680181 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5afad9c6f1cf4964083cb428ed571654, type: 3}
-  m_PrefabInstance: {fileID: 1485491913981047390}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1755540564595642127 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5afad9c6f1cf4964083cb428ed571654, type: 3}
-  m_PrefabInstance: {fileID: 1485491913981047390}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1485491914011182151
 PrefabInstance:
   m_ObjectHideFlags: 0
