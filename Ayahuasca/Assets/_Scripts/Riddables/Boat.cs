@@ -11,6 +11,7 @@ using UnityEngine;
 public class Boat : MonoBehaviour, IRiddable
 {
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private Transform paddle;
 
     [Header("Seats and Camera")] [SerializeField]
     private Camera boatCamera;
@@ -107,6 +108,18 @@ public class Boat : MonoBehaviour, IRiddable
                     playerCharacter.transform.parent = seat.positionTransform;
                     playerCharacter.transform.position = seat.positionTransform.position;
                     playerCharacter.transform.rotation = seat.positionTransform.rotation;
+
+                    var paddleTransform = Instantiate(paddle);
+                    if(seat.rowingSide == RowingSide.LEFT) {
+                        paddleTransform.parent = playerCharacter.RightHand;
+                        paddleTransform.GetComponent<Paddle>().Target = playerCharacter.LeftHand;
+                    } else {
+                        paddleTransform.parent = playerCharacter.LeftHand;
+                        paddleTransform.GetComponent<Paddle>().Target = playerCharacter.RightHand;
+                    }
+
+                    paddleTransform.localPosition = Vector3.zero;
+
                     playerCharacter.GetComponent<CharacterController>().enabled = false;
                 }
                 else
@@ -191,9 +204,18 @@ public class Boat : MonoBehaviour, IRiddable
             seat.currentObject.transform.parent = null;
             seat.currentObject.transform.position = seat.exitLocation.position;
             seat.currentObject.transform.rotation = seat.exitLocation.rotation;
-            if (seat.currentObject.GetComponent<PlayerCharacter>())
+            var playerCharacter = seat.currentObject.GetComponent<PlayerCharacter>();
+            if (playerCharacter != null)
             {
-                if (seat.currentObject.GetComponent<PlayerCharacter>().OnStopRiding())
+                if(playerCharacter.LeftHand.childCount > 0) {
+                    Destroy(playerCharacter.LeftHand.GetChild(0).gameObject);
+                }
+
+                if(playerCharacter.RightHand.childCount > 0) {
+                    Destroy(playerCharacter.RightHand.GetChild(0).gameObject);
+                }
+                
+                if (playerCharacter.OnStopRiding())
                 {
                     seat.currentObject.GetComponent<CharacterController>().enabled = true;
                     seat.currentObject.GetComponent<Collider>().enabled = true;

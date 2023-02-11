@@ -14,6 +14,9 @@ namespace PlayerBehaviours
     public class PlayerCharacter : MonoBehaviour
     {
         //-------------------------------------------BEGIN-VARIABLES-------------------------------------------
+        [SerializeField] private Transform leftHand;
+        [SerializeField] private Transform rightHand;
+
         //----------------------------------------------PLAYER-------------------------------------------------
         /* Player owner of this character */
         private Player _playerOwner;
@@ -158,6 +161,9 @@ namespace PlayerBehaviours
         private Animator animator;
         //-------------------------------------------END-VARIABLES-------------------------------------------
 
+        public Transform LeftHand => leftHand;
+        public Transform RightHand => rightHand;
+        
         public bool WalkingEnabled { get; set; } = true;
 
         private void OnDrawGizmos()

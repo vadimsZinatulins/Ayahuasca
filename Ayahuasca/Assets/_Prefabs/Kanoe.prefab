@@ -1014,6 +1014,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 8675953842578956421}
+  paddle: {fileID: 4072740398149454135, guid: 530d4124db8d08147ab1d75c400b91e8, type: 3}
   boatCamera: {fileID: 1921495200920083000}
   frontSeat:
     positionTransform: {fileID: 1748820808606559813}

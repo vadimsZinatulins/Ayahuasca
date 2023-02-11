@@ -10,6 +10,7 @@ namespace PlayerBehaviours
     /// </summary>
     public class Player : MonoBehaviour
     {
+
         [SerializeField] PlayerCharacter CharacterPrefab;
         private PlayerCharacter _character;
         private PlayerInfo _playerInfo;

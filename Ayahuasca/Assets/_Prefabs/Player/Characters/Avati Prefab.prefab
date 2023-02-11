@@ -265,6 +265,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70bf6779c4ff4aaea2615d2ecdc9c47f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leftHand: {fileID: 3123896388637832145}
+  rightHand: {fileID: 4315153267230337858}
   cameraOffset: {x: 0, y: 10, z: 2}
   characterController: {fileID: 4423887396200627935}
   moveSpeed: 4
@@ -373,6 +375,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f0a280374f5a5834d88fd469f66214be, type: 3}
   m_PrefabInstance: {fileID: 2831750741876551602}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &3123896388637832145 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8352442841093235613, guid: f0a280374f5a5834d88fd469f66214be, type: 3}
+  m_PrefabInstance: {fileID: 2831750741876551602}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3138181669480895203 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f0a280374f5a5834d88fd469f66214be, type: 3}
@@ -391,6 +398,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCharacter: {fileID: 4613639607704787128}
+--- !u!4 &4315153267230337858 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2066843555210544368, guid: f0a280374f5a5834d88fd469f66214be, type: 3}
+  m_PrefabInstance: {fileID: 2831750741876551602}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &8513760298077819427 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: f0a280374f5a5834d88fd469f66214be, type: 3}
