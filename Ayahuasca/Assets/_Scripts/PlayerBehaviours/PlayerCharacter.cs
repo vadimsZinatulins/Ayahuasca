@@ -153,6 +153,12 @@ namespace PlayerBehaviours
         public float rowingSideForce = 0.2f;
         public float rowingFowardForce = 3f;
 
+        private bool canRow = true;
+        private bool gonnaRow = false;
+        public float TimeToRow = 1f;
+        public float TimeBetweenRows = 0.2f;
+        private float currentRowTime;
+
         //-------------------------------------------Animations-------------------------------------------
         [Header("Animations")]
         /* Character controller for the movement */
@@ -205,7 +211,7 @@ namespace PlayerBehaviours
                     NormalGravity();
                     break;
                 case PlayerRiding.BOAT:
-                
+                    BoatChecks();
                     break;
             }
         }
@@ -239,7 +245,8 @@ namespace PlayerBehaviours
                     currentRidables.Add(interactableGO.gameObject);
                 }
             }
-
+            
+            // If is riding something, we don't want any more popups
             if (currentInteractables.Count > 0)
             {
                 if (interactPopup == null)
@@ -327,9 +334,8 @@ namespace PlayerBehaviours
                     riddableIndicatorPlane.SetActive(false);
                 }
             }
-
-            if (currentInteractables.Count == 0 &&
-                currentRidables.Count == 0)
+            
+            if (currentInteractables.Count == 0 && currentRidables.Count == 0)
             {
                 if (interactPopup != null)
                 {
@@ -431,7 +437,35 @@ namespace PlayerBehaviours
         }
 
         #endregion
-        
+
+        #region Boat Functions
+
+        private void BoatChecks()
+        {
+            if (interactPopup != null)
+            {
+                interactPopup.gameObject.ReturnToPool();
+                interactPopup = null;
+            }
+
+            if (currentRowTime > 0)
+            {
+                currentRowTime = currentRowTime - Time.deltaTime;
+            }
+            // Can row in case the timer is 0
+            canRow = (currentRowTime <= 0);
+        }
+
+        public void RowBoat()
+        {
+            if (currentRiddable.TryGetComponent(out Boat boat))
+            {
+                boat.Row(gameObject, rowingSideForce, rowingFowardForce);
+                gonnaRow = false;
+            }
+        }
+
+        #endregion
 
         public void ActiveColliders(bool isEnable)
         {
@@ -548,12 +582,15 @@ namespace PlayerBehaviours
                 case PlayerRiding.BOAT:
                     if (currentRiddable != null)
                     {
-                        if (currentRiddable.TryGetComponent(out Boat boat))
+                        if (currentRiddable.TryGetComponent(out Boat boat) && canRow && !gonnaRow)
                         {
-                            boat.Row(gameObject, rowingSideForce, rowingFowardForce);
+                            currentRowTime = TimeToRow + TimeBetweenRows;
+                            gonnaRow = true;
+                            //RowBoat() - This is being executed on the animator so the movements are syncronized. If we want faster, change the playback speed or the animation tempo itself
 
+                            animator.SetFloat("PaddingSpeed", 1/TimeToRow);
                             animator.SetTrigger("Paddle");
-                            
+
                             var audiosource = (RightHand.childCount > 0 ? RightHand.GetChild(0) : LeftHand.GetChild(0)).GetComponent<AudioSource>();
                             if(!audiosource.isPlaying) {
                                 audiosource.PlayDelayed(0.5f);
