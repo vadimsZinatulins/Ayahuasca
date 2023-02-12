@@ -294,8 +294,10 @@ MonoBehaviour:
   riddableIndicatorPlane: {fileID: 531523904773396635}
   collidersToDeativateOnRide: []
   boatPushForce: 2
-  rowingSideForce: 0.4
-  rowingFowardForce: 1
+  rowingSideForce: 2.5
+  rowingFowardForce: 9
+  TimeToRow: 0.3
+  TimeBetweenRows: 0
   animator: {fileID: 8513760298077819427}
 --- !u!114 &7172824679955540436
 MonoBehaviour:
