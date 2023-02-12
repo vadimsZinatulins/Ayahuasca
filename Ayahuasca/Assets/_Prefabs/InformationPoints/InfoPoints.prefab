@@ -325,6 +325,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InfoPoint_Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6461290255401963724, guid: d963d5270de145b499fea4be5f5041ea, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -416
+      objectReference: {fileID: 0}
     - target: {fileID: 6461290255401963726, guid: d963d5270de145b499fea4be5f5041ea, type: 3}
       propertyPath: m_margin.x
       value: 0.25146484
