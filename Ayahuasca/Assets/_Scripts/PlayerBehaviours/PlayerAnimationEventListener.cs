@@ -13,4 +13,9 @@ public class PlayerAnimationEventListener : MonoBehaviour
     public void EnableWalk() {
         playerCharacter.WalkingEnabled = true;
     }
+
+    public void RowBoat()
+    {
+        playerCharacter.RowBoat();
+    }
 }
