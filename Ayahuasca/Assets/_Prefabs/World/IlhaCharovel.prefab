@@ -10279,9 +10279,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reed_Hut (4)
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: -1623330598324348373, guid: 66f7b6733c404c6498c4cec7b8a95865, type: 3}
-    - {fileID: 8569922001370731936, guid: 66f7b6733c404c6498c4cec7b8a95865, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66f7b6733c404c6498c4cec7b8a95865, type: 3}
 --- !u!4 &8019013739439261616 stripped
 Transform:
@@ -10355,9 +10353,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reed_Hut (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: -1623330598324348373, guid: 66f7b6733c404c6498c4cec7b8a95865, type: 3}
-    - {fileID: 8569922001370731936, guid: 66f7b6733c404c6498c4cec7b8a95865, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66f7b6733c404c6498c4cec7b8a95865, type: 3}
 --- !u!4 &8019013739183164510 stripped
 Transform:
@@ -10431,9 +10427,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reed_Hut
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: -1623330598324348373, guid: 66f7b6733c404c6498c4cec7b8a95865, type: 3}
-    - {fileID: 8569922001370731936, guid: 66f7b6733c404c6498c4cec7b8a95865, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66f7b6733c404c6498c4cec7b8a95865, type: 3}
 --- !u!4 &8019013738759135613 stripped
 Transform:
@@ -10507,9 +10501,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reed_Hut (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: -1623330598324348373, guid: 66f7b6733c404c6498c4cec7b8a95865, type: 3}
-    - {fileID: 8569922001370731936, guid: 66f7b6733c404c6498c4cec7b8a95865, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66f7b6733c404c6498c4cec7b8a95865, type: 3}
 --- !u!4 &8019013738850450857 stripped
 Transform:
@@ -10752,9 +10744,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reed_Hut (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: -1623330598324348373, guid: 66f7b6733c404c6498c4cec7b8a95865, type: 3}
-    - {fileID: 8569922001370731936, guid: 66f7b6733c404c6498c4cec7b8a95865, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66f7b6733c404c6498c4cec7b8a95865, type: 3}
 --- !u!4 &8019013738290647332 stripped
 Transform:
