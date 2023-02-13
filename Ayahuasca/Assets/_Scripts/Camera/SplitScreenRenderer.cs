@@ -98,10 +98,10 @@ public class SplitScreenRenderer : MonoBehaviour
         material.SetTexture(textureTarget, camera.targetTexture);
     }
 
-    private void UpdateSplitScreenState()
+    private void UpdateSplitScreenState(bool force = false)
     {
         var distance = Vector3.Distance(playerOne.transform.position, playerTwo.transform.position);
-        if(distance > splitDistance && !isSplitScreenActive)
+        if(distance > splitDistance && (!isSplitScreenActive || force))
         {
             cameraPlayerOne.gameObject.SetActive(true);
             cameraPlayerTwo.gameObject.SetActive(true);
@@ -109,7 +109,7 @@ public class SplitScreenRenderer : MonoBehaviour
 
             InventoryUI.Instance?.SetSplitScreen(isSplitScreenActive);
         } 
-        else if(distance < splitDistance && isSplitScreenActive)
+        else if(distance < splitDistance && (isSplitScreenActive || force))
         {
             cameraPlayerOne.gameObject.SetActive(false);
             cameraPlayerTwo.gameObject.SetActive(false);
@@ -124,6 +124,8 @@ public class SplitScreenRenderer : MonoBehaviour
         this.enabled = isEnable;
         cameraPlayerOne.gameObject.SetActive(isEnable);
         cameraPlayerTwo.gameObject.SetActive(isEnable);
+
+        UpdateSplitScreenState(true);
     }
 
     public bool GetIsSystemEnable()

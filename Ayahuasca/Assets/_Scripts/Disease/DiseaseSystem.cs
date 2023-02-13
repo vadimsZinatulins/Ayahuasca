@@ -31,6 +31,8 @@ public class DiseaseSystem : MonoBehaviour {
     private int currentNumberOfVillagers;
     private int curedVillagers;
 
+    private float timeSinceDiseaseStart;
+
     private float timeToDie;
 
     void Awake() {
@@ -39,6 +41,8 @@ public class DiseaseSystem : MonoBehaviour {
         }
 
         Instance = this;
+
+        timeSinceDiseaseStart = Time.timeSinceLevelLoad;
 
         listOfSickVillagers = new List<SickVillager>();
         sicknessRedardants = new List<float>();
@@ -50,6 +54,25 @@ public class DiseaseSystem : MonoBehaviour {
 
         curedVillagers = 0;
         currentNumberOfVillagers = initialNumberOfHealthyVillagers;
+    }
+
+    void Start() {
+        InventoryUI.Instance?.SetValue("Health", GetNumberOfAliveVillagers());
+    }
+
+    public void StopTimer() {
+        float endTime = Time.timeSinceLevelLoad;
+                                    
+        var statistics = StatisticsForSystem.Instance;
+        if(statistics) {
+            statistics.LiveCount = 28; // GetNumberOfAliveVillagers();
+            statistics.DeathCount = 9; // GetNumberOfDeadVillagers();
+
+            statistics.StartTime = timeSinceDiseaseStart;
+            statistics.EndTime = endTime;
+
+            statistics.LoadScene("Main Menu Island");
+        }
     }
 
     void Update() {
@@ -66,7 +89,11 @@ public class DiseaseSystem : MonoBehaviour {
         }
 
         listOfSickVillagers.ForEach(sickVillager => sickVillager.timeToDie -= Time.deltaTime);
-        listOfSickVillagers.RemoveAll(sickVillager => sickVillager.timeToDie <= 0f);
+        int died = listOfSickVillagers.RemoveAll(sickVillager => sickVillager.timeToDie <= 0f);
+        if(died > 0) {
+            InventoryUI.Instance?.SetValue("Health", GetNumberOfAliveVillagers());
+            InventoryUI.Instance?.SetValue("Death", GetNumberOfDeadVillagers());
+        }
     }
 
     private bool TryGetDiseaseInterval(string diseaseName, out float minTime, out float maxTime) {
@@ -94,12 +121,9 @@ public class DiseaseSystem : MonoBehaviour {
         }
     }
 
-    // Use this method to retrieve the number of sick villagers in a specific state
-    public int GetNumberOfPeopleInState(string stateName) {
-        if(TryGetDiseaseInterval(stateName, out float minTime, out float maxTime)) {
-            return listOfSickVillagers.FindAll(sickVillager => sickVillager.timeToDie >= minTime && sickVillager.timeToDie <= maxTime).Count;
-        }
-        return 0;
+    // Use this method to retrieve the number of dead villagers
+    public int GetNumberOfAliveVillagers() {
+        return currentNumberOfVillagers + listOfSickVillagers.Count;
     }
 
     // Use this method to retrieve the number of dead villagers
@@ -107,9 +131,7 @@ public class DiseaseSystem : MonoBehaviour {
         int totalNumberOfVillagers = initialNumberOfHealthyVillagers;
         listOfDiseases.ForEach(disease => totalNumberOfVillagers += disease.initialNumberOfVillagers);
 
-        int numberOfAliveVillagers = currentNumberOfVillagers + listOfSickVillagers.Count;
-
-        return totalNumberOfVillagers - numberOfAliveVillagers;
+        return totalNumberOfVillagers - GetNumberOfAliveVillagers();
     }
 
     // Use this method to cure villagers. The argument specifies the amount of villagers to cure

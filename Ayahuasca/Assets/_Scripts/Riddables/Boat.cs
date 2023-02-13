@@ -173,10 +173,10 @@ public class Boat : MonoBehaviour, IRiddable
         {
             if (SplitScreenManager.Instance != null)
             {
-                if (SplitScreenManager.Instance.GetIsSystemEnable())
+                if (!SplitScreenManager.Instance.GetIsSystemEnable())
                 {
-                    SplitScreenManager.Instance.EnableSystem(true);
                     boatCamera.gameObject.SetActive(false);
+                    SplitScreenManager.Instance.EnableSystem(true);
                 }
             }
         }

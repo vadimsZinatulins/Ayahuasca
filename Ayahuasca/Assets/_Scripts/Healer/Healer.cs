@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Healer : MonoBehaviour, _Scripts.Behaviours.Interfaces.IInteractable {
 
@@ -9,7 +10,11 @@ public class Healer : MonoBehaviour, _Scripts.Behaviours.Interfaces.IInteractabl
 
     private bool firstTimeInteraction = true;
 
+    private int curesProduced = 0;
+
     public void Interact(Transform InInteractorTransform) {
+        DiseaseSystem.Instance?.StopTimer();
+        
         if(GetComponent<Dialog_Healer>()?.IsTalking ?? false) {
             return;
         }
@@ -22,6 +27,21 @@ public class Healer : MonoBehaviour, _Scripts.Behaviours.Interfaces.IInteractabl
                     if(cure.ContainsIngredients(inventory.CollectedItems)) {
                         messages.Add("It will take me " + (Mathf.Round(cure.timeToBrewInSeconds / 60f)) + " minutes to brew " + cure.name + " cure");
                         int numberOfCures = cure.GetBriewAmount(inventory.CollectedItems);
+
+                        if(cure.isPermanent) {
+                            Debug.Log("Cure is permanent");
+
+                            curesProduced += numberOfCures;
+
+                            if(curesProduced > DiseaseSystem.Instance?.GetNumberOfAliveVillagers()) {
+                                var diseaseSystem = DiseaseSystem.Instance;
+
+                                if(diseaseSystem) {
+                                    diseaseSystem.StopTimer();
+                                }
+                            }
+                        }
+
                         StartCoroutine(Brew(cure, numberOfCures));
                     }
                 });
