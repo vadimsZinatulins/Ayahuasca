@@ -25,16 +25,16 @@ public class InventoryUI : MonoBehaviour {
         bottomInventory.SetActive(!isActive);
     }   
 
-    public void SetValue(string herb, int amount)
+    public void SetValue(string uiName, int amount)
     {
-        SetHerbValue(centerInventory, herb, amount);
-        SetHerbValue(bottomInventory, herb, amount);
+        SetUIValue(centerInventory, uiName, amount);
+        SetUIValue(bottomInventory, uiName, amount);
     }
-    private void SetHerbValue(GameObject go, string herb, int amount)
+    private void SetUIValue(GameObject go, string uiName, int amount)
     {
         foreach (var inventoryText in InventoryTexts)
         {
-            if (inventoryText.title == herb)
+            if (inventoryText.title == uiName)
             {
                 inventoryText.centerTextMesh.SetText(amount.ToString());
                 inventoryText.bottomTextMesh.SetText(amount.ToString());
