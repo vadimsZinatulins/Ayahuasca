@@ -2955,6 +2955,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   centerInventory: {fileID: 6463360692413450183}
   bottomInventory: {fileID: 6463360693337978013}
+  InventoryTexts:
+  - title: Chacrona
+    centerTextMesh: {fileID: 2819169141957127985}
+    bottomTextMesh: {fileID: 5632177183482218821}
+  - title: Jagube
+    centerTextMesh: {fileID: 6441381679551023608}
+    bottomTextMesh: {fileID: 7530561564676055760}
+  - title: Chamomile
+    centerTextMesh: {fileID: 8524628352849797846}
+    bottomTextMesh: {fileID: 732808903048683501}
+  - title: LemonBalm
+    centerTextMesh: {fileID: 1797473103759163055}
+    bottomTextMesh: {fileID: 1949223734119806781}
 --- !u!1 &6463360692413450183
 GameObject:
   m_ObjectHideFlags: 0
