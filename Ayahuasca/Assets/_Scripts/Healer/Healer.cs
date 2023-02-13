@@ -13,7 +13,7 @@ public class Healer : MonoBehaviour, _Scripts.Behaviours.Interfaces.IInteractabl
     private int curesProduced = 0;
 
     public void Interact(Transform InInteractorTransform) {
-        DiseaseSystem.Instance?.StopTimer();
+        //DiseaseSystem.Instance?.StopTimer();
         
         if(GetComponent<Dialog_Healer>()?.IsTalking ?? false) {
             return;
