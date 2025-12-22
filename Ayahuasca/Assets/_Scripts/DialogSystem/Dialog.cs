@@ -7,50 +7,61 @@ public class Dialog : MonoBehaviour
 {
     public TextMeshProUGUI textDisplay;
     public string[] sentences;
-    private int index;
+    protected int index;
     public float typingSpeed;
+    public float NewSentenceSpeed;
+    protected bool showMessage = false;
 
-    public GameObject continueButton;
+    public bool IsTalking { get; set; }
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    public void Talk() {
+        Debug.Log("Talk");
+        
+        this.index = 0;
+        this.showMessage = true;
+        
+        InventoryUI.Instance?.gameObject.SetActive(false);
         StartCoroutine(Type());
     }
 
-    private void Update()
+    private IEnumerator Type()
     {
-        if(textDisplay.text == sentences[index])
-        {
-            continueButton.SetActive(true);
-        }
-    }
-
-    IEnumerator Type()
-    {
+        IsTalking = true;
 
         foreach(char letter in sentences[index].ToCharArray())
         {
-            textDisplay.text += letter;
-            yield return new WaitForSeconds(typingSpeed);
+            if (showMessage == true)
+            {
+                textDisplay.text += letter;
+                yield return new WaitForSeconds(typingSpeed);
+            }
+            else
+            {
+                break;
+            }
+            
         }
 
+        if (showMessage == true)
+        {
+            yield return new WaitForSeconds(NewSentenceSpeed);
+            NextSentence();
+        }
     }
 
     public void NextSentence()
     {
-
-        continueButton.SetActive(false);
-
         if (index < sentences.Length - 1)
         {
             index++;
             textDisplay.text = "";
             StartCoroutine(Type());
-        } else
-        {
+        } else {
+            IsTalking = false;
             textDisplay.text = "";
-            continueButton.SetActive(false);
+            showMessage = false;
+
+            InventoryUI.Instance?.gameObject.SetActive(true);
         }
     }
 
