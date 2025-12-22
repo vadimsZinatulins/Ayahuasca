@@ -3,27 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Dialog : MonoBehaviour
+public class DialogOneMessage : MonoBehaviour
 {
     public TextMeshProUGUI textDisplay;
     public string[] sentences;
     private int index;
     public float typingSpeed;
+    private bool showMessage = false;
 
-    public GameObject continueButton;
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(Type());
+        
+        
     }
 
     private void Update()
     {
-        if(textDisplay.text == sentences[index])
-        {
-            continueButton.SetActive(true);
-        }
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        showMessage = true;
+        StartCoroutine(Type());
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        showMessage = false;
+        StopCoroutine(Type());
+        textDisplay.text = "";
     }
 
     IEnumerator Type()
@@ -31,16 +42,21 @@ public class Dialog : MonoBehaviour
 
         foreach(char letter in sentences[index].ToCharArray())
         {
-            textDisplay.text += letter;
-            yield return new WaitForSeconds(typingSpeed);
+            if (showMessage == true)
+            {
+                textDisplay.text += letter;
+                yield return new WaitForSeconds(typingSpeed);
+            }
+            else
+            {
+                break;
+            }
         }
 
     }
 
     public void NextSentence()
     {
-
-        continueButton.SetActive(false);
 
         if (index < sentences.Length - 1)
         {
@@ -50,7 +66,7 @@ public class Dialog : MonoBehaviour
         } else
         {
             textDisplay.text = "";
-            continueButton.SetActive(false);
+
         }
     }
 
