@@ -62,7 +62,7 @@ public class N_2DSidePlayerMovement : MonoBehaviour
         //Time.timeScale = 0.5f;
         if (Input.GetButtonDown("Jump")&& canJump && !isWallSliding)
         {
-            Jump(new Vector2(rb.velocity.x, jumpForce));
+            Jump(new Vector2(rb.linearVelocity.x, jumpForce));
             canJump = false;
         }
         if (Input.GetButtonDown("Jump") && canJump && isWallSliding)
@@ -86,9 +86,9 @@ public class N_2DSidePlayerMovement : MonoBehaviour
             candash = false;
             cooldown_dash = true;
             dashing = true;
-            rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * dash_force;
+            rb.linearVelocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * dash_force;
             
-            float angle = Mathf.Atan2(rb.velocity.x, rb.velocity.y) * Mathf.Rad2Deg;
+            float angle = Mathf.Atan2(rb.linearVelocity.x, rb.linearVelocity.y) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
 
             Debug.Log(transform.rotation.eulerAngles);
@@ -121,7 +121,7 @@ public class N_2DSidePlayerMovement : MonoBehaviour
 
         //----------------------Movimento-------------------------
         if (!isWallSliding && !dashing)
-            rb.velocity = new Vector2(nx * moveSpeed, rb.velocity.y);
+            rb.linearVelocity = new Vector2(nx * moveSpeed, rb.linearVelocity.y);
         //----------------------Movimento-------------------------
 
 
@@ -165,7 +165,7 @@ public class N_2DSidePlayerMovement : MonoBehaviour
 
         if (isWallSliding)
         {
-            rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, wallSlideSpeed, float.MaxValue));
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, Mathf.Clamp(rb.linearVelocity.y, wallSlideSpeed, float.MaxValue));
         }
 
     }
@@ -188,7 +188,7 @@ public class N_2DSidePlayerMovement : MonoBehaviour
     }
     void Jump(Vector2 v)
     {
-        rb.velocity = v;
+        rb.linearVelocity = v;
     }
     
 }

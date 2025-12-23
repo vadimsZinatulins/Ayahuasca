@@ -320,7 +320,7 @@ public class Boat : MonoBehaviour, IRiddable
                     Time.deltaTime * angularStabilizeSpeed);
 
                 // Remove uncessary movement
-                rb.velocity = Vector3.Lerp(rb.velocity, minimumVelocity, Time.deltaTime * velocityLerp);
+                rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, minimumVelocity, Time.deltaTime * velocityLerp);
             }
         }
     }

@@ -5,62 +5,56 @@ using TMPro;
 
 public class Dialog : MonoBehaviour
 {
-    public TextMeshProUGUI textDisplay;
     public string[] sentences;
     protected int index;
+
     public float typingSpeed;
     public float NewSentenceSpeed;
-    protected bool showMessage = false;
 
-    public bool IsTalking { get; set; }
-
-    public void Talk() {
+    public void Talk()
+    {
         Debug.Log("Talk");
-        
-        this.index = 0;
-        this.showMessage = true;
-        
-        InventoryUI.Instance?.gameObject.SetActive(false);
-        StartCoroutine(Type());
+
+        if (!DialogManager.instance.IsTalking)
+        {
+            index = 0;
+
+            InventoryUI.Instance?.gameObject.SetActive(false);
+            TriggerDialog();
+        }
+        else
+        {
+
+        }
     }
 
-    private IEnumerator Type()
+    public void TriggerDialog()
     {
-        IsTalking = true;
-
-        foreach(char letter in sentences[index].ToCharArray())
+        if (!DialogManager.instance.IsTalking)
         {
-            if (showMessage == true)
-            {
-                textDisplay.text += letter;
-                yield return new WaitForSeconds(typingSpeed);
-            }
-            else
-            {
-                break;
-            }
-            
+            DialogManager.instance.TypeDialog(sentences[index], typingSpeed);
+            DialogManager.instance.OnFinishTalking += OnFinishTalking;
         }
-
-        if (showMessage == true)
+        else
         {
-            yield return new WaitForSeconds(NewSentenceSpeed);
             NextSentence();
         }
     }
 
     public void NextSentence()
     {
+
+    }
+
+    public void OnFinishTalking()
+    {
         if (index < sentences.Length - 1)
         {
             index++;
-            textDisplay.text = "";
-            StartCoroutine(Type());
-        } else {
-            IsTalking = false;
-            textDisplay.text = "";
-            showMessage = false;
-
+            DialogManager.instance.TypeDialog(sentences[index], typingSpeed);
+        }
+        else
+        {
             InventoryUI.Instance?.gameObject.SetActive(true);
         }
     }

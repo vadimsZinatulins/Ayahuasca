@@ -49,7 +49,7 @@ namespace FAE
                 this.enabled = false;
             }
 
-            if (UnityEngine.Rendering.GraphicsSettings.renderPipelineAsset == null)
+            if (UnityEngine.Rendering.GraphicsSettings.defaultRenderPipeline == null)
             {
                 cliffShader = Shader.Find("FAE/Cliff");
                 cliffCoverageShader = Shader.Find("FAE/Cliff coverage");

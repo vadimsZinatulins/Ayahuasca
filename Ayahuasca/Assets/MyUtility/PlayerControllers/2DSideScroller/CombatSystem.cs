@@ -36,7 +36,7 @@ public class CombatSystem : MonoBehaviour
     {
         Debug.Log("PlaysAnimation");
         Attack();
-        rb.velocity = rb.velocity / 2;
+        rb.linearVelocity = rb.linearVelocity / 2;
         rb.gravityScale = rb.gravityScale / 2;
         StartCoroutine(DurationMelee(0.5f));
     }

@@ -15,7 +15,7 @@ public class Healer : MonoBehaviour, _Scripts.Behaviours.Interfaces.IInteractabl
     public void Interact(Transform InInteractorTransform) {
         //DiseaseSystem.Instance?.StopTimer();
         
-        if(GetComponent<Dialog_Healer>()?.IsTalking ?? false) {
+        if(!DialogManager.instance.IsTalking) {
             return;
         }
 

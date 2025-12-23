@@ -64,7 +64,7 @@ namespace FAE
             DoHeader();
 
 #if UNITY_2019_3_OR_NEWER
-            if (UnityEngine.Rendering.GraphicsSettings.renderPipelineAsset)
+            if (UnityEngine.Rendering.GraphicsSettings.defaultRenderPipeline)
             {
                 EditorGUILayout.HelpBox("Not available in the Universal Render Pipeline.\n\nThe Stylized Grass Shader package is URP compatible", MessageType.Warning);
 

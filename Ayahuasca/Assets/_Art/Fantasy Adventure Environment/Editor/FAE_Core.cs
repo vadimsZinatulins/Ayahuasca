@@ -78,7 +78,7 @@ namespace FAE
                         FileInfo[] fileInfo = info.GetFiles();
 
                         //Only one file in the folder, shaders not yet unpacked
-                        if (fileInfo.Length <= 2 && UnityEngine.Rendering.GraphicsSettings.renderPipelineAsset != null)
+                        if (fileInfo.Length <= 2 && UnityEngine.Rendering.GraphicsSettings.defaultRenderPipeline != null)
                         {
                             if (EditorUtility.DisplayDialog("Fantasy Adventure Environment", "The Universal Render Pipeline is in use.\n\nURP compatible shaders can be unpacked and materials upgraded through the \"Help\" window after importing has finished\n\nErrors about _GrabTexture can safely be ignored.", "OK"))
                             {
@@ -140,7 +140,7 @@ namespace FAE
             SwitchRenderPipeline.SetPipeline(ShaderInstallation.UniversalRP);
 #endif
 
-            if (UnityEngine.Rendering.GraphicsSettings.renderPipelineAsset == null)
+            if (UnityEngine.Rendering.GraphicsSettings.defaultRenderPipeline == null)
             {
                 if (EditorUtility.DisplayDialog("Fantasy Adventure Environment", "No URP asset has been assigned in the Graphics settings. URP should be set up, before converting the package.", "Show me", "Cancel"))
                 {
@@ -333,7 +333,7 @@ namespace FAE
                 
                 if (EditorUtility.DisplayDialog("Fantasy Adventure Environment", "Ensure the Depth/Opaque Texture options are enabled in your pipeline settings, otherwise the water isn't visible in the game view", "Show me", "OK"))
                 {
-                    Selection.activeObject = UnityEngine.Rendering.GraphicsSettings.renderPipelineAsset;
+                    Selection.activeObject = UnityEngine.Rendering.GraphicsSettings.defaultRenderPipeline;
                 }
                 
                 AssetDatabase.SaveAssets();
